@@ -1,12 +1,12 @@
 
 //creation du fond
-export function ground(ctx,width,height){
-    const gradient = ctx.createLinearGradient(0, 0, 0, height);
-  gradient.addColorStop(0, "#95d283ff"); // herbe claire
-  gradient.addColorStop(1, "#52a649ff"); // plus foncée en bas
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, width, height);
-}
+// export function ground(ctx,width,height){
+//     const gradient = ctx.createLinearGradient(0, 0, 0, height);
+//   gradient.addColorStop(0, "#95d283ff"); // herbe claire
+//   gradient.addColorStop(1, "#52a649ff"); // plus foncée en bas
+//   ctx.fillStyle = gradient;
+//   ctx.fillRect(0, 0, width, height);
+// }
 
 //Dessine les rochers
 export function drawRock(ctx, x,y ,size = 80) {

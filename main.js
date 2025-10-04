@@ -74,7 +74,7 @@ const ctx = canvas.getContext("2d");
 
 
 
-import { ground } from './js/background.js';
+// import { ground } from './js/background.js';
 import { drawRock } from './js/background.js';
 import { drawPath } from './js/background.js';
 import { drawShapedPath } from './js/background.js';
@@ -90,23 +90,24 @@ import { input } from './js/input.js';
 function resizeCanvas() {
   const ratio = window.devicePixelRatio || 1;
 
-  // Taille réelle du canvas
+  // Donne au canvas sa taille "réelle" en pixels
   canvas.width = window.innerWidth * ratio;
   canvas.height = window.innerHeight * ratio;
 
-  // Taille CSS visible
+  // Ajuste la taille CSS pour remplir l’écran
   canvas.style.width = window.innerWidth + "px";
   canvas.style.height = window.innerHeight + "px";
 
-  // Reset + mise à l’échelle Retina
+  // Reset transform + mise à l’échelle Retina
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.scale(ratio, ratio);
 
   return {
     width: canvas.width / ratio,
-    height: canvas.height / ratio,
+    height: canvas.height / ratio
   };
 }
+
 
 // ==============================
 // Fonction principale de rendu
@@ -119,7 +120,7 @@ function render() {
   ctx.save();            // 🔒 garde l’état du canvas
   ctx.translate(camX, camY); // déplace toute la scène
   // === Ordre de rendu ===
-  ground(ctx, width, height);                   // 1. Fond
+  // ground(ctx, width, height);                   // 1. Fond
   drawShapedPath(ctx, 433, 965, "left", 65, 82, 145, 180); // 2. Chemin incurvé /
   drawPath(ctx, 392, 480, 80, 260, 0);          // 3. Chemin vertical
   drawPath(ctx, 749, 753, 80, 260, 90);         // 4. Chemin horizontal

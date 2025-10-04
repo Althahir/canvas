@@ -4,7 +4,7 @@
 export const player = {
   x: 400,
   y: 435,
-  speed: 2,
+  speed: 7,
   direction: "down",    // "up", "down", "left", "right"
   frame: 0,             // numéro de l’image dans l’animation
   frameDelay: 10,       // vitesse d’animation (plus petit = plus rapide)
