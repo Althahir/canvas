@@ -113,7 +113,11 @@ function resizeCanvas() {
 // ==============================
 function render() {
   const { width, height } = resizeCanvas();
-
+  // === Déplacement caméra ===
+  const camX = width / 2 - player.x;
+  const camY = height / 2 - player.y;
+  ctx.save();            // 🔒 garde l’état du canvas
+  ctx.translate(camX, camY); // déplace toute la scène
   // === Ordre de rendu ===
   ground(ctx, width, height);                   // 1. Fond
   drawShapedPath(ctx, 433, 965, "left", 65, 82, 145, 180); // 2. Chemin incurvé /
@@ -161,7 +165,7 @@ if (moving) {
   // --- Dessin joueur ---
   drawPerso(ctx, player);
 
-
+ctx.restore(); 
   requestAnimationFrame(render); // 🔁 boucle infinie
 }
 
