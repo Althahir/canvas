@@ -66,24 +66,21 @@
 
 
 
-// recuperation des infos du html
-const canvas = document.getElementById("game");
-// creation du pinceau
-const ctx = canvas.getContext("2d");
+
 
 
 
 
 // import { ground } from './js/background.js';
-import { drawRock } from './js/background.js';
-import { drawPath } from './js/background.js';
-import { drawShapedPath } from './js/background.js';
-import { drawPerso } from './js/perso.js';
-import { player } from './js/perso.js';
-import { drawHouse } from './js/object.js';
+import { drawRock, drawPath, drawShapedPath } from './js/background.js';
+import { drawPerso, player } from './js/perso.js';
+import { drawHouse, house, drawPlant, plant, plant1, plant2, plant3,rock, isColliding } from './js/object.js';
 import { input } from './js/input.js';
+// recuperation des infos du html
+const canvas = document.getElementById("game");
 
-
+// creation du pinceau
+const ctx = canvas.getContext("2d");
 // ==============================
 // Fonction pour adapter la taille du canvas à la fenêtre
 // ==============================
@@ -124,32 +121,41 @@ function render() {
   drawShapedPath(ctx, 433, 965, "left", 65, 82, 145, 180); // 2. Chemin incurvé /
   drawPath(ctx, 392, 480, 80, 260, 0);          // 3. Chemin vertical
   drawPath(ctx, 749, 753, 80, 260, 90);         // 4. Chemin horizontal
-  drawRock(ctx, 370, 961, 135);                 // 5. Rochers
+  drawRock(ctx, rock.x, rock.y, rock.w);                 // 5. Rochers
+  drawPlant(ctx,plant.x,plant.y);
+  drawPlant(ctx,plant1.x,plant1.y);
+  drawPlant(ctx,plant2.x,plant2.y);
+  drawPlant(ctx,plant3.x,plant3.y);
   drawHouse(ctx, 320, 280);                     // 6. Maison
+  
   // drawPerso(ctx, 400, 435);                     // 7. Joueur (toujours en dernier) / x,y
   // --- Déplacement ---
 let moving = false;
-
+const oldX = player.x;
+const oldY = player.y;
 if (input.keys.has("ArrowUp") || input.keys.has("z")) {
   player.y -= player.speed;
   player.direction = "up";
   moving = true;
-  console.log(player.y)
+  console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 if (input.keys.has("ArrowDown") || input.keys.has("s")) {
   player.y += player.speed;
   player.direction = "down";
   moving = true;
+  console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 if (input.keys.has("ArrowLeft") || input.keys.has("q")) {
   player.x -= player.speed;
   player.direction = "left";
   moving = true;
+  console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 if (input.keys.has("ArrowRight") || input.keys.has("d")) {
   player.x += player.speed;
   player.direction = "right";
   moving = true;
+  console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 
 // --- Animation ---
@@ -162,7 +168,23 @@ if (moving) {
 } else {
   player.frame = 0; // perso à l’arrêt → frame "idle"
 }
-
+const obstacles = [
+  house,
+  rock,
+  plant,
+  plant1,
+  plant2,
+  plant3
+];
+// Si collision avec la maison → retour à l’ancienne position
+for (const obj of obstacles) {
+  if (isColliding(player, obj)) {
+    player.x = oldX;
+    player.y = oldY;
+    console.log("collision")
+    break;
+  }
+}
   // --- Dessin joueur ---
   drawPerso(ctx, player);
 

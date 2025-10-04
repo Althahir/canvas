@@ -3,7 +3,9 @@
 
 export const player = {
   x: 400,
-  y: 435,
+  y: 480,
+  w :59,
+  h:59,
   speed: 7,
   direction: "down",    // "up", "down", "left", "right"
   frame: 0,             // numéro de l’image dans l’animation
