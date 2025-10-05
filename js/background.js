@@ -7,6 +7,8 @@
 //   ctx.fillStyle = gradient;
 //   ctx.fillRect(0, 0, width, height);
 // }
+const swordplantImg = new Image();
+swordplantImg.src = './assets/swordplant.png'; // à adapter si elle est dans un sous-dossier
 
 //Dessine les rochers
 export function drawRock(ctx, x,y ,size = 80) {
@@ -26,6 +28,16 @@ export function drawRock(ctx, x,y ,size = 80) {
 
   ctx.fillStyle = "#5a5a5a"; // gris rocher
   ctx.fill();
+}
+export function drawSwordplant (ctx,x,y){
+if (swordplantImg.complete) {
+    ctx.drawImage(swordplantImg, x, y);
+  } else {
+    // Attendre que les images soient prêtes avant de dessiner
+    swordplantImg.onload = () => {
+      ctx.drawImage(swordplantImg, x, y);
+    };
+  }
 }
 export function drawPath(ctx, x, y, width, height, angle = 0) {
   ctx.save(); // 🔒 on garde le contexte

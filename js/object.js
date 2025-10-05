@@ -1,6 +1,5 @@
 // js/house.js
 import { player } from './perso.js';
-import { attackAngle } from '../main.js';
 
 // On crée une image JS
 const maisonImg = new Image();
@@ -12,6 +11,8 @@ const plantImg = new Image();
 plantImg.src = './assets/plante.png'; // image à fournir (voir remarque ci-dessous)
 const swordImg = new Image();
 swordImg.src = './assets/sword.png'; // image à fournir (voir remarque ci-dessous)
+const treeImg = new Image();
+treeImg.src = './assets/tree.png'; // image à fournir (voir remarque ci-dessous)
 
 
 export const sword={
@@ -25,6 +26,12 @@ export const house = {
   y: 280,
   w: 216,   // largeur de la maison (ajuste selon ton image)
   h: 200
+};
+export const tree = {
+  x: 550,   // même position que ton drawHouse
+  y: 280,
+  w: 144,   // largeur de la maison (ajuste selon ton image)
+  h: 173
 };
 export const plant={
     x:570,
@@ -101,6 +108,16 @@ export function drawPlant(ctx, x,y){
     else{
         plantImg.onload=()=>{
             ctx.drawImage(plantImg,x,y)
+        }
+    }
+}
+export function drawTree(ctx, x,y){
+    if (treeImg.complete){
+        ctx.drawImage(treeImg,x,y);
+    }
+    else{
+        treeImg.onload=()=>{
+            ctx.drawImage(treeImg,x,y)
         }
     }
 }

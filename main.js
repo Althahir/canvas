@@ -1,7 +1,7 @@
 // import { ground } from './js/background.js';
-import { drawRock, drawPath, drawShapedPath } from './js/background.js';
+import { drawRock, drawPath, drawShapedPath, drawSwordplant } from './js/background.js';
 import { drawPerso, player } from './js/perso.js';
-import { drawHouse, house, drawPlant, plant, plant1, plant2, plant3,rock, isColliding, drawSword, sword } from './js/object.js';
+import { drawHouse, house, drawPlant, plant, plant1, plant2, plant3,rock, isColliding, drawSword, sword, tree, drawTree } from './js/object.js';
 import { input } from './js/input.js';
 // recuperation des infos du html
 const canvas = document.getElementById("game");
@@ -51,12 +51,14 @@ function render() {
   drawShapedPath(ctx, 433, 965, "left", 65, 82, 145, 180); // 2. Chemin incurvé /
   drawPath(ctx, 392, 480, 80, 260, 0);          // 3. Chemin vertical
   drawPath(ctx, 749, 753, 80, 260, 90);         // 4. Chemin horizontal
-  drawRock(ctx, rock.x, rock.y, rock.w);                 // 5. Rochers
+  drawRock(ctx, rock.x, rock.y, rock.w); 
+  drawSwordplant(ctx,rock.x+65,rock.y-80);               // 5. Rochers
   drawPlant(ctx,plant.x,plant.y);
   drawPlant(ctx,plant1.x,plant1.y);
   drawPlant(ctx,plant2.x,plant2.y);
   drawPlant(ctx,plant3.x,plant3.y);
   drawHouse(ctx, 320, 280);                     // 6. Maison
+  drawTree(ctx, tree.x, tree.y);                     // 6. Maison
   
   // drawPerso(ctx, 400, 435);                     // 7. Joueur (toujours en dernier) / x,y
   // --- Déplacement ---
@@ -104,7 +106,8 @@ const obstacles = [
   plant,
   plant1,
   plant2,
-  plant3
+  plant3, 
+  tree
 ];
 // Si collision avec la maison → retour à l’ancienne position
 for (const obj of obstacles) {
