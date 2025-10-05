@@ -1,5 +1,6 @@
 // js/house.js
-
+import { player } from './perso.js';
+import { attackAngle } from '../main.js';
 
 // On crée une image JS
 const maisonImg = new Image();
@@ -9,7 +10,16 @@ const porteImg = new Image();
 porteImg.src = './assets/porte.png'; // image à fournir (voir remarque ci-dessous)
 const plantImg = new Image();
 plantImg.src = './assets/plante.png'; // image à fournir (voir remarque ci-dessous)
+const swordImg = new Image();
+swordImg.src = './assets/sword.png'; // image à fournir (voir remarque ci-dessous)
 
+
+export const sword={
+    x:30,
+    y:45,
+    h:player.h,
+    w:player.w,
+}
 export const house = {
   x: 320,   // même position que ton drawHouse
   y: 280,
@@ -22,6 +32,7 @@ export const plant={
     w:45,
     h:43,
 }
+
 export const plant1={
     x:610,
     y:800,
@@ -93,4 +104,74 @@ export function drawPlant(ctx, x,y){
         }
     }
 }
+export function drawSword(ctx) {
+//   if (!swordVisibility) return;
+
+  let angle = 0;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  switch (player.direction) {
+    case "up":
+      angle = 20;
+      offsetX = 0;
+      offsetY = -25;
+      break;
+    case "down":
+      angle = 200;
+      offsetX = 8;
+      offsetY = -40;
+      break;
+    case "left":
+      angle = -90;
+      offsetX = -10;
+      offsetY = -40;
+      break;
+    case "right":
+      angle = 90;
+      offsetX = 20;
+      offsetY = -25;
+      break;
+  }
+
+  // Position réelle de l'épée (utile pour collisions)
+  sword.x = player.x + offsetX;
+  sword.y = player.y + offsetY;
+
+  // Dessin visuel (rotation autour du centre du joueur)
+  const centerX = player.x + player.w / 2;
+  const centerY = player.y + player.h / 2;
+
+  ctx.save();
+  ctx.translate(centerX, centerY);
+  ctx.rotate((angle * Math.PI) / 180);
+
+  if (swordImg.complete) {
+    ctx.drawImage(
+  swordImg,
+  -swordImg.width / 2 + offsetX,
+  -swordImg.height / 2 + offsetY
+);
+
+  } else {
+    swordImg.onload = () => {
+      ctx.drawImage(
+  swordImg,
+  -swordImg.width / 2 + offsetX,
+  -swordImg.height / 2 + offsetY
+);
+
+    };
+  }
+
+  ctx.restore();
+
+  
+
+  // (optionnel) hitbox visible pour debug
+//   ctx.strokeStyle = "red";
+//   ctx.strokeRect(sword.x, sword.y, sword.w, sword.h);
+}
+
+
 
