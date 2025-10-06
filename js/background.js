@@ -11,7 +11,7 @@ import{rock}from "./object.js"
 const swordplantImg = new Image();
 swordplantImg.src = './assets/swordplant1.png'; // à adapter si elle est dans un sous-dossier
 export const swordplant = {
-x:rock.x+120,
+x:rock.x-40,
 y:rock.y+30,
 w:62,
 h:54

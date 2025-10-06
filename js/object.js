@@ -29,39 +29,129 @@ export const house = {
   h: 200
 };
 export const tree = {
-  x: 550,   // même position que ton drawHouse
+  x: 550,   
   y: 280,
-  w: 144,   // largeur de la maison (ajuste selon ton image)
+  w: 144,   
+  h: 173
+};
+export const tree1 = {
+  x: 680,   
+  y: 280,
+  w: 144,   
+  h: 173
+};
+export const tree2 = {
+  x: 810,   
+  y: 280,
+  w: 144,   
+  h: 173
+};
+export const tree3 = {
+  x: 940,   
+  y: 280,
+  w: 144,   
+  h: 173
+};
+export const tree4 = {
+  x: 940,   
+  y: 410,
+  w: 144,   
+  h: 173
+};
+export const tree5 = {
+  x: 940,   
+  y: 540,
+  w: 144,   
+  h: 173
+};
+export const tree6 = {
+  x: 940,   
+  y: 670,
+  w: 144,   
+  h: 173
+};
+export const tree7 = {
+  x: 940,   
+  y: 800,
+  w: 144,   
+  h: 173
+};
+export const tree8 = {
+  x: 940,   
+  y: 930,
+  w: 144,   
+  h: 173
+};
+export const tree9 = {
+  x: 940,   
+  y: 1070,
+  w: 144,   
+  h: 173
+};
+export const tree10 = {
+  x: 810,   
+  y: 1070,
+  w: 144,   
+  h: 173
+};
+export const tree11 = {
+  x: 680,   
+  y: 1070,
+  w: 144,   
+  h: 173
+};
+export const tree12 = {
+  x: 550,   
+  y: 1070,
+  w: 144,   
+  h: 173
+};
+export const tree13 = {
+  x: 190,   
+  y: 1070,
+  w: 144,   
   h: 173
 };
 export const plant={
-    x:570,
-    y:800,
+    x:320,
+    y:1150,
     w:45,
     h:43,
 }
 
 export const plant1={
-    x:610,
-    y:800,
+    x:360,
+    y:1150,
     w:45,
     h:43,
 }
 export const plant2={
-    x:650,
-    y:800,
+    x:400,
+    y:1150,
     w:45,
     h:43,
 }
 export const plant3={
-    x:690,
-    y:800,
+    x:440,
+    y:1150,
+    w:45,
+    h:43,
+}
+export const plant4={
+    x:480,
+    y:1150,
+    w:45,
+    h:43,
+}
+export const plant5={
+    x:520,
+    y:1150,
     w:45,
     h:43,
 }
 export const rock = {
-    x:370,
-    y:951,
+    x:734,
+    y:570,
     w:135,
     h:85
   }

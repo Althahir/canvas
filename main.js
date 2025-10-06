@@ -1,7 +1,7 @@
 // import { ground } from './js/background.js';
 import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant } from './js/background.js';
 import { drawPerso, player, drawHearts } from './js/perso.js';
-import { drawHouse, house, drawPlant, plant, plant1, plant2, plant3,rock, isColliding, drawSword, sword, tree, drawTree } from './js/object.js';
+import { drawHouse, house, drawPlant, plant, plant1, plant2, plant3, plant4, plant5, rock, isColliding, drawSword, sword, tree, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13, drawTree } from './js/object.js';
 import { input } from './js/input.js';
 import{drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
@@ -49,17 +49,32 @@ function render() {
   // ground(ctx, width, height);                   // 1. Fond
   ctx.save();            // 🔒 garde l’état du canvas
   ctx.translate(camX, camY);
-  drawShapedPath(ctx, 433, 965, "left", 65, 82, 145, 180); // 2. Chemin incurvé /
-  drawPath(ctx, 392, 480, 80, 260, 0);          // 3. Chemin vertical
-  drawPath(ctx, 749, 753, 80, 260, 90);         // 4. Chemin horizontal
+  drawShapedPath(ctx, 433, 1450, "left", 65, 824, 165, 180); // 2. Chemin incurvé /
+  // drawPath(ctx, 392, 480, 80, 260, 0);          // 3. Chemin vertical
+  // drawPath(ctx, 839, 753, 80, 260, 90);         // 4. Chemin horizontal
   drawRock(ctx, rock.x, rock.y, rock.w); 
   drawSwordplant(ctx,swordplant.x,swordplant.y);               // 5. Rochers
   drawPlant(ctx,plant.x,plant.y);
   drawPlant(ctx,plant1.x,plant1.y);
   drawPlant(ctx,plant2.x,plant2.y);
   drawPlant(ctx,plant3.x,plant3.y);
+  drawPlant(ctx,plant4.x,plant4.y);
+  drawPlant(ctx,plant5.x,plant5.y);
   drawHouse(ctx, 320, 280);                     // 6. Maison
   drawTree(ctx, tree.x, tree.y);                     // 6. Maison
+  drawTree(ctx, tree1.x, tree1.y);                     // 6. Maison
+  drawTree(ctx, tree2.x, tree2.y);                     // 6. Maison
+  drawTree(ctx, tree3.x, tree3.y);                     // 6. Maison
+  drawTree(ctx, tree4.x, tree4.y);                     // 6. Maison
+  drawTree(ctx, tree5.x, tree5.y);                     // 6. Maison
+  drawTree(ctx, tree6.x, tree6.y);                     // 6. Maison
+  drawTree(ctx, tree7.x, tree7.y);                     // 6. Maison
+  drawTree(ctx, tree8.x, tree8.y);                     // 6. Maison
+  drawTree(ctx, tree9.x, tree9.y);                     // 6. Maison
+  drawTree(ctx, tree10.x, tree10.y);                     // 10. Maison
+  drawTree(ctx, tree11.x, tree11.y);                     // 6. Maison
+  drawTree(ctx, tree12.x, tree12.y);                     // 6. Maison
+  drawTree(ctx, tree13.x, tree13.y);                     // 6. Maison
 
   // drawPerso(ctx, 400, 435);                     // 7. Joueur (toujours en dernier) / x,y
   // --- Déplacement ---
@@ -109,7 +124,23 @@ const obstacles = [
   plant1,
   plant2,
   plant3, 
-  tree
+  plant4, 
+  plant5, 
+  tree,
+  tree1,
+  tree2,
+  tree3,
+  tree4, 
+  tree5, 
+  tree6, 
+  tree7, 
+  tree8, 
+  tree9, 
+  tree10, 
+  tree11, 
+  tree12,
+  tree13
+  
 ];
 const coupable = [
   plant,
@@ -232,9 +263,9 @@ render();
 // window.addEventListener("resize", render);
 
 // Debug souris
-// document.addEventListener("mousemove", (el) => {
-//   console.log("x :", el.clientX, "| y:", el.clientY);
-// });
+document.addEventListener("mousemove", (el) => {
+  console.log("x :", el.clientX, "| y:", el.clientY);
+});
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas(); // appelé une seule fois au début
 
