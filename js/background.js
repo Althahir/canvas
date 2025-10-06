@@ -8,7 +8,7 @@
 //   ctx.fillRect(0, 0, width, height);
 // }
 const swordplantImg = new Image();
-swordplantImg.src = './assets/swordplant.png'; // à adapter si elle est dans un sous-dossier
+swordplantImg.src = './assets/swordplant1.png'; // à adapter si elle est dans un sous-dossier
 
 //Dessine les rochers
 export function drawRock(ctx, x,y ,size = 80) {

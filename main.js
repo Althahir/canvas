@@ -1,6 +1,6 @@
 // import { ground } from './js/background.js';
 import { drawRock, drawPath, drawShapedPath, drawSwordplant } from './js/background.js';
-import { drawPerso, player } from './js/perso.js';
+import { drawPerso, player, drawHearts } from './js/perso.js';
 import { drawHouse, house, drawPlant, plant, plant1, plant2, plant3,rock, isColliding, drawSword, sword, tree, drawTree } from './js/object.js';
 import { input } from './js/input.js';
 // recuperation des infos du html
@@ -43,22 +43,23 @@ function render() {
   // === Déplacement caméra ===
   const camX = width / 2 - player.x;
   const camY = height / 2 - player.y;
-  ctx.save();            // 🔒 garde l’état du canvas
-  ctx.translate(camX, camY); // déplace toute la scène
+ // déplace toute la scène
   // === Ordre de rendu ===
   // ground(ctx, width, height);                   // 1. Fond
+  ctx.save();            // 🔒 garde l’état du canvas
+  ctx.translate(camX, camY);
   drawShapedPath(ctx, 433, 965, "left", 65, 82, 145, 180); // 2. Chemin incurvé /
   drawPath(ctx, 392, 480, 80, 260, 0);          // 3. Chemin vertical
   drawPath(ctx, 749, 753, 80, 260, 90);         // 4. Chemin horizontal
   drawRock(ctx, rock.x, rock.y, rock.w); 
-  drawSwordplant(ctx,rock.x+65,rock.y-80);               // 5. Rochers
+  drawSwordplant(ctx,rock.x+125,rock.y-10);               // 5. Rochers
   drawPlant(ctx,plant.x,plant.y);
   drawPlant(ctx,plant1.x,plant1.y);
   drawPlant(ctx,plant2.x,plant2.y);
   drawPlant(ctx,plant3.x,plant3.y);
   drawHouse(ctx, 320, 280);                     // 6. Maison
   drawTree(ctx, tree.x, tree.y);                     // 6. Maison
-  
+
   // drawPerso(ctx, 400, 435);                     // 7. Joueur (toujours en dernier) / x,y
   // --- Déplacement ---
 let moving = false;
@@ -68,26 +69,27 @@ if (input.keys.has("ArrowUp") || input.keys.has("z")) {
   player.y -= player.speed;
   player.direction = "up";
   moving = true;
-  console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
+  // console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 if (input.keys.has("ArrowDown") || input.keys.has("s")) {
   player.y += player.speed;
   player.direction = "down";
   moving = true;
-  console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
+  // console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 if (input.keys.has("ArrowLeft") || input.keys.has("q")) {
   player.x -= player.speed;
   player.direction = "left";
   moving = true;
-  console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
+  // console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 if (input.keys.has("ArrowRight") || input.keys.has("d")) {
   player.x += player.speed;
   player.direction = "right";
   moving = true;
-  console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
+  // console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
+
 
 // --- Animation ---
 if (moving) {
@@ -108,16 +110,35 @@ const obstacles = [
   plant3, 
   tree
 ];
+const coupable = [
+  plant,
+  plant1,
+  plant2,
+  plant3
+];
 // Si collision avec la maison → retour à l’ancienne position
 for (const obj of obstacles) {
   if (isColliding(player, obj)) {
     player.x = oldX;
     player.y = oldY;
-    console.log("collision")
+    // console.log("collision avec l'objet situé :", obj)
     break;
   }
 }
-if (input.keys.has(" ") ){ //&& !isAttacking) {
+// Si collision de l'epee avec objet decoupable disparition de l'objet
+for (const coupe of coupable) {
+  if (isColliding(sword, coupe)) {
+    coupe.x = -1000;
+    coupe.y = -1000;
+    // console.log("coupe")
+    break;
+  }
+}
+// if (input.keys.has(" ") ){ //&& !isAttacking) {
+document.addEventListener("keyup",(e)=>{
+
+  if (e.code=="Space"){
+    
   isAttacking = true;
   swordVisibility = true;
   sword.attackAngle = -60; // point de départ du coup
@@ -138,15 +159,29 @@ if (input.keys.has(" ") ){ //&& !isAttacking) {
     swordVisibility=false;
     isAttacking = false;
   }, 140);
-   
-}
-else if(input.keys.has(" ") && (isAttacking==true)){
-  swordVisibility=false;
-}
+}  
+})
+document.addEventListener("keydown",(e)=>{
+player.speed=8
+  if (e.code=="ControlLeft"){
+    // console.log(player.frame)
+    player.speed=16;
+  }
+  })
+document.addEventListener("keyup",(e)=>{
+
+  if (e.code=="ControlLeft"){
+    // console.log(e.code)
+    player.speed=4;
+  }
+  })
+// else if(input.keys.has(" ") && (isAttacking==true)){
+//   swordVisibility=false;
+// }
 
 
 
-if (swordVisibility) {
+if ((swordVisibility)&&(player.epee==1)) {
   if ((player.direction === "up")||(player.direction==="left")) {
   if (swordVisibility) drawSword(ctx); // Épée derrière seulement si visible
   drawPerso(ctx, player);
@@ -159,8 +194,11 @@ if (swordVisibility) {
   drawPerso(ctx, player);        // Juste le joueur
 }
   
+  ctx.restore(); 
 
-ctx.restore(); 
+
+drawHearts(ctx, player.life); // ❤️ affichage des vies
+
   requestAnimationFrame(render); // 🔁 boucle infinie
 }
 

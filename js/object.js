@@ -18,7 +18,7 @@ treeImg.src = './assets/tree.png'; // image à fournir (voir remarque ci-dessous
 export const sword={
     x:30,
     y:45,
-    h:player.h,
+    h:120,//h:player.h,
     w:player.w,
     attackAngle:-60
 }
@@ -147,7 +147,7 @@ export function drawSword(ctx) {
       break;
     case "right":
       angle = 90;
-      offsetX = 20;
+      offsetX = 10;
       offsetY = -25;
       break;
   }

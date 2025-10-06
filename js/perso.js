@@ -1,16 +1,36 @@
 
+const heartFull = new Image();
+heartFull.src = './assets/vie1.PNG';
 
+const heartEmpty = new Image();
+heartEmpty.src = './assets/vie0.PNG';
+
+export function drawHearts(ctx, life) {
+  const total = 3; // nombre total de cœurs
+  const size = 55; // taille (pixels)
+  const spacing = 10; // espacement entre cœurs
+
+  const startX = 50;
+  const startY = 50;
+
+  for (let i = 0; i < total; i++) {
+    const img = i < life ? heartFull : heartEmpty;
+    ctx.drawImage(img, startX + i * (size + spacing), startY, size, size);
+  }
+}
 
 export const player = {
   x: 400,
   y: 480,
   w :59,
   h:59,
-  speed: 7,
+  life:4,
+  speed: 4,
   direction: "down",    // "up", "down", "left", "right"
   frame: 0,             // numéro de l’image dans l’animation
   frameDelay: 10,       // vitesse d’animation (plus petit = plus rapide)
-  frameCount: 0,        // compteur interne
+  frameCount: 0, 
+  epee:0,       // compteur interne
   sprites: {
     up: [new Image(), new Image(), new Image()],
     down: [new Image(), new Image(), new Image()],
