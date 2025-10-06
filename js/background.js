@@ -7,27 +7,94 @@
 //   ctx.fillStyle = gradient;
 //   ctx.fillRect(0, 0, width, height);
 // }
+import{rock}from "./object.js"
 const swordplantImg = new Image();
 swordplantImg.src = './assets/swordplant1.png'; // à adapter si elle est dans un sous-dossier
+export const swordplant = {
+x:rock.x+120,
+y:rock.y+30,
+w:62,
+h:54
+}
 
-//Dessine les rochers
-export function drawRock(ctx, x,y ,size = 80) {
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-  ctx.lineTo(x + size * 0.6, y - size * 0.3);
-  ctx.lineTo(x + size, y);
-  ctx.lineTo(x + size * 0.8, y + size * 0.5);
-  ctx.lineTo(x + size * 0.3, y + size * 0.6);
-  ctx.lineTo(x, y + size * 0.4);
-  ctx.closePath();
-// === DESSIN BORDURE ===
-  ctx.lineWidth = 8;
-  ctx.strokeStyle = "#100901ff";
-  ctx.lineCap = "round";
-  ctx.stroke();
 
-  ctx.fillStyle = "#5a5a5a"; // gris rocher
-  ctx.fill();
+export function drawRock(ctx, x, y, size = 80) {
+    // Couleurs pour un rocher plus "terreux" ou "sombre"
+    const baseColor = "#544C4A";    // Gris-brun foncé pour la base
+    const highlightColor = "#7A706A"; // Gris-brun clair pour les zones éclairées
+    const shadowColor = "#3E3735";  // Marron très foncé pour les ombres profondes
+
+    // Les points définissant la silhouette du rocher.
+    // Ajustés pour une forme plus organique, sans Math.random().
+    // Ces points sont relatifs à un carré de taille 'size' pour faciliter l'adaptation.
+    const shapePoints = [
+        { x: 0.1, y: 0.7 },
+        { x: 0.05, y: 0.4 },
+        { x: 0.2, y: 0.1 },
+        { x: 0.5, y: 0.0 },
+        { x: 0.8, y: 0.1 },
+        { x: 0.95, y: 0.3 },
+        { x: 1.0, y: 0.6 },
+        { x: 0.85, y: 0.8 },
+        { x: 0.6, y: 0.9 },
+        { x: 0.3, y: 0.8 }
+    ];
+
+    // --- DESSIN DU CORPS PRINCIPAL DU ROCHER ---
+    ctx.beginPath();
+    // Le premier point est déplacé à la position réelle (x,y) + offset * size
+    ctx.moveTo(x + shapePoints[0].x * size, y + shapePoints[0].y * size);
+
+    // Dessin de la silhouette avec des courbes douces
+    for (let i = 0; i < shapePoints.length; i++) {
+        const p1 = shapePoints[i];
+        const p2 = shapePoints[(i + 1) % shapePoints.length]; // Le dernier point se relie au premier
+
+        // Les points de contrôle sont calculés pour être au milieu des segments
+        // ajustés pour donner une courbure naturelle
+        const controlX = x + ((p1.x + p2.x) / 2) * size + (i % 2 === 0 ? size * 0.05 : -size * 0.05); // Légère variation
+        const controlY = y + ((p1.y + p2.y) / 2) * size + (i % 2 === 1 ? size * 0.05 : -size * 0.05); // Légère variation
+
+        ctx.quadraticCurveTo(controlX, controlY, x + p2.x * size, y + p2.y * size);
+    }
+    ctx.closePath();
+
+    // --- APPLICATION D'UN DÉGRADÉ RADIAL ---
+    // Simule une lumière venant du centre du rocher ou légèrement décalée,
+    // donnant un effet de volume plus doux et réaliste.
+    const gradient = ctx.createRadialGradient(
+        x + size * 0.4, y + size * 0.3, size * 0.1,  // Cercle intérieur (plus clair)
+        x + size * 0.5, y + size * 0.5, size * 0.7   // Cercle extérieur (plus foncé)
+    );
+    gradient.addColorStop(0, highlightColor); // Centre lumineux
+    gradient.addColorStop(0.6, baseColor);    // Couleur de base
+    gradient.addColorStop(1, shadowColor);   // Bords plus sombres
+
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    // --- DESSIN BORDURE ---
+    ctx.lineWidth = 3; // Bordure fine
+    ctx.strokeStyle = "#2B2827"; // Un marron très foncé pour la bordure
+    ctx.lineJoin = "round";
+    ctx.stroke();
+
+    // --- AJOUT DE DÉTAILS SIMPLIFIÉS (sans Math.random) ---
+    // Ces détails sont fixes pour que le rocher soit toujours identique
+    ctx.fillStyle = shadowColor;
+    ctx.globalAlpha = 0.5; // Rendre les détails légèrement transparents
+
+    // Détail 1
+    ctx.beginPath();
+    ctx.ellipse(x + size * 0.3, y + size * 0.6, size * 0.1, size * 0.07, Math.PI / 6, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Détail 2
+    ctx.beginPath();
+    ctx.ellipse(x + size * 0.7, y + size * 0.4, size * 0.08, size * 0.06, -Math.PI / 4, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.globalAlpha = 1; // Remettre l'alpha à 1
 }
 export function drawSwordplant (ctx,x,y){
 if (swordplantImg.complete) {
@@ -57,41 +124,7 @@ export function drawPath(ctx, x, y, width, height, angle = 0) {
 
   ctx.restore(); // 🔓 on remet le contexte normal
 }
-// export function drawCurvedPath(ctx, x, y, direction = "right") {
-//   const w = 80;  // largeur du chemin
-//   const h = 120; // hauteur du chemin
 
-//   const offset = direction === "left" ? -1 : 1;
-
-//   ctx.beginPath();
-
-//   // Bord gauche
-//   ctx.moveTo(x, y);
-//   ctx.bezierCurveTo(
-//     x + 30 * offset, y + h * 0.3,
-//     x + 10 * offset, y + h * 0.7,
-//     x + 40 * offset, y + h
-//   );
-
-//   // Bord droit (retour en haut, miroir du bord gauche)
-//   ctx.lineTo(x + 40 * offset + w, y + h);
-//   ctx.bezierCurveTo(
-//     x + 10 * offset + w, y + h * 0.7,
-//     x + 30 * offset + w, y + h * 0.3,
-//     x + w, y
-//   );
-
-//   ctx.closePath();
-
-//   // Remplissage
-//   ctx.fillStyle = "#d2b48c"; // terre claire
-//   ctx.fill();
-
-//   // Bordures
-//   ctx.strokeStyle = "#b19066";
-//   ctx.lineWidth = 2;
-//   ctx.stroke();
-// }
 export function drawShapedPath(ctx, x, y, direction = "right", width = 80, length = 80, radius = 40, angle = 0) {
   const offset = direction === "left" ? -1 : 1;
 
@@ -141,30 +174,3 @@ export function drawShapedPath(ctx, x, y, direction = "right", width = 80, lengt
 
 
 
-// ➕ petite fonction pour dessiner une ellipse
-// function drawEllipse(ctx, x, y, rx, ry) {
-//   ctx.beginPath();
-//   ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
-//   ctx.fill();
-// }
-
-// ➕ utilitaire pour choisir une couleur aléatoire
-// function pickRandom(arr) {
-//   return arr[Math.floor(Math.random() * arr.length)];
-// }
-
-//fonctions pour avoir des chiffres aleatoires :
-// ➕ Renvoie un nombre entre 0 et max (non inclus)
-// export function randomX(maxWidth) {
-//   return Math.random() * maxWidth;
-// }
-
-// // ➕ Renvoie un nombre entre 0 et max (non inclus)
-// export function randomY(maxHeight) {
-//   return Math.random() * maxHeight;
-// }
-
-// // ➕ Renvoie un nombre entre 60 et 80 (inclus)
-// export function randomBetween60And80() {
-//   return 60 + Math.random() * 20;
-// }

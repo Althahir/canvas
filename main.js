@@ -1,8 +1,9 @@
 // import { ground } from './js/background.js';
-import { drawRock, drawPath, drawShapedPath, drawSwordplant } from './js/background.js';
+import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant } from './js/background.js';
 import { drawPerso, player, drawHearts } from './js/perso.js';
 import { drawHouse, house, drawPlant, plant, plant1, plant2, plant3,rock, isColliding, drawSword, sword, tree, drawTree } from './js/object.js';
 import { input } from './js/input.js';
+import{drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
 const canvas = document.getElementById("game");
 
@@ -52,7 +53,7 @@ function render() {
   drawPath(ctx, 392, 480, 80, 260, 0);          // 3. Chemin vertical
   drawPath(ctx, 749, 753, 80, 260, 90);         // 4. Chemin horizontal
   drawRock(ctx, rock.x, rock.y, rock.w); 
-  drawSwordplant(ctx,rock.x+125,rock.y-10);               // 5. Rochers
+  drawSwordplant(ctx,swordplant.x,swordplant.y);               // 5. Rochers
   drawPlant(ctx,plant.x,plant.y);
   drawPlant(ctx,plant1.x,plant1.y);
   drawPlant(ctx,plant2.x,plant2.y);
@@ -116,6 +117,10 @@ const coupable = [
   plant2,
   plant3
 ];
+
+const tresor = [
+  swordplant
+]
 // Si collision avec la maison → retour à l’ancienne position
 for (const obj of obstacles) {
   if (isColliding(player, obj)) {
@@ -134,6 +139,7 @@ for (const coupe of coupable) {
     break;
   }
 }
+
 // if (input.keys.has(" ") ){ //&& !isAttacking) {
 document.addEventListener("keyup",(e)=>{
 
@@ -198,6 +204,21 @@ if ((swordVisibility)&&(player.epee==1)) {
 
 
 drawHearts(ctx, player.life); // ❤️ affichage des vies
+for (const affiche of tresor) {
+  if (isColliding(player, affiche)) {
+    drawTirerEpee(ctx);
+    document.addEventListener("keydown",(e)=>{
+      if (e.code=="KeyF"){
+      console.log(e.code)
+        swordplant.x=-1000;
+        swordplant.y=-1000;
+        player.epee=1
+
+      }
+    })
+    break;
+  }
+}
 
   requestAnimationFrame(render); // 🔁 boucle infinie
 }
@@ -211,9 +232,9 @@ render();
 // window.addEventListener("resize", render);
 
 // Debug souris
-document.addEventListener("mousemove", (el) => {
-  console.log("x :", el.clientX, "| y:", el.clientY);
-});
+// document.addEventListener("mousemove", (el) => {
+//   console.log("x :", el.clientX, "| y:", el.clientY);
+// });
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas(); // appelé une seule fois au début
 
