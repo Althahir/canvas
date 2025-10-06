@@ -13,13 +13,14 @@ const swordImg = new Image();
 swordImg.src = './assets/sword.png'; // image à fournir (voir remarque ci-dessous)
 const treeImg = new Image();
 treeImg.src = './assets/tree.png'; // image à fournir (voir remarque ci-dessous)
-
+// export let attackAngle
 
 export const sword={
     x:30,
     y:45,
     h:player.h,
     w:player.w,
+    attackAngle:-60
 }
 export const house = {
   x: 320,   // même position que ton drawHouse
@@ -150,7 +151,7 @@ export function drawSword(ctx) {
       offsetY = -25;
       break;
   }
-
+  angle += sword.attackAngle;
   // Position réelle de l'épée (utile pour collisions)
   sword.x = player.x + offsetX;
   sword.y = player.y + offsetY;
@@ -185,9 +186,6 @@ export function drawSword(ctx) {
 
   
 
-  // (optionnel) hitbox visible pour debug
-//   ctx.strokeStyle = "red";
-//   ctx.strokeRect(sword.x, sword.y, sword.w, sword.h);
 }
 
 

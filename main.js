@@ -10,7 +10,6 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 export let swordVisibility=false;
 export let isAttacking = false;
-export let attackAngle = 0;
 // ==============================
 // Fonction pour adapter la taille du canvas à la fenêtre
 // ==============================
@@ -118,18 +117,29 @@ for (const obj of obstacles) {
     break;
   }
 }
-if (input.keys.has(" ") && !isAttacking) {
+if (input.keys.has(" ") ){ //&& !isAttacking) {
   isAttacking = true;
   swordVisibility = true;
-  attackAngle = -60; // point de départ du coup
+  sword.attackAngle = -60; // point de départ du coup
 
   setTimeout(() => {
-    swordVisibility = false;
+    sword.attackAngle = -45;
+  }, 30);
+  setTimeout(() => {
+    sword.attackAngle = -30;
+  }, 60);
+  setTimeout(() => {
+    sword.attackAngle = -15;
+  }, 90);
+  setTimeout(() => {
+    sword.attackAngle = 0;
+  }, 110);
+  setTimeout(() => {
+    swordVisibility=false;
     isAttacking = false;
-    attackAngle = 0;
-  }, 300);
+  }, 140);
+   
 }
-
 else if(input.keys.has(" ") && (isAttacking==true)){
   swordVisibility=false;
 }
