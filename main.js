@@ -1,7 +1,9 @@
 // import { ground } from './js/background.js';
 import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant } from './js/background.js';
 import { drawPerso, player, drawHearts } from './js/perso.js';
-import { drawHouse, house, drawPlant, plant, plant1, plant2, plant3, plant4, plant5, rock, isColliding, drawSword, sword, tree, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13, drawTree } from './js/object.js';
+import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5, rock, isColliding, drawSword, sword, tree, tree1, tree2 } from './js/object.js';
+import { tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13, drawTree} from './js/object.js';
+import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac} from './js/object.js';
 import { input } from './js/input.js';
 import{drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
@@ -52,6 +54,8 @@ function render() {
   drawShapedPath(ctx, 433, 1450, "left", 65, 824, 165, 180); // 2. Chemin incurvé /
   // drawPath(ctx, 392, 480, 80, 260, 0);          // 3. Chemin vertical
   // drawPath(ctx, 839, 753, 80, 260, 90);         // 4. Chemin horizontal
+
+
   drawRock(ctx, rock.x, rock.y, rock.w); 
   drawSwordplant(ctx,swordplant.x,swordplant.y);               // 5. Rochers
   drawPlant(ctx,plant.x,plant.y);
@@ -61,6 +65,7 @@ function render() {
   drawPlant(ctx,plant4.x,plant4.y);
   drawPlant(ctx,plant5.x,plant5.y);
   drawHouse(ctx, 320, 280);                     // 6. Maison
+  drawPorte(ctx, 320, 280);                     // 6. Maison
   drawTree(ctx, tree.x, tree.y);                     // 6. Maison
   drawTree(ctx, tree1.x, tree1.y);                     // 6. Maison
   drawTree(ctx, tree2.x, tree2.y);                     // 6. Maison
@@ -75,6 +80,10 @@ function render() {
   drawTree(ctx, tree11.x, tree11.y);                     // 6. Maison
   drawTree(ctx, tree12.x, tree12.y);                     // 6. Maison
   drawTree(ctx, tree13.x, tree13.y);                     // 6. Maison
+  drawHerbe(ctx, herbe.x, herbe.y); 
+  drawLac(ctx, lac.x, lac.y);                     
+  drawFontaine(ctx, fontaine.x, fontaine.y);                     // 6. Maison
+  drawStorm(ctx, storm.x, storm.y);                     // 6. Maison
 
   // drawPerso(ctx, 400, 435);                     // 7. Joueur (toujours en dernier) / x,y
   // --- Déplacement ---
@@ -139,18 +148,23 @@ const obstacles = [
   tree10, 
   tree11, 
   tree12,
-  tree13
+  tree13, 
+  storm
   
 ];
 const coupable = [
   plant,
   plant1,
   plant2,
-  plant3
+  plant3,
+  plant4,
+  plant5, 
+  herbe
 ];
 
 const tresor = [
-  swordplant
+  porte,
+  storm
 ]
 // Si collision avec la maison → retour à l’ancienne position
 for (const obj of obstacles) {
@@ -167,6 +181,12 @@ for (const coupe of coupable) {
     coupe.x = -1000;
     coupe.y = -1000;
     // console.log("coupe")
+    break;
+  }
+}
+for (const el of tresor) {
+  if (isColliding(player, el)) {
+    console.log("coupe")
     break;
   }
 }
@@ -235,21 +255,24 @@ if ((swordVisibility)&&(player.epee==1)) {
 
 
 drawHearts(ctx, player.life); // ❤️ affichage des vies
-for (const affiche of tresor) {
-  if (isColliding(player, affiche)) {
+
+
+
+
+
+  if (isColliding(player, swordplant)) {
     drawTirerEpee(ctx);
     document.addEventListener("keydown",(e)=>{
-      if (e.code=="KeyF"){
-      console.log(e.code)
+      if (e.code=="KeyN"){
         swordplant.x=-1000;
         swordplant.y=-1000;
         player.epee=1
 
       }
     })
-    break;
   }
-}
+
+
 
   requestAnimationFrame(render); // 🔁 boucle infinie
 }
@@ -263,9 +286,9 @@ render();
 // window.addEventListener("resize", render);
 
 // Debug souris
-document.addEventListener("mousemove", (el) => {
-  console.log("x :", el.clientX, "| y:", el.clientY);
-});
+// document.addEventListener("mousemove", (el) => {
+//   console.log("x :", el.clientX, "| y:", el.clientY);
+// });
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas(); // appelé une seule fois au début
 

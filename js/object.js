@@ -13,6 +13,14 @@ const swordImg = new Image();
 swordImg.src = './assets/sword.png'; // image à fournir (voir remarque ci-dessous)
 const treeImg = new Image();
 treeImg.src = './assets/tree.png'; // image à fournir (voir remarque ci-dessous)
+const stormImg = new Image();
+stormImg.src = './assets/bouclier.png'; // image à fournir (voir remarque ci-dessous)
+const herbeImg = new Image();
+herbeImg.src = './assets/herbe.png'; // image à fournir (voir remarque ci-dessous)
+const fontaineImg = new Image();
+fontaineImg.src = './assets/fontaine.png'; // image à fournir (voir remarque ci-dessous)
+const lacImg = new Image();
+lacImg.src = './assets/lac.png'; // image à fournir (voir remarque ci-dessous)
 // export let attackAngle
 
 export const sword={
@@ -23,6 +31,12 @@ export const sword={
     attackAngle:-60
 }
 export const house = {
+  x: 320,   // même position que ton drawHouse
+  y: 280,
+  w: 216,   // largeur de la maison (ajuste selon ton image)
+  h: 200
+};
+export const porte = {
   x: 320,   // même position que ton drawHouse
   y: 280,
   w: 216,   // largeur de la maison (ajuste selon ton image)
@@ -118,7 +132,6 @@ export const plant={
     w:45,
     h:43,
 }
-
 export const plant1={
     x:360,
     y:1150,
@@ -150,11 +163,37 @@ export const plant5={
     h:43,
 }
 export const rock = {
-    x:734,
+    x:4,
     y:570,
     w:135,
     h:85
   }
+export const fontaine = {
+    x:634,
+    y:650,
+    w:121,
+    h:119
+  }
+export const lac = {
+    x:620,
+    y:725,
+    w:145,
+    h:145
+  }
+export const storm={
+    x:70,
+    y:640,
+    w:98,
+    h:114,
+}
+export const herbe={
+    x:570,
+    y:490,
+    w:40,
+    h:40,
+}
+
+
 
 // fonction de collision
 export function isColliding(a, b) {
@@ -166,31 +205,28 @@ export function isColliding(a, b) {
   );
 }
 
-
 // Fonction d'affichage
 export function drawHouse(ctx, x=house.x, y=house.y) {
   // Si les 2 images sont chargées, on les dessine
-  if (maisonImg.complete && porteImg.complete) {
-    ctx.drawImage(maisonImg, x, y);
-    ctx.drawImage(porteImg, x, y); // ajuster les coords selon ta porte
+  if (maisonImg.complete) {
+    ctx.drawImage(maisonImg, x, y); // ajuster les coords selon ta porte
   } else {
     // Attendre que les images soient prêtes avant de dessiner
     maisonImg.onload = () => {
       ctx.drawImage(maisonImg, x, y);
-      if (porteImg.complete) {
-        ctx.drawImage(porteImg, x, y);
-      }
     };
-    porteImg.onload = () => {
-      if (maisonImg.complete) {
-        ctx.drawImage(maisonImg, x, y);
-        ctx.drawImage(porteImg, x, y);
-      }
 
+    };
+}
+export function drawPorte(ctx,x=house.x,y=house.y){
+    if(porteImg.complete){
+      ctx.drawImage(porteImg, x, y);
+    }else {
+    // Attendre que les images soient prêtes avant de dessiner
+    porteImg.onload = () => {
+      ctx.drawImage(porteImg, x, y);
     };
   }
-
-
 }
 export function drawPlant(ctx, x,y){
     if (plantImg.complete){
@@ -277,6 +313,48 @@ export function drawSword(ctx) {
   
 
 }
+
+export function drawStorm(ctx, x,y){
+    if (stormImg.complete){
+        ctx.drawImage(stormImg,x,y);
+    }
+    else{
+        stormImg.onload=()=>{
+            ctx.drawImage(stormImg,x,y)
+        }
+    }
+}
+export function drawHerbe(ctx, x,y){
+    if (herbeImg.complete){
+        ctx.drawImage(herbeImg,x,y);
+    }
+    else{
+        herbeImg.onload=()=>{
+            ctx.drawImage(herbeImg,x,y)
+        }
+    }
+}
+export function drawFontaine(ctx, x,y){
+    if (fontaineImg.complete){
+        ctx.drawImage(fontaineImg,x,y);
+    }
+    else{
+        fontaineImg.onload=()=>{
+            ctx.drawImage(fontaineImg,x,y)
+        }
+    }
+}
+export function drawLac(ctx, x,y){
+    if (lacImg.complete){
+        ctx.drawImage(lacImg,x,y);
+    }
+    else{
+        lacImg.onload=()=>{
+            ctx.drawImage(lacImg,x,y)
+        }
+    }
+}
+
 
 
 

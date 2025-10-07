@@ -1,5 +1,5 @@
 const tirerEpeeImg = new Image();
-tirerEpeeImg.src = './assets/f.png'; 
+tirerEpeeImg.src = './assets/n.png'; 
 
 export function drawTirerEpee (ctx){
     let x=50;

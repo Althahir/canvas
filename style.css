@@ -3,7 +3,7 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden; /* évite les barres de scroll */
+  overflow: hidden;
   background: linear-gradient(to bottom, #95d283ff 0%, #52a649ff 100%);
   z-index: -1;
 }

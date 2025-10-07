@@ -30,7 +30,8 @@ export const player = {
   frame: 0,             // numéro de l’image dans l’animation
   frameDelay: 10,       // vitesse d’animation (plus petit = plus rapide)
   frameCount: 0, 
-  epee:0,       // compteur interne
+  epee:0, 
+  bouclier:0,      // compteur interne
   sprites: {
     up: [new Image(), new Image(), new Image()],
     down: [new Image(), new Image(), new Image()],
@@ -39,23 +40,44 @@ export const player = {
   }
 };
 
+if (player.bouclier===1){
+
+
 // Charger les images
-player.sprites.up[0].src = "./assets/up1.png";
-player.sprites.up[1].src = "./assets/up2.png";
-player.sprites.up[2].src = "./assets/up3.png";
+player.sprites.up[0].src = "./assets/bouclierUpA.png";
+player.sprites.up[1].src = "./assets/bouclierUpB.png";
+player.sprites.up[2].src = "./assets/bouclierUpC.png";
 
-player.sprites.down[0].src = "./assets/perso.png";
-player.sprites.down[1].src = "./assets/down2.png";
-player.sprites.down[2].src = "./assets/down3.png";
+player.sprites.down[0].src = "./assets/bouclierDownA.png";
+player.sprites.down[1].src = "./assets/bouclierDownB.png";
+player.sprites.down[2].src = "./assets/bouclierDownC.png";
 
-player.sprites.left[0].src = "./assets/left1.png";
-player.sprites.left[1].src = "./assets/left2.png";
-player.sprites.left[2].src = "./assets/left3.png";
+player.sprites.left[0].src = "./assets/bouclierLeftA.png";
+player.sprites.left[1].src = "./assets/bouclierLeftB.png";
+player.sprites.left[2].src = "./assets/bouclierLeftC.png";
 
-player.sprites.right[0].src = "./assets/right1.png";
-player.sprites.right[1].src = "./assets/right2.png";
-player.sprites.right[2].src = "./assets/right3.png";
+player.sprites.right[0].src = "./assets/bouclierRightA.png";
+player.sprites.right[1].src = "./assets/bouclierRightB.png";
+player.sprites.right[2].src = "./assets/bouclierRightC.png";
+}
+else {
 
+player.sprites.up[0].src = "./assets/upA.png";
+player.sprites.up[1].src = "./assets/upB.png";
+player.sprites.up[2].src = "./assets/upC.png";
+
+player.sprites.down[0].src = "./assets/downA.png";
+player.sprites.down[1].src = "./assets/downB.png";
+player.sprites.down[2].src = "./assets/downC.png";
+
+player.sprites.left[0].src = "./assets/leftA.png";
+player.sprites.left[1].src = "./assets/leftB.png";
+player.sprites.left[2].src = "./assets/leftC.png";
+
+player.sprites.right[0].src = "./assets/rightA.png";
+player.sprites.right[1].src = "./assets/rightB.png";
+player.sprites.right[2].src = "./assets/rightC.png";
+}
 export function drawPerso(ctx, player) {
   const img = player.sprites[player.direction][player.frame];
   ctx.drawImage(img, player.x, player.y);
