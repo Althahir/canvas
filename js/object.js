@@ -182,9 +182,9 @@ export const lac = {
   }
 export const storm={
     x:70,
-    y:640,
-    w:98,
-    h:114,
+    y:740,
+    w:58,
+    h:74,
 }
 export const herbe={
     x:570,

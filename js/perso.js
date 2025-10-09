@@ -40,44 +40,51 @@ export const player = {
   }
 };
 
-if (player.bouclier===1){
 
+// Dans './js/perso.js' ou le fichier qui contient la définition de 'player'
 
-// Charger les images
-player.sprites.up[0].src = "./assets/bouclierUpA.png";
-player.sprites.up[1].src = "./assets/bouclierUpB.png";
-player.sprites.up[2].src = "./assets/bouclierUpC.png";
-
-player.sprites.down[0].src = "./assets/bouclierDownA.png";
-player.sprites.down[1].src = "./assets/bouclierDownB.png";
-player.sprites.down[2].src = "./assets/bouclierDownC.png";
-
-player.sprites.left[0].src = "./assets/bouclierLeftA.png";
-player.sprites.left[1].src = "./assets/bouclierLeftB.png";
-player.sprites.left[2].src = "./assets/bouclierLeftC.png";
-
-player.sprites.right[0].src = "./assets/bouclierRightA.png";
-player.sprites.right[1].src = "./assets/bouclierRightB.png";
-player.sprites.right[2].src = "./assets/bouclierRightC.png";
+// Charger les images du joueur sans bouclier par défaut (initialisation)
+export function loadPlayerSprites() {
+    if (player.bouclier === 1) {
+        // Charge les images avec bouclier
+        player.sprites.up[0].src = "./assets/bouclierUpA.png";
+        player.sprites.up[1].src = "./assets/bouclierUpB.png";
+        player.sprites.up[2].src = "./assets/bouclierUpC.png";
+        
+        // ... (etc. pour down, left, right)
+        player.sprites.down[0].src = "./assets/bouclierDownA.png";
+        player.sprites.down[1].src = "./assets/bouclierDownB.png";
+        player.sprites.down[2].src = "./assets/bouclierDownC.png";
+        
+        player.sprites.left[0].src = "./assets/bouclierLeftA.png";
+        player.sprites.left[1].src = "./assets/bouclierLeftB.png";
+        player.sprites.left[2].src = "./assets/bouclierLeftC.png";
+        
+        player.sprites.right[0].src = "./assets/bouclierRightA.png";
+        player.sprites.right[1].src = "./assets/bouclierRightB.png";
+        player.sprites.right[2].src = "./assets/bouclierRightC.png";
+        
+    } else {
+        // Charge les images sans bouclier
+        player.sprites.up[0].src = "./assets/upA.png";
+        player.sprites.up[1].src = "./assets/upB.png";
+        player.sprites.up[2].src = "./assets/upC.png";
+        
+        // ... (etc. pour down, left, right)
+        player.sprites.down[0].src = "./assets/downA.png";
+        player.sprites.down[1].src = "./assets/downB.png";
+        player.sprites.down[2].src = "./assets/downC.png";
+        
+        player.sprites.left[0].src = "./assets/leftA.png";
+        player.sprites.left[1].src = "./assets/leftB.png";
+        player.sprites.left[2].src = "./assets/leftC.png";
+        
+        player.sprites.right[0].src = "./assets/rightA.png";
+        player.sprites.right[1].src = "./assets/rightB.png";
+        player.sprites.right[2].src = "./assets/rightC.png";
+    }
 }
-else {
 
-player.sprites.up[0].src = "./assets/upA.png";
-player.sprites.up[1].src = "./assets/upB.png";
-player.sprites.up[2].src = "./assets/upC.png";
-
-player.sprites.down[0].src = "./assets/downA.png";
-player.sprites.down[1].src = "./assets/downB.png";
-player.sprites.down[2].src = "./assets/downC.png";
-
-player.sprites.left[0].src = "./assets/leftA.png";
-player.sprites.left[1].src = "./assets/leftB.png";
-player.sprites.left[2].src = "./assets/leftC.png";
-
-player.sprites.right[0].src = "./assets/rightA.png";
-player.sprites.right[1].src = "./assets/rightB.png";
-player.sprites.right[2].src = "./assets/rightC.png";
-}
 export function drawPerso(ctx, player) {
   const img = player.sprites[player.direction][player.frame];
   ctx.drawImage(img, player.x, player.y);

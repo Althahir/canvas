@@ -1,6 +1,6 @@
 // import { ground } from './js/background.js';
 import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant } from './js/background.js';
-import { drawPerso, player, drawHearts } from './js/perso.js';
+import { drawPerso, player, drawHearts,loadPlayerSprites } from './js/perso.js';
 import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5, rock, isColliding, drawSword, sword, tree, tree1, tree2 } from './js/object.js';
 import { tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13, drawTree} from './js/object.js';
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac} from './js/object.js';
@@ -85,6 +85,10 @@ function render() {
   drawFontaine(ctx, fontaine.x, fontaine.y);                     // 6. Maison
   drawStorm(ctx, storm.x, storm.y);                     // 6. Maison
 
+
+
+  // ⚠️ N'oubliez pas d'appeler cette fonction une fois au début
+loadPlayerSprites();
   // drawPerso(ctx, 400, 435);                     // 7. Joueur (toujours en dernier) / x,y
   // --- Déplacement ---
 let moving = false;
@@ -126,6 +130,7 @@ if (moving) {
 } else {
   player.frame = 0; // perso à l’arrêt → frame "idle"
 }
+
 const obstacles = [
   house,
   rock,
@@ -162,34 +167,13 @@ const coupable = [
   herbe
 ];
 
-const tresor = [
-  porte,
-  storm
-]
-// Si collision avec la maison → retour à l’ancienne position
-for (const obj of obstacles) {
-  if (isColliding(player, obj)) {
-    player.x = oldX;
-    player.y = oldY;
-    // console.log("collision avec l'objet situé :", obj)
-    break;
-  }
-}
-// Si collision de l'epee avec objet decoupable disparition de l'objet
-for (const coupe of coupable) {
-  if (isColliding(sword, coupe)) {
-    coupe.x = -1000;
-    coupe.y = -1000;
-    // console.log("coupe")
-    break;
-  }
-}
-for (const el of tresor) {
-  if (isColliding(player, el)) {
-    console.log("coupe")
-    break;
-  }
-}
+// ******************************************************
+// MODIFICATION APPLIQUÉE ICI : 
+// LA VÉRIFICATION DU TRÉSOR EST MAINTENANT AVANT L'OBSTACLE
+// ******************************************************
+
+// VÉRIFICATION DES TRÉSORS (pour que la collision soit enregistrée avant d'être repoussé)
+ 
 
 // if (input.keys.has(" ") ){ //&& !isAttacking) {
 document.addEventListener("keyup",(e)=>{
@@ -252,7 +236,47 @@ if ((swordVisibility)&&(player.epee==1)) {
 }
   
   ctx.restore(); 
+ if (isColliding(player, porte)) {
+    porte.x=-1000,
+    porte.y=-1000 // DOIT MAINTENANT S'AFFICHER
+  }
+  // else{
+  //   porte.x=320,
+  //   porte.y=280
+  // }
 
+
+  if (isColliding(player, storm)) {
+        drawTirerEpee(ctx);
+    document.addEventListener("keydown",(e)=>{
+      if (e.code=="KeyN"){
+        storm.x=-1000;
+        storm.y=-1000;
+        player.bouclier=1
+
+      }
+  })
+}
+
+// Si collision avec les obstacles → retour à l’ancienne position
+for (const obj of obstacles) {
+  if (isColliding(player, obj)) {
+    player.x = oldX;
+    player.y = oldY;
+    // console.log("collision avec l'objet situé :", obj)
+    break;
+  }
+}
+
+// Si collision de l'epee avec objet decoupable disparition de l'objet
+for (const coupe of coupable) {
+  if (isColliding(sword, coupe)) {
+    coupe.x = -1000;
+    coupe.y = -1000;
+    // console.log("coupe")
+    break;
+  }
+}
 
 drawHearts(ctx, player.life); // ❤️ affichage des vies
 
@@ -273,7 +297,8 @@ drawHearts(ctx, player.life); // ❤️ affichage des vies
   }
 
 
-
+// console.log("Coordonnées Porte :", porte.x, porte.y, porte.w, porte.h);
+// console.log("Coordonnées Storm :", storm.x, storm.y, storm.w, storm.h);
   requestAnimationFrame(render); // 🔁 boucle infinie
 }
 
