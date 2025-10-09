@@ -7,6 +7,8 @@ maisonImg.src = './assets/maison.png'; // à adapter si elle est dans un sous-do
 
 const porteImg = new Image();
 porteImg.src = './assets/porte.png'; // image à fournir (voir remarque ci-dessous)
+const piedImg = new Image();
+piedImg.src = './assets/piedestal.png'; // image à fournir (voir remarque ci-dessous)
 const plantImg = new Image();
 plantImg.src = './assets/plante.png'; // image à fournir (voir remarque ci-dessous)
 const swordImg = new Image();
@@ -29,6 +31,12 @@ export const sword={
     h:120,//h:player.h,
     w:player.w,
     attackAngle:-60
+}
+export const pied={
+  x:680,
+  y:480,
+  w:62,
+  h:54
 }
 export const house = {
   x: 320,   // même position que ton drawHouse
@@ -121,11 +129,48 @@ export const tree12 = {
   h: 173
 };
 export const tree13 = {
-  x: 190,   
+  x: 170,   
   y: 1070,
   w: 144,   
   h: 173
 };
+export const tree14 = {
+  x: 170,
+  y: 280,
+  w: 144,
+  h: 173
+};
+export const tree15 = {
+  x: 170,   
+  y: 410,
+  w: 144,   
+  h: 173
+};
+export const tree16 = {
+  x: 170,   
+  y: 540,
+  w: 144,   
+  h: 173
+};
+export const tree17 = {
+  x: 170,   
+  y: 670,
+  w: 144,   
+  h: 173
+};
+export const tree18 = {
+  x: 170,   
+  y: 800,
+  w: 144,   
+  h: 173
+};
+export const tree19 = {
+  x: 170,   
+  y: 930,
+  w: 144,   
+  h: 173
+};
+
 export const plant={
     x:320,
     y:1150,
@@ -355,6 +400,15 @@ export function drawLac(ctx, x,y){
     }
 }
 
-
+export function drawPied(ctx,x=pied.x,y=pied.y){
+    if(piedImg.complete){
+      ctx.drawImage(piedImg, x, y);
+    }else {
+    // Attendre que les images soient prêtes avant de dessiner
+    piedImg.onload = () => {
+      ctx.drawImage(piedImg, x, y);
+    };
+  }
+}
 
 

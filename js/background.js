@@ -7,17 +7,15 @@
 //   ctx.fillStyle = gradient;
 //   ctx.fillRect(0, 0, width, height);
 // }
-import{rock}from "./object.js"
+import{pied}from "./object.js"
 const swordplantImg = new Image();
-swordplantImg.src = './assets/swordplant1.png'; // à adapter si elle est dans un sous-dossier
+swordplantImg.src = './assets/swordplant.png'; // à adapter si elle est dans un sous-dossier
 export const swordplant = {
-x:rock.x-40,
-y:rock.y+30,
+x:pied.x+3,
+y:pied.y-62,
 w:62,
 h:54
 }
-
-
 export function drawRock(ctx, x, y, size = 80) {
     // Couleurs pour un rocher plus "terreux" ou "sombre"
     const baseColor = "#544C4A";    // Gris-brun foncé pour la base

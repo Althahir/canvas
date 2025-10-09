@@ -2,8 +2,8 @@
 import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant } from './js/background.js';
 import { drawPerso, player, drawHearts,loadPlayerSprites } from './js/perso.js';
 import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5, rock, isColliding, drawSword, sword, tree, tree1, tree2 } from './js/object.js';
-import { tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13, drawTree} from './js/object.js';
-import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac} from './js/object.js';
+import { tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13,tree14,tree15,tree16,tree17,tree18,tree19, drawTree} from './js/object.js';
+import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied} from './js/object.js';
 import { input } from './js/input.js';
 import{drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
@@ -42,6 +42,7 @@ function resizeCanvas() {
 // Fonction principale de rendu
 // ==============================
 function render() {
+  
   const { width, height } = resizeCanvas();
   // === Déplacement caméra ===
   const camX = width / 2 - player.x;
@@ -56,7 +57,8 @@ function render() {
   // drawPath(ctx, 839, 753, 80, 260, 90);         // 4. Chemin horizontal
 
 
-  drawRock(ctx, rock.x, rock.y, rock.w); 
+  // drawRock(ctx, rock.x, rock.y, rock.w); 
+  drawPied(ctx,pied.x,pied.y);
   drawSwordplant(ctx,swordplant.x,swordplant.y);               // 5. Rochers
   drawPlant(ctx,plant.x,plant.y);
   drawPlant(ctx,plant1.x,plant1.y);
@@ -64,8 +66,8 @@ function render() {
   drawPlant(ctx,plant3.x,plant3.y);
   drawPlant(ctx,plant4.x,plant4.y);
   drawPlant(ctx,plant5.x,plant5.y);
-  drawHouse(ctx, 320, 280);                     // 6. Maison
-  drawPorte(ctx, 320, 280);                     // 6. Maison
+  drawHouse(ctx, house.x, house.y);                     // 6. Maison
+  drawPorte(ctx, porte.x, porte.y);                     // 6. Maison
   drawTree(ctx, tree.x, tree.y);                     // 6. Maison
   drawTree(ctx, tree1.x, tree1.y);                     // 6. Maison
   drawTree(ctx, tree2.x, tree2.y);                     // 6. Maison
@@ -79,7 +81,13 @@ function render() {
   drawTree(ctx, tree10.x, tree10.y);                     // 10. Maison
   drawTree(ctx, tree11.x, tree11.y);                     // 6. Maison
   drawTree(ctx, tree12.x, tree12.y);                     // 6. Maison
-  drawTree(ctx, tree13.x, tree13.y);                     // 6. Maison
+  drawTree(ctx, tree14.x, tree14.y);                     // 6. Maison
+  drawTree(ctx, tree15.x, tree15.y);                     // 6. Maison
+  drawTree(ctx, tree16.x, tree16.y);                     // 6. Maison
+  drawTree(ctx, tree17.x, tree17.y);                     // 6. Maison
+  drawTree(ctx, tree18.x, tree18.y);                     // 6. Maison
+  drawTree(ctx, tree19.x, tree19.y);     
+  drawTree(ctx, tree13.x, tree13.y);                 // 6. Maison
   drawHerbe(ctx, herbe.x, herbe.y); 
   drawLac(ctx, lac.x, lac.y);                     
   drawFontaine(ctx, fontaine.x, fontaine.y);                     // 6. Maison
@@ -154,6 +162,12 @@ const obstacles = [
   tree11, 
   tree12,
   tree13, 
+  tree14, 
+  tree15, 
+  tree16, 
+  tree17, 
+  tree18, 
+  tree19, 
   storm
   
 ];
