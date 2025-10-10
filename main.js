@@ -1,6 +1,6 @@
 // import { ground } from './js/background.js';
 import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant, drawCurvedPath,drawSol  } from './js/background.js';
-import { drawPerso, player, drawHearts,loadPlayerSprites, drawMoney, rubisImage,drawSalam , salam } from './js/perso.js';
+import { drawPerso, player, drawHearts,loadPlayerSprites, drawMoney, rubisImage,drawSalam , salam, drawTriforce, } from './js/perso.js';
 import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5,plant6,plant7,plant8,plant9,plant10, rock, isColliding, drawSword, sword } from './js/object.js';
 import { plant11,plant12,plant13,plant14,plant15,plant16,plant17,plant18,plant19} from './js/object.js'
 import{plant20,plant21,plant22,plant23,plant24,plant25,plant26,plant27,plant28, plant29 } from './js/object.js';
@@ -172,7 +172,8 @@ drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);
   drawHerbe(ctx, herbe29.x, herbe29.y); 
   drawHerbe(ctx, herbe30.x, herbe30.y); 
 
-  drawLac(ctx, lac.x, lac.y);   
+  drawLac(ctx, lac.x, lac.y);
+   
   // drawSalam(ctx, salam)                  
   // drawDownEau(ctx, lac.x, lac.y);                     
   // drawLeftEau(ctx, lac.x, lac.y);                     
@@ -197,7 +198,10 @@ drawGoron(ctx, goron.x, goron.y);
 if (player.zora==1){
 drawZora(ctx, zora.x, zora.y); 
 }
-      
+if (player.triforce==1){
+  drawTriforce(ctx)
+}
+
 // ===================================                
   drawFontaine(ctx, fontaine.x, fontaine.y);                     // 6. Maison
   drawStorm(ctx, storm.x, storm.y);                     // 6. Maison
@@ -490,6 +494,21 @@ if ((swordVisibility)&&(player.epee==1)) {
       }
   })
 }
+ if((player.kokiri==1)&&(player.goron==1)&&(player.zora==1))     {
+  if ((player.x>=912)&&(player.x<=1030)&&(player.y>=512)&&(player.y<=630)){
+    // console.log("hello")
+    drawTirerEpee(ctx)
+      document.addEventListener("keydown",(e)=>{
+      if (e.code=="KeyN"){
+        player.triforce=1,
+        player.kokiri=0,
+        player.goron=0,
+        player.zora=0
+
+      }
+    })
+  }
+ }
 
 
 // Si collision avec les obstacles → retour à l’ancienne position
@@ -548,7 +567,7 @@ drawMoney(ctx, rubisImage, player.money, 50, 130);// ctx.drawImage(rubis,50,150,
   }
 
 
-// console.log("Coordonnées Porte :", porte.x, porte.y, porte.w, porte.h);
+// console.log("Coordonnées Porte :", player.x, player.y);
 // console.log("Coordonnées Storm :", storm.x, storm.y, storm.w, storm.h);
   requestAnimationFrame(render); // 🔁 boucle infinie
 }

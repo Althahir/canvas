@@ -1,3 +1,6 @@
+// import { solImg } from "./background";
+// import { kokiri } from "./object";
+
 const heartFull = new Image();
 heartFull.src = './assets/vie1.PNG';
 
@@ -10,6 +13,8 @@ export const salamBackImg = new Image();
 salamBackImg.src = './assets/salam_back.png';
 export const salamFontImg = new Image();
 salamFontImg.src = './assets/salam_font.png';
+export const triforceImg = new Image();
+triforceImg.src = './assets/logo.png';
 
 
 export const downeauImg = new Image();
@@ -38,7 +43,8 @@ export const player = {
   bouclier:0, 
   kokiri:1,
   goron:1,
-  zora:1,    // compteur interne
+  zora:1,
+  triforce:0,    // compteur interne
   sprites: {
     up: [new Image(), new Image(), new Image()],
     down: [new Image(), new Image(), new Image()],
@@ -218,4 +224,7 @@ export function drawMoney(ctx, rubisImage, money, x, y) {
   const textY = y + size - 15;
   
   ctx.fillText(money, textX, textY);
+}
+export function drawTriforce(ctx,triforce){
+        ctx.drawImage(triforceImg,965,580);
 }
