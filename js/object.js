@@ -237,61 +237,181 @@ export const plant9={
 }
 export const plant10={
     x:590,
-    y:1490,
+    y:1495,
     w:45,
     h:43,
 }
 export const plant11={
     x:630,
-    y:1490,
+    y:1495,
     w:45,
     h:43,
 }
 export const plant12={
     x:670,
-    y:1490,
+    y:1495,
     w:45,
     h:43,
 }
 export const plant13={
     x:710,
-    y:1490,
+    y:1495,
     w:45,
     h:43,
 }
 export const plant14={
     x:750,
-    y:1490,
+    y:1495,
     w:45,
     h:43,
 }
 export const plant15={
     x:790,
-    y:1490,
+    y:1495,
     w:45,
     h:43,
 }
 export const plant16={
     x:830,
-    y:1490,
+    y:1495,
     w:45,
     h:43,
 }
 export const plant17={
     x:870,
-    y:1490,
+    y:1495,
     w:45,
     h:43,
 }
 export const plant18={
     x:910,
-    y:1490,
+    y:1495,
     w:45,
     h:43,
 }
 export const plant19={
     x:950,
-    y:1490,
+    y:1495,
+    w:45,
+    h:43,
+}
+export const plant20={
+    x:590,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant21={
+    x:630,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant22={
+    x:670,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant23={
+    x:710,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant24={
+    x:750,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant25={
+    x:790,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant26={
+    x:830,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant27={
+    x:870,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant28={
+    x:910,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant29={
+    x:950,
+    y:1535,
+    w:45,
+    h:43,
+}
+export const plant30={
+    x:590,
+    y:1575,
+    w:45,
+    h:43,
+}
+export const plant31={
+    x:630,
+    y:1575,
+    w:45,
+    h:43,
+}
+export const plant32={
+    x:670,
+    y:1575,
+    w:45,
+    h:43,
+}
+export const plant33={
+    x:710,
+    y:1575,
+    w:45,
+    h:43,
+}
+export const plant34={
+    x:750,
+    y:1575,
+    w:45,
+    h:43,
+}
+export const plant35={
+    x:790,
+    y:1575,
+    w:45,
+    h:43,
+}
+export const plant36={
+    x:830,
+    y:1575,
+    w:45,
+    h:43,
+}
+export const plant37={
+    x:870,
+    y:1575,
+    w:45,
+    h:43,
+}
+export const plant38={
+    x:910,
+    y:1575,
+    w:45,
+    h:43,
+}
+export const plant39={
+    x:950,
+    y:1575,
     w:45,
     h:43,
 }
@@ -307,12 +427,12 @@ export const rock = {
 export const fontaine = {
     x:634,
     y:650,
-    w:121,
-    h:119
+    w:111,
+    h:109
   }
 export const lac = {
     x:620,
-    y:725,
+    y:755,
     w:145,
     h:145
   }

@@ -10,6 +10,10 @@
 import{pied}from "./object.js"
 const swordplantImg = new Image();
 swordplantImg.src = './assets/swordplant.png'; // à adapter si elle est dans un sous-dossier
+export const solImg = new Image();
+solImg.src = './assets/sol.png'; // à adapter si elle est dans un sous-dossier
+
+
 export const swordplant = {
 x:pied.x+3,
 y:pied.y-62,
@@ -101,6 +105,16 @@ if (swordplantImg.complete) {
     // Attendre que les images soient prêtes avant de dessiner
     swordplantImg.onload = () => {
       ctx.drawImage(swordplantImg, x, y);
+    };
+  }
+}
+export function drawSol (ctx,x,y){
+if (solImg.complete) {
+    ctx.drawImage(solImg, x, y);
+  } else {
+    // Attendre que les images soient prêtes avant de dessiner
+    solImg.onload = () => {
+      ctx.drawImage(solImg, x, y);
     };
   }
 }

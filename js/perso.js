@@ -1,9 +1,12 @@
-
 const heartFull = new Image();
 heartFull.src = './assets/vie1.PNG';
 
 const heartEmpty = new Image();
 heartEmpty.src = './assets/vie0.PNG';
+
+export const rubisImage = new Image();
+rubisImage.src = './assets/rubis.png';
+
 
 export const downeauImg = new Image();
 downeauImg.src = './assets/down_eau.png';
@@ -14,34 +17,24 @@ lefteauImg.src = './assets/left_eau.png';
 export const righteauImg = new Image();
 righteauImg.src = './assets/right_eau.png';
 
-export function drawHearts(ctx, life) {
-  const total = 3; // nombre total de cœurs
-  const size = 55; // taille (pixels)
-  const spacing = 10; // espacement entre cœurs
-
-  const startX = 50;
-  const startY = 50;
-
-  for (let i = 0; i < total; i++) {
-    const img = i < life ? heartFull : heartEmpty;
-    ctx.drawImage(img, startX + i * (size + spacing), startY, size, size);
-  }
-}
-
 export const player = {
   x: 400,
   y: 480,
   w :59,
   h:59,
-  life:4,
+  life:3,
   eau:0,
+  money:130,
   speed: 4,
   direction: "down",    // "up", "down", "left", "right"
   frame: 0,             // numéro de l’image dans l’animation
   frameDelay: 10,       // vitesse d’animation (plus petit = plus rapide)
   frameCount: 0, 
   epee:0, 
-  bouclier:0,      // compteur interne
+  bouclier:0, 
+  kokiri:1,
+  goron:1,
+  zora:1,    // compteur interne
   sprites: {
     up: [new Image(), new Image(), new Image()],
     down: [new Image(), new Image(), new Image()],
@@ -176,3 +169,32 @@ export function drawPerso(ctx, player) {
   ctx.drawImage(img, player.x, player.y);
 }
 
+export function drawHearts(ctx, life) {
+  const total = 3; // nombre total de cœurs
+  const size = 55; // taille (pixels)
+  const spacing = 10; // espacement entre cœurs
+
+  const startX = 50;
+  const startY = 50;
+
+  for (let i = 0; i < total; i++) {
+    const img = i < life ? heartFull : heartEmpty;
+    ctx.drawImage(img, startX + i * (size + spacing), startY, size, size);
+  }
+}
+// On passe l'objet Image déjà chargé
+export function drawMoney(ctx, rubisImage, money, x, y) {
+  const size = 55;
+
+  // Dessiner l'image
+  ctx.drawImage(rubisImage, x, y, size, size);
+
+  // Dessiner le texte
+  ctx.font = '55px "Pixelify Sans"';
+  ctx.fillStyle = 'white';
+  
+  const textX = x + size + 10;
+  const textY = y + size - 15;
+  
+  ctx.fillText(money, textX, textY);
+}

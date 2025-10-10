@@ -1,8 +1,10 @@
 // import { ground } from './js/background.js';
-import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant, drawCurvedPath } from './js/background.js';
-import { drawPerso, player, drawHearts,loadPlayerSprites, drawDownEau,drawLeftEau,drawRightEau,drawUpEau  } from './js/perso.js';
+import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant, drawCurvedPath,drawSol  } from './js/background.js';
+import { drawPerso, player, drawHearts,loadPlayerSprites, drawMoney, rubisImage  } from './js/perso.js';
 import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5,plant6,plant7,plant8,plant9,plant10, rock, isColliding, drawSword, sword, tree, tree1, tree2 } from './js/object.js';
-import { plant11,plant12,plant13,plant14,plant15,plant16,plant17,plant18,plant19 } from './js/object.js';
+import { plant11,plant12,plant13,plant14,plant15,plant16,plant17,plant18,plant19} from './js/object.js'
+import{plant20,plant21,plant22,plant23,plant24,plant25,plant26,plant27,plant28, plant29 } from './js/object.js';
+import{plant30,plant31,plant32,plant33,plant34,plant35,plant36,plant37,plant38, plant39 } from './js/object.js';
 import { tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13,tree14,tree15,tree16,tree17,tree18,tree19, drawTree} from './js/object.js';
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
 import {runRevolution} from './js/object.js';
@@ -66,6 +68,7 @@ drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);
   // drawRock(ctx, rock.x, rock.y, rock.w); 
   drawPied(ctx,pied.x,pied.y);
   drawSwordplant(ctx,swordplant.x,swordplant.y);               // 5. Rochers
+  drawSol(ctx,630,935);               // 5. Rochers
   drawPlant(ctx,plant.x,plant.y);
   drawPlant(ctx,plant1.x,plant1.y);
   drawPlant(ctx,plant2.x,plant2.y);
@@ -86,6 +89,26 @@ drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);
   drawPlant(ctx,plant17.x,plant17.y);
   drawPlant(ctx,plant18.x,plant18.y);
   drawPlant(ctx,plant19.x,plant19.y);
+  drawPlant(ctx,plant20.x,plant20.y);
+  drawPlant(ctx,plant21.x,plant21.y);
+  drawPlant(ctx,plant22.x,plant22.y);
+  drawPlant(ctx,plant23.x,plant23.y);
+  drawPlant(ctx,plant24.x,plant24.y);
+  drawPlant(ctx,plant25.x,plant25.y);
+  drawPlant(ctx,plant26.x,plant26.y);
+  drawPlant(ctx,plant27.x,plant27.y);
+  drawPlant(ctx,plant28.x,plant28.y);
+  drawPlant(ctx,plant29.x,plant29.y);
+  drawPlant(ctx,plant30.x,plant30.y);
+  drawPlant(ctx,plant31.x,plant31.y);
+  drawPlant(ctx,plant32.x,plant32.y);
+  drawPlant(ctx,plant33.x,plant33.y);
+  drawPlant(ctx,plant34.x,plant34.y);
+  drawPlant(ctx,plant35.x,plant35.y);
+  drawPlant(ctx,plant36.x,plant36.y);
+  drawPlant(ctx,plant37.x,plant37.y);
+  drawPlant(ctx,plant38.x,plant38.y);
+  drawPlant(ctx,plant39.x,plant39.y);
   drawHouse(ctx, house.x, house.y);                     // 6. Maison
   drawPorte(ctx, porte.x, porte.y);                     // 6. Maison
   drawTree(ctx, tree.x, tree.y);                     // 6. Maison
@@ -123,9 +146,17 @@ runRevolution();
 
 // 2. Dessin des bijoux aux nouvelles positions
 // (Les fonctions drawXxx gèrent le redimensionnement et le centrage)
-drawGoron(ctx, goron.x, goron.y);           
-drawZora(ctx, zora.x, zora.y);           
-drawKokiri(ctx, kokiri.x, kokiri.y);           
+           
+if (player.kokiri==1)   {
+drawKokiri(ctx, kokiri.x, kokiri.y); 
+}
+if (player.goron==1){
+drawGoron(ctx, goron.x, goron.y);  
+}
+if (player.zora==1){
+drawZora(ctx, zora.x, zora.y); 
+}
+      
 // ===================================                
   drawFontaine(ctx, fontaine.x, fontaine.y);                     // 6. Maison
   drawStorm(ctx, storm.x, storm.y);                     // 6. Maison
@@ -195,6 +226,26 @@ const obstacles = [
   plant17, 
   plant18, 
   plant19, 
+  plant20, 
+  plant21, 
+  plant22, 
+  plant23, 
+  plant24, 
+  plant25, 
+  plant26, 
+  plant27, 
+  plant28, 
+  plant29, 
+  plant30, 
+  plant31, 
+  plant32, 
+  plant33, 
+  plant34, 
+  plant35, 
+  plant36, 
+  plant37, 
+  plant38, 
+  plant39, 
   tree,
   tree1,
   tree2,
@@ -215,6 +266,7 @@ const obstacles = [
   tree17, 
   tree18, 
   tree19, 
+  fontaine,
   storm
   
 ];
@@ -239,6 +291,27 @@ const coupable = [
   plant17, 
   plant18, 
   plant19, 
+  plant20, 
+  plant21, 
+  plant22, 
+  plant23, 
+  plant24, 
+  plant25, 
+  plant26, 
+  plant27, 
+  plant28, 
+  plant29, 
+  plant30, 
+  plant31, 
+  plant32, 
+  plant33, 
+  plant34, 
+  plant35, 
+  plant36, 
+  plant37, 
+  plant38, 
+  plant39, 
+  // plant40, 
   herbe
 ];
 
@@ -384,8 +457,8 @@ let distanceYlac=lac.y-player.y
   
 drawHearts(ctx, player.life); // ❤️ affichage des vies
 
-
-
+// Assurez-vous que 'rubisImage' est l'objet Image que vous avez pré-chargé
+drawMoney(ctx, rubisImage, player.money, 50, 130);// ctx.drawImage(rubis,50,150,size,size,x,y,size,size)
 
 
   if (isColliding(player, swordplant)) {
