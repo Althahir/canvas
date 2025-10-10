@@ -48,8 +48,20 @@ export const house = {
   w: 216,   // largeur de la maison (ajuste selon ton image)
   h: 200
 };
+export const house1 = {
+  x: 1390,   // même position que ton drawHouse
+  y: 280,
+  w: 216,   // largeur de la maison (ajuste selon ton image)
+  h: 200
+};
 export const porte = {
   x: 320,   // même position que ton drawHouse
+  y: 280,
+  w: 216,   // largeur de la maison (ajuste selon ton image)
+  h: 200
+};
+export const porte1 = {
+  x: 1390,   // même position que ton drawHouse
   y: 280,
   w: 216,   // largeur de la maison (ajuste selon ton image)
   h: 200
@@ -92,6 +104,7 @@ export const tree5 = {
   w: 144,   
   h: 173
 };
+
 export const tree6 = {
   x: 1250,  //+140 
   y: 450,   //+170
@@ -443,13 +456,13 @@ export const rock = {
   }
 export const fontaine = {
     x:634,
-    y:650,
+    y:670,
     w:111,
     h:109
   }
 export const lac = {
     x:585,
-    y:755,
+    y:775,
     w:232,
     h:186
   }

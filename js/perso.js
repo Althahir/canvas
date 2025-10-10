@@ -6,6 +6,10 @@ heartEmpty.src = './assets/vie0.PNG';
 
 export const rubisImage = new Image();
 rubisImage.src = './assets/rubis.png';
+export const salamBackImg = new Image();
+salamBackImg.src = './assets/salam_back.png';
+export const salamFontImg = new Image();
+salamFontImg.src = './assets/salam_font.png';
 
 
 export const downeauImg = new Image();
@@ -21,7 +25,7 @@ export const player = {
   x: 400,
   y: 480,
   w :59,
-  h:59,
+  h:49,
   life:3,
   eau:0,
   money:130,
@@ -42,6 +46,15 @@ export const player = {
     right: [new Image(), new Image(), new Image()],
   }
 };
+
+export const salam={
+x:920,
+y:780,
+w:40,
+h:40,
+direction:"down"
+
+}
 
 export function drawDownEau(ctx, x,y){
    ctx.save(); // 🔒 on garde le contexte
@@ -167,6 +180,14 @@ export function loadPlayerSprites() {
 export function drawPerso(ctx, player) {
   const img = player.sprites[player.direction][player.frame];
   ctx.drawImage(img, player.x, player.y);
+}
+export function drawSalam(ctx,salam){
+    if(salam.direction=="up"){
+        ctx.drawImage(salamBackImg,salam.x,salam.y);
+    }
+    else{
+         ctx.drawImage(salamFontImg,salam.x,salam.y);
+    }
 }
 
 export function drawHearts(ctx, life) {

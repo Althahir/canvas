@@ -1,15 +1,15 @@
 // import { ground } from './js/background.js';
 import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant, drawCurvedPath,drawSol  } from './js/background.js';
-import { drawPerso, player, drawHearts,loadPlayerSprites, drawMoney, rubisImage  } from './js/perso.js';
+import { drawPerso, player, drawHearts,loadPlayerSprites, drawMoney, rubisImage,drawSalam , salam } from './js/perso.js';
 import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5,plant6,plant7,plant8,plant9,plant10, rock, isColliding, drawSword, sword } from './js/object.js';
 import { plant11,plant12,plant13,plant14,plant15,plant16,plant17,plant18,plant19} from './js/object.js'
 import{plant20,plant21,plant22,plant23,plant24,plant25,plant26,plant27,plant28, plant29 } from './js/object.js';
-import{plant30,plant31,plant32,plant33,plant34,plant35,plant36,plant37,plant38, plant39 } from './js/object.js';
+import{plant30,plant31,plant32,plant33,plant34,plant35,plant36,plant37,plant38, plant39, house1, porte1 } from './js/object.js';
 import {tree, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13, tree14,tree15,tree16,tree17, tree18, tree19,tree20,tree21,drawTree} from './js/object.js';
 import{herbe1,herbe2,herbe3,herbe4,herbe5, herbe6,herbe7,herbe8,herbe9,herbe10,herbe11,herbe12,herbe13,herbe14,herbe15,herbe16,herbe17,herbe18}from './js/object.js'
 import{herbe19,herbe20,herbe21,herbe22,herbe23,herbe24,herbe25,herbe26,herbe27,herbe28,herbe29,herbe30}from './js/object.js'
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
-import {runRevolution} from './js/object.js';
+import {runRevolution,} from './js/object.js';
 import { input } from './js/input.js';
 import{drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
@@ -114,7 +114,9 @@ drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);
   drawPlant(ctx,plant39.x,plant39.y);
 
   drawHouse(ctx, house.x, house.y);                     // 6. Maison
+  drawHouse(ctx, house1.x, house1.y);                     // 6. Maison
   drawPorte(ctx, porte.x, porte.y);    
+  drawPorte(ctx, porte1.x, porte1.y);    
                    // 6. Maison
   drawTree(ctx, tree.x, tree.y);                     // 6. Maison
   drawTree(ctx, tree1.x, tree1.y);                     // 6. Maison
@@ -170,7 +172,8 @@ drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);
   drawHerbe(ctx, herbe29.x, herbe29.y); 
   drawHerbe(ctx, herbe30.x, herbe30.y); 
 
-  drawLac(ctx, lac.x, lac.y);                     
+  drawLac(ctx, lac.x, lac.y);   
+  // drawSalam(ctx, salam)                  
   // drawDownEau(ctx, lac.x, lac.y);                     
   // drawLeftEau(ctx, lac.x, lac.y);                     
   // drawUpEau(ctx, lac.x, lac.y);                     
@@ -243,6 +246,7 @@ if (moving) {
 
 const obstacles = [
   house,
+  house1,
   // rock,
   plant,
   plant1,
@@ -352,37 +356,37 @@ const coupable = [
   plant38, 
   plant39, 
   // plant40, 
-  herbe,
-  herbe1,
-  herbe2,
-  herbe3,
-  herbe4,
-  herbe5,
-  herbe6,
-  herbe7,
-  herbe8,
-  herbe9,
-  herbe10,
-  herbe11,
-  herbe12,
-  herbe13,
-  herbe14,
-  herbe15,
-  herbe16,
-  herbe17,
-  herbe18,
-  herbe19,
-  herbe20,
-  herbe21,
-  herbe22,
-  herbe23,
-  herbe24,
-  herbe25,
-  herbe26,
-  herbe27,
-  herbe28,
-  herbe29,
-  herbe30
+  // herbe,
+  // herbe1,
+  // herbe2,
+  // herbe3,
+  // herbe4,
+  // herbe5,
+  // herbe6,
+  // herbe7,
+  // herbe8,
+  // herbe9,
+  // herbe10,
+  // herbe11,
+  // herbe12,
+  // herbe13,
+  // herbe14,
+  // herbe15,
+  // herbe16,
+  // herbe17,
+  // herbe18,
+  // herbe19,
+  // herbe20,
+  // herbe21,
+  // herbe22,
+  // herbe23,
+  // herbe24,
+  // herbe25,
+  // herbe26,
+  // herbe27,
+  // herbe28,
+  // herbe29,
+  // herbe30
 ];
 
 const bijou=[
