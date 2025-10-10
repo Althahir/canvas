@@ -21,7 +21,7 @@ herbeImg.src = './assets/herbe1.png'; // image à fournir (voir remarque ci-dess
 const fontaineImg = new Image();
 fontaineImg.src = './assets/fontaine.png'; // image à fournir (voir remarque ci-dessous)
 const lacImg = new Image();
-lacImg.src = './assets/lac.png'; 
+lacImg.src = './assets/lac1.png'; 
 const goronImg = new Image();
 goronImg.src = './assets/bijouGoron1.png'; // image à fournir (voir remarque ci-dessous)
 const kokiriImg = new Image();
@@ -37,7 +37,7 @@ export const sword={
     attackAngle:-60
 }
 export const pied={
-  x:680,
+  x:1180,
   y:480,
   w:62,
   h:54
@@ -54,6 +54,8 @@ export const porte = {
   w: 216,   // largeur de la maison (ajuste selon ton image)
   h: 200
 };
+
+
 export const tree = {
   x: 550,   
   y: 280,
@@ -61,119 +63,134 @@ export const tree = {
   h: 173
 };
 export const tree1 = {
-  x: 680,   
+  x: 690,   
   y: 280,
   w: 144,   
   h: 173
 };
 export const tree2 = {
-  x: 810,   
+  x: 830,  //+140 
   y: 280,
   w: 144,   
   h: 173
 };
 export const tree3 = {
-  x: 940,   
+  x: 970,  //+140 
   y: 280,
   w: 144,   
   h: 173
 };
 export const tree4 = {
-  x: 940,   
-  y: 410,
+  x: 1110,  //+140 
+  y: 280,
   w: 144,   
   h: 173
 };
 export const tree5 = {
-  x: 940,   
-  y: 540,
+  x: 1250,  //+140 
+  y: 280,
   w: 144,   
   h: 173
 };
 export const tree6 = {
-  x: 940,   
-  y: 670,
+  x: 1250,  //+140 
+  y: 450,   //+170
   w: 144,   
   h: 173
 };
 export const tree7 = {
-  x: 940,   
-  y: 800,
+  x: 1250,  //+140 
+  y: 620,   //+170
   w: 144,   
   h: 173
 };
 export const tree8 = {
-  x: 940,   
-  y: 930,
+  x: 1250,  //+140 
+  y: 790,   //+170
   w: 144,   
   h: 173
 };
 export const tree9 = {
-  x: 940,   
-  y: 1070,
+  x: 1250,  //+140 
+  y: 960,   //+170
   w: 144,   
   h: 173
 };
 export const tree10 = {
-  x: 810,   
-  y: 1070,
+  x: 1250,  //+140 
+  y: 1130,   //+170
   w: 144,   
   h: 173
 };
 export const tree11 = {
-  x: 680,   
-  y: 1070,
+  x: 1110,  //+140 
+  y: 1130,   //+170
   w: 144,   
   h: 173
 };
 export const tree12 = {
-  x: 550,   
-  y: 1070,
+  x: 970,  //+140 
+  y: 1130,   //+170
   w: 144,   
   h: 173
 };
 export const tree13 = {
-  x: 170,   
-  y: 1070,
+  x: 830,  //+140 
+  y: 1130,   //+170
   w: 144,   
   h: 173
 };
 export const tree14 = {
-  x: 170,
-  y: 280,
-  w: 144,
+  x: 690,  //+140 
+  y: 1130,   //+170
+  w: 144,   
   h: 173
 };
 export const tree15 = {
-  x: 170,   
-  y: 410,
+  x: 550,  //+140 
+  y: 1130,   //+170
   w: 144,   
   h: 173
 };
 export const tree16 = {
-  x: 170,   
-  y: 540,
+  x: 180,  //+140 
+  y: 1130,   //+170
   w: 144,   
   h: 173
 };
 export const tree17 = {
-  x: 170,   
-  y: 670,
+  x: 180,  //+140 
+  y: 960,   //+170
   w: 144,   
   h: 173
 };
 export const tree18 = {
-  x: 170,   
-  y: 800,
+  x: 180,  //+140 
+  y: 790,   //+170
   w: 144,   
   h: 173
 };
 export const tree19 = {
-  x: 170,   
-  y: 930,
+  x: 180,  //+140 
+  y: 620,   //+170
   w: 144,   
   h: 173
 };
+export const tree20 = {
+  x: 180,  //+140 
+  y: 450,   //+170
+  w: 144,   
+  h: 173
+};
+export const tree21 = {
+  x: 180,  //+140 
+  y: 280,   //+170
+  w: 144,   
+  h: 173
+};
+
+
+
 
 export const plant={
     x:590,
@@ -431,10 +448,10 @@ export const fontaine = {
     h:109
   }
 export const lac = {
-    x:620,
+    x:585,
     y:755,
-    w:145,
-    h:145
+    w:232,
+    h:186
   }
 export const storm={
     x:70,
@@ -442,56 +459,237 @@ export const storm={
     w:58,
     h:74,
 }
+
+
+
+
 export const herbe={
-    x:570,
-    y:490,
+    x:850,
+    y:755,
+    w:40,
+    h:40,
+}
+export const herbe1={
+    x:900,  //+50
+    y:755,
+    w:40,
+    h:40,
+}
+export const herbe2={
+    x:950,  //+50
+    y:755,
+    w:40,
+    h:40,
+}
+export const herbe3={
+    x:1000,  //+50
+    y:755,
+    w:40,
+    h:40,
+}
+export const herbe4={
+    x:1050,  //+50
+    y:755,
+    w:40,
+    h:40,
+}
+export const herbe5={
+    x:1100,  //+50
+    y:755,
+    w:40,
+    h:40,
+}
+export const herbe6={
+    x:1150,  //+50
+    y:755,
+    w:40,
+    h:40,
+}
+export const herbe7={
+    x:850,
+    y:795,
+    w:40,
+    h:40,
+}
+export const herbe8={
+    x:900,  //+50
+    y:795,
+    w:40,
+    h:40,
+}
+export const herbe9={
+    x:950,  //+50
+    y:795,
+    w:40,
+    h:40,
+}
+export const herbe10={
+    x:1000,  //+50
+    y:795,
+    w:40,
+    h:40,
+}
+export const herbe11={
+    x:1050,  //+50
+    y:795,
+    w:40,
+    h:40,
+}
+export const herbe12={
+    x:1100,  //+50
+    y:795,
+    w:40,
+    h:40,
+}
+export const herbe13={
+    x:850,  //+50
+    y:835,  //+40
+    w:40,
+    h:40,
+}
+export const herbe14={
+    x:900,  //+50
+    y:835,  //+40
+    w:40,
+    h:40,
+}
+export const herbe15={
+    x:950,  //+50
+    y:835,  //+40
+    w:40,
+    h:40,
+}
+export const herbe16={
+    x:1000,  //+50
+    y:835,  //+40
+    w:40,
+    h:40,
+}
+export const herbe17={
+    x:1050,  //+50
+    y:835,  //+40
+    w:40,
+    h:40,
+}
+export const herbe18={
+    x:1100,  //+50
+    y:835,  //+40
+    w:40,
+    h:40,
+}
+export const herbe19={
+    x:850,  //+50
+    y:875,  //+40
+    w:40,
+    h:40,
+}
+export const herbe20={
+    x:900,  //+50
+    y:875,  //+40
+    w:40,
+    h:40,
+}
+export const herbe21={
+    x:950,  //+50
+    y:875,  //+40
+    w:40,
+    h:40,
+}
+export const herbe22={
+    x:1000,  //+50
+    y:875,  //+40
+    w:40,
+    h:40,
+}
+export const herbe23={
+    x:1050,  //+50
+    y:875,  //+40
+    w:40,
+    h:40,
+}
+export const herbe24={
+    x:1100,  //+50
+    y:875,  //+40
+    w:40,
+    h:40,
+}
+export const herbe25={
+    x:850,  //+50
+    y:915,  //+40
+    w:40,
+    h:40,
+}
+export const herbe26={
+    x:900,  //+50
+    y:915,  //+40
+    w:40,
+    h:40,
+}
+export const herbe27={
+    x:950,  //+50
+    y:915,  //+40
+    w:40,
+    h:40,
+}
+export const herbe28={
+    x:1000,  //+50
+    y:915,  //+40
+    w:40,
+    h:40,
+}
+export const herbe29={
+    x:1050,  //+50
+    y:915,  //+40
+    w:40,
+    h:40,
+}
+export const herbe30={
+    x:1100,  //+50
+    y:915,  //+40
     w:40,
     h:40,
 }
 // Centre de rotation global (maintenant 200px sous le centre du lac)
-const CENTER_X = 692.5; 
-const CENTER_Y = 997.5; // 797.5 (ancien centre) + 200
+// Centre de rotation global (Décalé de +100 en X et -100 en Y)
+// Centre de rotation global (Décalé de +300 en X et -300 en Y)
+// Centre de rotation global (Décalé de +300 en X et -350 en Y)
+// Centre de rotation global (Décalé de +300 en X et -380 en Y)
+const CENTER_X = 992.5; // 692.5 + 300
+const CENTER_Y = 617.5; // 997.5 - 380
 
 // ===================================
 // DÉFINITION DES BIJOUX
 // ===================================
 
-// Écart initial en X par rapport au centre: 0
-// Écart initial en Y par rapport au centre: -53.33
+// Goron : (X initial +300), (Y initial -380)
 export const goron = {
-    x: 692.5,     // CENTER_X + 0
-    y: 944.17,    // 997.5 - 53.33 (position de départ)
+    x: 992.5,     // 692.5 + 300
+    y: 564.17,    // 944.17 - 380
     w: 40,
     h: 40,
-    // Calcul de l'angle et du rayon (ils restent inchangés entre les bijoux)
-    angle: Math.atan2(944.17 - CENTER_Y, 692.5 - CENTER_X), 
-    radius: Math.hypot(692.5 - CENTER_X, 944.17 - CENTER_Y), 
+    angle: Math.atan2(564.17 - CENTER_Y, 992.5 - CENTER_X), 
+    radius: Math.hypot(992.5 - CENTER_X, 564.17 - CENTER_Y), 
 }
 
-// Écart initial en X par rapport au centre: +60
-// Écart initial en Y par rapport au centre: +26.67
+// Zora : (X initial +300), (Y initial -380)
 export const zora = {
-    x: 752.5,     // 692.5 + 60
-    y: 1024.17,   // 997.5 + 26.67
+    x: 1052.5,    // 752.5 + 300
+    y: 644.17,    // 1024.17 - 380
     w: 40,
     h: 40,
-    angle: Math.atan2(1024.17 - CENTER_Y, 752.5 - CENTER_X),
-    radius: Math.hypot(752.5 - CENTER_X, 1024.17 - CENTER_Y),
+    angle: Math.atan2(644.17 - CENTER_Y, 1052.5 - CENTER_X),
+    radius: Math.hypot(1052.5 - CENTER_X, 644.17 - CENTER_Y),
 }
 
-// Écart initial en X par rapport au centre: -60
-// Écart initial en Y par rapport au centre: +26.67
+// Kokiri : (X initial +300), (Y initial -380)
 export const kokiri = {
-    x: 632.5,     // 692.5 - 60
-    y: 1024.17,   // 997.5 + 26.67
+    x: 932.5,     // 632.5 + 300
+    y: 644.17,    // 1024.17 - 380
     w: 40,
     h: 40,
-    angle: Math.atan2(1024.17 - CENTER_Y, 632.5 - CENTER_X),
-    radius: Math.hypot(632.5 - CENTER_X, 1024.17 - CENTER_Y),
+    angle: Math.atan2(644.17 - CENTER_Y, 932.5 - CENTER_X),
+    radius: Math.hypot(932.5 - CENTER_X, 644.17 - CENTER_Y),
 }
-
-
-
 
 // fonction de collision
 export function isColliding(a, b) {

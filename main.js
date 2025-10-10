@@ -1,11 +1,13 @@
 // import { ground } from './js/background.js';
 import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant, drawCurvedPath,drawSol  } from './js/background.js';
 import { drawPerso, player, drawHearts,loadPlayerSprites, drawMoney, rubisImage  } from './js/perso.js';
-import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5,plant6,plant7,plant8,plant9,plant10, rock, isColliding, drawSword, sword, tree, tree1, tree2 } from './js/object.js';
+import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5,plant6,plant7,plant8,plant9,plant10, rock, isColliding, drawSword, sword } from './js/object.js';
 import { plant11,plant12,plant13,plant14,plant15,plant16,plant17,plant18,plant19} from './js/object.js'
 import{plant20,plant21,plant22,plant23,plant24,plant25,plant26,plant27,plant28, plant29 } from './js/object.js';
 import{plant30,plant31,plant32,plant33,plant34,plant35,plant36,plant37,plant38, plant39 } from './js/object.js';
-import { tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13,tree14,tree15,tree16,tree17,tree18,tree19, drawTree} from './js/object.js';
+import {tree, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13, tree14,tree15,tree16,tree17, tree18, tree19,tree20,tree21,drawTree} from './js/object.js';
+import{herbe1,herbe2,herbe3,herbe4,herbe5, herbe6,herbe7,herbe8,herbe9,herbe10,herbe11,herbe12,herbe13,herbe14,herbe15,herbe16,herbe17,herbe18}from './js/object.js'
+import{herbe19,herbe20,herbe21,herbe22,herbe23,herbe24,herbe25,herbe26,herbe27,herbe28,herbe29,herbe30}from './js/object.js'
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
 import {runRevolution} from './js/object.js';
 import { input } from './js/input.js';
@@ -59,6 +61,7 @@ function render() {
   ctx.save();            // 🔒 garde l’état du canvas
   ctx.translate(camX, camY);
   drawPath(ctx, 823, 1150, 80, 600,90)
+  drawPath(ctx, 1853, 650, 80, 1600,90)
   // drawPath(ctx, x, y, width, height, angle = 0)
   drawShapedPath(ctx, 433, 1280, "left", 65, 654, 165, 180); // 2. Chemin incurvé /
 drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);
@@ -68,7 +71,7 @@ drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);
   // drawRock(ctx, rock.x, rock.y, rock.w); 
   drawPied(ctx,pied.x,pied.y);
   drawSwordplant(ctx,swordplant.x,swordplant.y);               // 5. Rochers
-  drawSol(ctx,630,935);               // 5. Rochers
+  drawSol(ctx,932,557);               // 5. Rochers
   drawPlant(ctx,plant.x,plant.y);
   drawPlant(ctx,plant1.x,plant1.y);
   drawPlant(ctx,plant2.x,plant2.y);
@@ -109,8 +112,10 @@ drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);
   drawPlant(ctx,plant37.x,plant37.y);
   drawPlant(ctx,plant38.x,plant38.y);
   drawPlant(ctx,plant39.x,plant39.y);
+
   drawHouse(ctx, house.x, house.y);                     // 6. Maison
-  drawPorte(ctx, porte.x, porte.y);                     // 6. Maison
+  drawPorte(ctx, porte.x, porte.y);    
+                   // 6. Maison
   drawTree(ctx, tree.x, tree.y);                     // 6. Maison
   drawTree(ctx, tree1.x, tree1.y);                     // 6. Maison
   drawTree(ctx, tree2.x, tree2.y);                     // 6. Maison
@@ -124,14 +129,47 @@ drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);
   drawTree(ctx, tree10.x, tree10.y);                     // 10. Maison
   drawTree(ctx, tree11.x, tree11.y);                     // 6. Maison
   drawTree(ctx, tree12.x, tree12.y);                     // 6. Maison
-  drawTree(ctx, tree14.x, tree14.y);                     // 6. Maison
+  drawTree(ctx, tree13.x, tree13.y);  
+  drawTree(ctx, tree14.x, tree14.y);                   // 6. Maison
   drawTree(ctx, tree15.x, tree15.y);                     // 6. Maison
   drawTree(ctx, tree16.x, tree16.y);                     // 6. Maison
   drawTree(ctx, tree17.x, tree17.y);                     // 6. Maison
   drawTree(ctx, tree18.x, tree18.y);                     // 6. Maison
   drawTree(ctx, tree19.x, tree19.y);     
-  drawTree(ctx, tree13.x, tree13.y);                 // 6. Maison
+  drawTree(ctx, tree20.x, tree20.y);                 // 6. Maison
+  drawTree(ctx, tree21.x, tree21.y); 
+                  // 6. Maison
   drawHerbe(ctx, herbe.x, herbe.y); 
+  drawHerbe(ctx, herbe1.x, herbe1.y); 
+  drawHerbe(ctx, herbe2.x, herbe2.y); 
+  drawHerbe(ctx, herbe3.x, herbe3.y); 
+  drawHerbe(ctx, herbe4.x, herbe4.y); 
+  drawHerbe(ctx, herbe5.x, herbe5.y); 
+  drawHerbe(ctx, herbe7.x, herbe7.y); 
+  drawHerbe(ctx, herbe8.x, herbe8.y); 
+  drawHerbe(ctx, herbe9.x, herbe9.y); 
+  drawHerbe(ctx, herbe10.x,herbe10.y); 
+  drawHerbe(ctx, herbe11.x, herbe11.y); 
+  drawHerbe(ctx, herbe12.x, herbe12.y); 
+  drawHerbe(ctx, herbe13.x, herbe13.y); 
+  drawHerbe(ctx, herbe14.x, herbe14.y); 
+  drawHerbe(ctx, herbe15.x, herbe15.y); 
+  drawHerbe(ctx, herbe16.x, herbe16.y); 
+  drawHerbe(ctx, herbe17.x, herbe17.y); 
+  drawHerbe(ctx, herbe18.x, herbe18.y); 
+  drawHerbe(ctx, herbe19.x, herbe19.y); 
+  drawHerbe(ctx, herbe20.x, herbe20.y); 
+  drawHerbe(ctx, herbe21.x, herbe21.y); 
+  drawHerbe(ctx, herbe22.x, herbe22.y); 
+  drawHerbe(ctx, herbe23.x, herbe23.y); 
+  drawHerbe(ctx, herbe24.x, herbe24.y); 
+  drawHerbe(ctx, herbe25.x, herbe25.y); 
+  drawHerbe(ctx, herbe26.x, herbe26.y); 
+  drawHerbe(ctx, herbe27.x, herbe27.y); 
+  drawHerbe(ctx, herbe28.x, herbe28.y); 
+  drawHerbe(ctx, herbe29.x, herbe29.y); 
+  drawHerbe(ctx, herbe30.x, herbe30.y); 
+
   drawLac(ctx, lac.x, lac.y);                     
   // drawDownEau(ctx, lac.x, lac.y);                     
   // drawLeftEau(ctx, lac.x, lac.y);                     
@@ -266,6 +304,8 @@ const obstacles = [
   tree17, 
   tree18, 
   tree19, 
+  tree20,
+  tree21,
   fontaine,
   storm
   
@@ -312,7 +352,37 @@ const coupable = [
   plant38, 
   plant39, 
   // plant40, 
-  herbe
+  herbe,
+  herbe1,
+  herbe2,
+  herbe3,
+  herbe4,
+  herbe5,
+  herbe6,
+  herbe7,
+  herbe8,
+  herbe9,
+  herbe10,
+  herbe11,
+  herbe12,
+  herbe13,
+  herbe14,
+  herbe15,
+  herbe16,
+  herbe17,
+  herbe18,
+  herbe19,
+  herbe20,
+  herbe21,
+  herbe22,
+  herbe23,
+  herbe24,
+  herbe25,
+  herbe26,
+  herbe27,
+  herbe28,
+  herbe29,
+  herbe30
 ];
 
 const bijou=[
@@ -451,10 +521,10 @@ let distanceYlac=lac.y-player.y
     player.eau=1;
     // console.log("collision avec l'objet situé :", obj)
   }
-  else if ((distanceXlac>=1)||(distanceYlac>=1)||(distanceXlac<=1)||(distanceYlac<=1)){
+  else if ((distanceXlac>=20)||(distanceYlac>=0)||(distanceXlac<=(lac.w-50))||(distanceYlac<=lac.y)){
     player.eau=0
   }
-  
+  // console.log(distanceXlac, distanceYlac)
 drawHearts(ctx, player.life); // ❤️ affichage des vies
 
 // Assurez-vous que 'rubisImage' est l'objet Image que vous avez pré-chargé
