@@ -168,7 +168,81 @@ export function drawShapedPath(ctx, x, y, direction = "right", width = 80, lengt
   ctx.restore(); // 🔓 on revient au contexte d’origine
 }
 
+/**
+ * Dessine un virage en quart de cercle (un coude) avec bordures.
+ */
+export function drawCurvedPath(ctx, x, y, direction = "right", radius = 40, width = 80, angle = 0) {
+    // Définitions de style
+    const BORDER_WIDTH = width + 16;
+    const BORDER_COLOR = "#b19066";
+    const PATH_COLOR = "#d2b48c";
 
+    ctx.save();
+    
+    // 1. Déplacer et faire tourner l'ensemble du coude
+    ctx.translate(x, y);
+    ctx.rotate((angle * Math.PI) / 180); 
 
+    // Définir le centre de l'arc en fonction de la direction
+    const offset = direction === "left" ? -1 : 1;
+    const centerX = radius * offset;
+    const centerY = radius;
+    
+    // === DESSIN BORDURE (Plus large et en couleur foncée) ===
+    ctx.beginPath();
+    ctx.lineWidth = BORDER_WIDTH;
+    ctx.strokeStyle = BORDER_COLOR;
+    
+    // ❌ Suppression de ctx.lineCap = "round";
+    // Si vous voulez être explicite sur l'absence d'arrondis :
+    ctx.lineCap = "butt"; 
 
+    if (direction === "right") {
+        ctx.arc(
+            centerX, 
+            centerY, 
+            radius,  
+            Math.PI,     
+            Math.PI * 1.5 
+        );
+    } else { // direction === "left"
+        ctx.arc(
+            centerX, 
+            centerY, 
+            radius,  
+            0,            
+            -Math.PI / 2, 
+            true          
+        );
+    }
+    ctx.stroke();
+
+    // === DESSIN DU CHEMIN PRINCIPAL (Moins large et en couleur claire) ===
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.strokeStyle = PATH_COLOR;
+    ctx.lineCap = "butt"; // IMPORTANT : Assurer que le chemin principal est plat
+
+    if (direction === "right") {
+        ctx.arc(
+            centerX, 
+            centerY, 
+            radius,  
+            Math.PI,     
+            Math.PI * 1.5 
+        );
+    } else { // direction === "left"
+        ctx.arc(
+            centerX, 
+            centerY, 
+            radius,  
+            0,            
+            -Math.PI / 2, 
+            true          
+        );
+    }
+    ctx.stroke();
+
+    ctx.restore();
+}
 

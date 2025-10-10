@@ -176,41 +176,128 @@ export const tree19 = {
 };
 
 export const plant={
-    x:320,
-    y:1150,
+    x:590,
+    y:1350,
     w:45,
     h:43,
 }
 export const plant1={
-    x:360,
-    y:1150,
+    x:630,
+    y:1350,
     w:45,
     h:43,
 }
 export const plant2={
-    x:400,
-    y:1150,
+    x:670,
+    y:1350,
     w:45,
     h:43,
 }
 export const plant3={
-    x:440,
-    y:1150,
+    x:710,
+    y:1350,
     w:45,
     h:43,
 }
 export const plant4={
-    x:480,
-    y:1150,
+    x:750,
+    y:1350,
     w:45,
     h:43,
 }
 export const plant5={
-    x:520,
-    y:1150,
+    x:790,
+    y:1350,
     w:45,
     h:43,
 }
+export const plant6={
+    x:830,
+    y:1350,
+    w:45,
+    h:43,
+}
+export const plant7={
+    x:870,
+    y:1350,
+    w:45,
+    h:43,
+}
+export const plant8={
+    x:910,
+    y:1350,
+    w:45,
+    h:43,
+}
+export const plant9={
+    x:950,
+    y:1350,
+    w:45,
+    h:43,
+}
+export const plant10={
+    x:590,
+    y:1490,
+    w:45,
+    h:43,
+}
+export const plant11={
+    x:630,
+    y:1490,
+    w:45,
+    h:43,
+}
+export const plant12={
+    x:670,
+    y:1490,
+    w:45,
+    h:43,
+}
+export const plant13={
+    x:710,
+    y:1490,
+    w:45,
+    h:43,
+}
+export const plant14={
+    x:750,
+    y:1490,
+    w:45,
+    h:43,
+}
+export const plant15={
+    x:790,
+    y:1490,
+    w:45,
+    h:43,
+}
+export const plant16={
+    x:830,
+    y:1490,
+    w:45,
+    h:43,
+}
+export const plant17={
+    x:870,
+    y:1490,
+    w:45,
+    h:43,
+}
+export const plant18={
+    x:910,
+    y:1490,
+    w:45,
+    h:43,
+}
+export const plant19={
+    x:950,
+    y:1490,
+    w:45,
+    h:43,
+}
+
+
+
 export const rock = {
     x:4,
     y:570,
@@ -241,23 +328,46 @@ export const herbe={
     w:40,
     h:40,
 }
-export const goron={
-    x:240,
-    y:280,
-    w:40,
-    h:40,
+// Centre de rotation global (maintenant 200px sous le centre du lac)
+const CENTER_X = 692.5; 
+const CENTER_Y = 997.5; // 797.5 (ancien centre) + 200
+
+// ===================================
+// DÉFINITION DES BIJOUX
+// ===================================
+
+// Écart initial en X par rapport au centre: 0
+// Écart initial en Y par rapport au centre: -53.33
+export const goron = {
+    x: 692.5,     // CENTER_X + 0
+    y: 944.17,    // 997.5 - 53.33 (position de départ)
+    w: 40,
+    h: 40,
+    // Calcul de l'angle et du rayon (ils restent inchangés entre les bijoux)
+    angle: Math.atan2(944.17 - CENTER_Y, 692.5 - CENTER_X), 
+    radius: Math.hypot(692.5 - CENTER_X, 944.17 - CENTER_Y), 
 }
-export const zora={
-    x:300,
-    y:360,
-    w:40,
-    h:40,
+
+// Écart initial en X par rapport au centre: +60
+// Écart initial en Y par rapport au centre: +26.67
+export const zora = {
+    x: 752.5,     // 692.5 + 60
+    y: 1024.17,   // 997.5 + 26.67
+    w: 40,
+    h: 40,
+    angle: Math.atan2(1024.17 - CENTER_Y, 752.5 - CENTER_X),
+    radius: Math.hypot(752.5 - CENTER_X, 1024.17 - CENTER_Y),
 }
-export const kokiri={
-    x:180,
-    y:360,
-    w:40,
-    h:40,
+
+// Écart initial en X par rapport au centre: -60
+// Écart initial en Y par rapport au centre: +26.67
+export const kokiri = {
+    x: 632.5,     // 692.5 - 60
+    y: 1024.17,   // 997.5 + 26.67
+    w: 40,
+    h: 40,
+    angle: Math.atan2(1024.17 - CENTER_Y, 632.5 - CENTER_X),
+    radius: Math.hypot(632.5 - CENTER_X, 1024.17 - CENTER_Y),
 }
 
 
@@ -412,6 +522,7 @@ export function drawFontaine(ctx, x,y){
     }
 }
 export function drawLac(ctx, x,y){
+   ctx.save(); // 🔒 on garde le contexte
     if (lacImg.complete){
         ctx.drawImage(lacImg,x,y);
     }
@@ -420,35 +531,66 @@ export function drawLac(ctx, x,y){
             ctx.drawImage(lacImg,x,y)
         }
     }
+    ctx.restore();
 }
-export function drawGoron(ctx, x,y){
-    if (goronImg.complete){
-        ctx.drawImage(goronImg,x,y);
-    }
-    else{
-        goronImg.onload=()=>{
-            ctx.drawImage(goronImg,x,y)
-        }
+export function drawGoron(ctx, x, y) {
+    // Coordonnées pour dessiner l'image centrée sur (x, y)
+    const drawX = x - goron.w / 2;
+    const drawY = y - goron.h / 2;
+    
+    // Le 3ème et 4ème paramètre de drawImage sont la largeur et la hauteur
+    const drawW = goron.w;
+    const drawH = goron.h;
+
+    const drawAction = () => {
+        // Dessine l'image en utilisant la largeur et hauteur définies dans l'objet goron
+        ctx.drawImage(goronImg, drawX, drawY, drawW, drawH);
+    };
+
+    if (goronImg.complete) {
+        drawAction();
+    } else {
+        // S'assure que l'image est dessinée dès qu'elle est chargée
+        // (Attention : cette affectation unique de onload est plus fragile dans une boucle de jeu)
+        goronImg.onload = drawAction;
     }
 }
-export function drawKokiri(ctx, x,y){
-    if (kokiriImg.complete){
-        ctx.drawImage(kokiriImg,x,y);
-    }
-    else{
-        kokiriImg.onload=()=>{
-            ctx.drawImage(kokiriImg,x,y)
-        }
+export function drawKokiri(ctx, x, y) {
+    // Coordonnées pour dessiner l'image centrée sur (x, y)
+    const drawX = x - kokiri.w / 2;
+    const drawY = y - kokiri.h / 2;
+    
+    const drawW = kokiri.w;
+    const drawH = kokiri.h;
+
+    const drawAction = () => {
+        // Dessine l'image en utilisant la largeur et hauteur définies dans l'objet kokiri
+        ctx.drawImage(kokiriImg, drawX, drawY, drawW, drawH);
+    };
+
+    if (kokiriImg.complete) {
+        drawAction();
+    } else {
+        kokiriImg.onload = drawAction;
     }
 }
-export function drawZora(ctx, x,y){
-    if (zoraImg.complete){
-        ctx.drawImage(zoraImg,x,y);
-    }
-    else{
-        zoraImg.onload=()=>{
-            ctx.drawImage(zoraImg,x,y)
-        }
+export function drawZora(ctx, x, y) {
+    // Coordonnées pour dessiner l'image centrée sur (x, y)
+    const drawX = x - zora.w / 2;
+    const drawY = y - zora.h / 2;
+    
+    const drawW = zora.w;
+    const drawH = zora.h;
+
+    const drawAction = () => {
+        // Dessine l'image en utilisant la largeur et hauteur définies dans l'objet zora
+        ctx.drawImage(zoraImg, drawX, drawY, drawW, drawH);
+    };
+
+    if (zoraImg.complete) {
+        drawAction();
+    } else {
+        zoraImg.onload = drawAction;
     }
 }
 export function drawPied(ctx,x=pied.x,y=pied.y){
@@ -462,4 +604,28 @@ export function drawPied(ctx,x=pied.x,y=pied.y){
   }
 }
 
+// Variable pour contrôler la vitesse de rotation (en radians par frame)
+const ROTATION_SPEED = 0.02; 
 
+/**
+ * Met à jour la position de l'élément pour effectuer une révolution.
+ * @param {object} entity - L'objet (goron, zora, kokiri)
+ */
+function updateRevolution(entity) {
+    // 1. Augmenter l'angle pour la prochaine frame (tourner d'un petit montant)
+    entity.angle += ROTATION_SPEED;
+    
+    // 2. Calculer les nouvelles coordonnées (x, y)
+    // Nouvelle X = Centre X + Rayon * cos(Nouvel Angle)
+    entity.x = CENTER_X + entity.radius * Math.cos(entity.angle);
+    
+    // Nouvelle Y = Centre Y + Rayon * sin(Nouvel Angle)
+    entity.y = CENTER_Y + entity.radius * Math.sin(entity.angle);
+}
+
+// Fonction principale de mise à jour (à appeler dans votre boucle de jeu/animation)
+export function runRevolution() {
+    updateRevolution(goron);
+    updateRevolution(zora);
+    updateRevolution(kokiri);
+}

@@ -5,6 +5,15 @@ heartFull.src = './assets/vie1.PNG';
 const heartEmpty = new Image();
 heartEmpty.src = './assets/vie0.PNG';
 
+export const downeauImg = new Image();
+downeauImg.src = './assets/down_eau.png';
+export const upeauImg = new Image();
+upeauImg.src = './assets/up_eau.png';
+export const lefteauImg = new Image();
+lefteauImg.src = './assets/left_eau.png';
+export const righteauImg = new Image();
+righteauImg.src = './assets/right_eau.png';
+
 export function drawHearts(ctx, life) {
   const total = 3; // nombre total de cœurs
   const size = 55; // taille (pixels)
@@ -25,6 +34,7 @@ export const player = {
   w :59,
   h:59,
   life:4,
+  eau:0,
   speed: 4,
   direction: "down",    // "up", "down", "left", "right"
   frame: 0,             // numéro de l’image dans l’animation
@@ -40,13 +50,87 @@ export const player = {
   }
 };
 
-
+export function drawDownEau(ctx, x,y){
+   ctx.save(); // 🔒 on garde le contexte
+    if (downeauImg.complete){
+        ctx.drawImage(downeauImg,x,y);
+    }
+    else{
+        downeauImg.onload=()=>{
+            ctx.drawImage(downeauImg,x,y)
+        }
+    }
+     ctx.restore(); // 🔒 on garde le contexte
+}
+export function drawUpEau(ctx, x,y){
+   ctx.save(); // 🔒 on garde le contexte
+    if (upeauImg.complete){
+        ctx.drawImage(upeauImg,x,y);
+    }
+    else{
+        upeauImg.onload=()=>{
+            ctx.drawImage(upeauImg,x,y)
+        }
+    }
+     ctx.restore(); // 🔒 on garde le contexte
+}
+export function drawLeftEau(ctx, x,y){
+   ctx.save(); // 🔒 on garde le contexte
+    if (lefteauImg.complete){
+        ctx.drawImage(lefteauImg,x,y);
+    }
+    else{
+        lefteauImg.onload=()=>{
+            ctx.drawImage(lefteauImg,x,y)
+        }
+    }
+     ctx.restore(); // 🔒 on garde le contexte
+}
+export function drawRightEau(ctx, x,y){
+   ctx.save(); // 🔒 on garde le contexte
+    if (righteauImg.complete){
+        ctx.drawImage(righteauImg,x,y);
+    }
+    else{
+        righteauImg.onload=()=>{
+            ctx.drawImage(righteauImg,x,y)
+        }
+    }
+     ctx.restore(); // 🔒 on garde le contexte
+}
 // Dans './js/perso.js' ou le fichier qui contient la définition de 'player'
 
 // Charger les images du joueur sans bouclier par défaut (initialisation)
 export function loadPlayerSprites() {
-    if (player.bouclier === 1) {
+    
+    // 1. PRIORITÉ MAX : EST-IL DANS L'EAU ? 
+    if (player.eau === 1) {
+        // Charge les images DANS L'EAU (Ceci remplace tous les autres états visuels)
+        
+        // UP
+        player.sprites.up[0].src = "./assets/up_eau.png"; // <-- CORRIGÉ
+        player.sprites.up[1].src = "./assets/up_eau.png"; // <-- CORRIGÉ
+        player.sprites.up[2].src = "./assets/up_eau.png"; // <-- CORRIGÉ
+
+        // DOWN
+        player.sprites.down[0].src = "./assets/down_eau.png"; // <-- CORRIGÉ (selon votre down_eau.png)
+        player.sprites.down[1].src = "./assets/down_eau.png"; // <-- CORRIGÉ
+        player.sprites.down[2].src = "./assets/down_eau.png"; // <-- CORRIGÉ
+
+        // LEFT
+        player.sprites.left[0].src = "./assets/left_eau.png"; // <-- CORRIGÉ
+        player.sprites.left[1].src = "./assets/left_eau.png"; // <-- CORRIGÉ
+        player.sprites.left[2].src = "./assets/left_eau.png"; // <-- CORRIGÉ
+
+        // RIGHT
+        player.sprites.right[0].src = "./assets/right_eau.png"; // <-- CORRIGÉ (selon votre right_eau.png)
+        player.sprites.right[1].src = "./assets/right_eau.png"; // <-- CORRIGÉ
+        player.sprites.right[2].src = "./assets/right_eau.png"; // <-- CORRIGÉ
+        
+    // 2. Sinon, quelle est l'équipement ? Vérifie d'abord le bouclier
+    } else if (player.bouclier === 1) {
         // Charge les images avec bouclier
+        
         player.sprites.up[0].src = "./assets/bouclierUpA.png";
         player.sprites.up[1].src = "./assets/bouclierUpB.png";
         player.sprites.up[2].src = "./assets/bouclierUpC.png";
@@ -64,8 +148,10 @@ export function loadPlayerSprites() {
         player.sprites.right[1].src = "./assets/bouclierRightB.png";
         player.sprites.right[2].src = "./assets/bouclierRightC.png";
         
-    } else {
-        // Charge les images sans bouclier
+    // 3. Sinon (player.eau est 0 ET player.bouclier est 0)
+    } else { // On utilise un simple 'else' car il couvre tous les cas restants
+        // Charge les images sans bouclier (Normal)
+        
         player.sprites.up[0].src = "./assets/upA.png";
         player.sprites.up[1].src = "./assets/upB.png";
         player.sprites.up[2].src = "./assets/upC.png";
