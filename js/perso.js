@@ -41,9 +41,9 @@ export const player = {
   frameCount: 0, 
   epee:0, 
   bouclier:0, 
-  kokiri:1,
-  goron:1,
-  zora:1,
+  kokiri:0,
+  goron:0,
+  zora:0,
   triforce:0,    // compteur interne
   sprites: {
     up: [new Image(), new Image(), new Image()],

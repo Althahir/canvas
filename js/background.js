@@ -8,10 +8,13 @@
 //   ctx.fillRect(0, 0, width, height);
 // }
 import{pied}from "./object.js"
+
 const swordplantImg = new Image();
 swordplantImg.src = './assets/swordplant.png'; // à adapter si elle est dans un sous-dossier
-export const solImg = new Image();
-solImg.src = './assets/sol.png'; // à adapter si elle est dans un sous-dossier
+export const solTriImg = new Image();
+solTriImg.src = './assets/sol.png'; // à adapter si elle est dans un sous-dossier
+export const solKokiriImg = new Image();
+solKokiriImg.src = './assets/sol1.png'; // à adapter si elle est dans un sous-dossier
 
 
 export const swordplant = {
@@ -109,15 +112,26 @@ if (swordplantImg.complete) {
   }
 }
 export function drawSol (ctx,x,y){
-if (solImg.complete) {
-    ctx.drawImage(solImg, x, y);
+if (solTriImg.complete) {
+    ctx.drawImage(solTriImg, x, y);
   } else {
     // Attendre que les images soient prêtes avant de dessiner
-    solImg.onload = () => {
-      ctx.drawImage(solImg, x, y);
+    solTriImg.onload = () => {
+      ctx.drawImage(solTriImg, x, y);
     };
   }
 }
+export function drawSolKokiri (ctx,x,y){
+if (solKokiriImg.complete) {
+    ctx.drawImage(solKokiriImg, x, y);
+  } else {
+    // Attendre que les images soient prêtes avant de dessiner
+    solKokiriImg.onload = () => {
+      ctx.drawImage(solKokiriImg, x, y);
+    };
+  }
+}
+
 export function drawPath(ctx, x, y, width, height, angle = 0) {
   ctx.save(); // 🔒 on garde le contexte
 
@@ -136,6 +150,7 @@ export function drawPath(ctx, x, y, width, height, angle = 0) {
 
   ctx.restore(); // 🔓 on remet le contexte normal
 }
+
 
 export function drawShapedPath(ctx, x, y, direction = "right", width = 80, length = 80, radius = 40, angle = 0) {
   const offset = direction === "left" ? -1 : 1;
