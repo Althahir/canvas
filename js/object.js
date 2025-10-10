@@ -4,7 +4,6 @@ import { player } from './perso.js';
 // On crée une image JS
 const maisonImg = new Image();
 maisonImg.src = './assets/maison.png'; // à adapter si elle est dans un sous-dossier
-
 const porteImg = new Image();
 porteImg.src = './assets/porte.png'; // image à fournir (voir remarque ci-dessous)
 const piedImg = new Image();
@@ -18,12 +17,17 @@ treeImg.src = './assets/tree.png'; // image à fournir (voir remarque ci-dessous
 const stormImg = new Image();
 stormImg.src = './assets/bouclier.png'; // image à fournir (voir remarque ci-dessous)
 const herbeImg = new Image();
-herbeImg.src = './assets/herbe.png'; // image à fournir (voir remarque ci-dessous)
+herbeImg.src = './assets/herbe1.png'; // image à fournir (voir remarque ci-dessous)
 const fontaineImg = new Image();
 fontaineImg.src = './assets/fontaine.png'; // image à fournir (voir remarque ci-dessous)
 const lacImg = new Image();
-lacImg.src = './assets/lac.png'; // image à fournir (voir remarque ci-dessous)
-// export let attackAngle
+lacImg.src = './assets/lac.png'; 
+const goronImg = new Image();
+goronImg.src = './assets/bijouGoron1.png'; // image à fournir (voir remarque ci-dessous)
+const kokiriImg = new Image();
+kokiriImg.src = './assets/bijouKokiri1.png'; 
+const zoraImg = new Image();
+zoraImg.src = './assets/bijouZora1.png'; 
 
 export const sword={
     x:30,
@@ -237,6 +241,25 @@ export const herbe={
     w:40,
     h:40,
 }
+export const goron={
+    x:240,
+    y:280,
+    w:40,
+    h:40,
+}
+export const zora={
+    x:300,
+    y:360,
+    w:40,
+    h:40,
+}
+export const kokiri={
+    x:180,
+    y:360,
+    w:40,
+    h:40,
+}
+
 
 
 
@@ -358,7 +381,6 @@ export function drawSword(ctx) {
   
 
 }
-
 export function drawStorm(ctx, x,y){
     if (stormImg.complete){
         ctx.drawImage(stormImg,x,y);
@@ -399,7 +421,36 @@ export function drawLac(ctx, x,y){
         }
     }
 }
-
+export function drawGoron(ctx, x,y){
+    if (goronImg.complete){
+        ctx.drawImage(goronImg,x,y);
+    }
+    else{
+        goronImg.onload=()=>{
+            ctx.drawImage(goronImg,x,y)
+        }
+    }
+}
+export function drawKokiri(ctx, x,y){
+    if (kokiriImg.complete){
+        ctx.drawImage(kokiriImg,x,y);
+    }
+    else{
+        kokiriImg.onload=()=>{
+            ctx.drawImage(kokiriImg,x,y)
+        }
+    }
+}
+export function drawZora(ctx, x,y){
+    if (zoraImg.complete){
+        ctx.drawImage(zoraImg,x,y);
+    }
+    else{
+        zoraImg.onload=()=>{
+            ctx.drawImage(zoraImg,x,y)
+        }
+    }
+}
 export function drawPied(ctx,x=pied.x,y=pied.y){
     if(piedImg.complete){
       ctx.drawImage(piedImg, x, y);

@@ -3,7 +3,7 @@ import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant } from '
 import { drawPerso, player, drawHearts,loadPlayerSprites } from './js/perso.js';
 import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5, rock, isColliding, drawSword, sword, tree, tree1, tree2 } from './js/object.js';
 import { tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13,tree14,tree15,tree16,tree17,tree18,tree19, drawTree} from './js/object.js';
-import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied} from './js/object.js';
+import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
 import { input } from './js/input.js';
 import{drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
@@ -90,6 +90,9 @@ function render() {
   drawTree(ctx, tree13.x, tree13.y);                 // 6. Maison
   drawHerbe(ctx, herbe.x, herbe.y); 
   drawLac(ctx, lac.x, lac.y);                     
+  drawGoron(ctx, goron.x, goron.y);                     
+  drawZora(ctx, zora.x, zora.y);                     
+  drawKokiri(ctx, kokiri.x, kokiri.y);                     
   drawFontaine(ctx, fontaine.x, fontaine.y);                     // 6. Maison
   drawStorm(ctx, storm.x, storm.y);                     // 6. Maison
 
@@ -106,25 +109,21 @@ if (input.keys.has("ArrowUp") || input.keys.has("z")) {
   player.y -= player.speed;
   player.direction = "up";
   moving = true;
-  // console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 if (input.keys.has("ArrowDown") || input.keys.has("s")) {
   player.y += player.speed;
   player.direction = "down";
   moving = true;
-  // console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 if (input.keys.has("ArrowLeft") || input.keys.has("q")) {
   player.x -= player.speed;
   player.direction = "left";
   moving = true;
-  // console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 if (input.keys.has("ArrowRight") || input.keys.has("d")) {
   player.x += player.speed;
   player.direction = "right";
   moving = true;
-  // console.log("x : ",player.x, "|y : ",player.y , "| house.x : ", house.x, "|hous.y : ", house.y)
 }
 
 
@@ -250,9 +249,14 @@ if ((swordVisibility)&&(player.epee==1)) {
 }
   
   ctx.restore(); 
+  let distancePorte = player.y-house.y
  if (isColliding(player, porte)) {
     porte.x=-1000,
     porte.y=-1000 // DOIT MAINTENANT S'AFFICHER
+  }
+  else if(distancePorte>=200){
+    porte.x=320,
+    porte.y=280
   }
   // else{
   //   porte.x=320,
