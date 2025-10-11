@@ -29,7 +29,7 @@ kokiriImg.src = './assets/bijouKokiri1.png';
 const zoraImg = new Image();
 zoraImg.src = './assets/bijouZora1.png'; 
 const murImg = new Image();
-murImg.src = './assets/mur.png'; 
+murImg.src = './assets/mur1.png'; 
 
 export const sword={
     x:30,
@@ -667,146 +667,406 @@ export const herbe30={
 
 
 
-
-
-  export const mur={
-    x:935,
-    y:-1446,
-    w:363,
-    h:115
+// MUR ARENE KOKIRI
+export const mur={
+    x:765,
+    y:-1500,
+    w:111,
+    h:112
   }  
   export const mur1={
-    x:812,
-    y:-1323,
-    w:363,
-    h:115
-  }    
-     export const mur2={
-     x:812,
-     y:-1000,
-     w:363,
-     h:115
+  x:765,
+  y:-1389,
+  w:111,
+  h:112
+  } 
+  export const mur2={
+  x:765,
+  y:-1278,
+  w:111,
+  h:112
    }  
    export const mur3={
-     x:812,
-     y:-767,
-     w:363,
-     h:115
-   }      
+  x:765,
+  y:-1167,
+  w:111,
+  h:112
+   }
    export const mur4={
-     x:812,
-     y:-444,
-     w:363,
-     h:115
+  x:765,
+  y:-1056,
+  w:111,
+  h:112
    }  
    export const mur5={
-     x:812,
-     y:-121,
-     w:363,
-     h:115
+  x:765,
+  y:-945,
+  w:111,
+  h:112
    } 
-       export const mur6={
-       x:933,
-       y:0,
-       w:363,
-       h:115
-     }  
-     export const mur7={
-       x:1256,
-       y:0,
-       w:363,
-       h:115
-     }      
-     export const mur8={
-       x:1579,
-       y:0,
-       w:363,
-       h:115
-     }  
-     export const mur9={
-       x:2129,
-       y:0,
-       w:363,
-       h:115
-     }   
-          export const mur10={
-         x:2444,
-         y:0,
-         w:363,
-         h:115
-       }  
-       export const mur11={
-         x:2686,
-         y:0,
-         w:363,
-         h:115
-       }      
-       export const mur12={
-         x:2813,
-         y:-123,
-         w:363,
-         h:115
-       }  
-       export const mur13={
-         x:2813,
-         y:-446,
-         w:363,
-         h:115
-       }    
-             export const mur14={
-           x:2813,
-           y:-769,
-           w:363,
-           h:115
-         }  
-         export const mur15={
-           x:2813,
-           y:-1091,
-           w:363,
-           h:115
-         }      
-         export const mur16={
-           x:2813,
-           y:-1220,
-           w:363,
-           h:115
-         }  
-         export const mur17={
-           x:2682,
-           y:-1453,
-           w:363,
-           h:115
-         }  
-         export const mur18={
-             x:2319,
-             y:-1453,
-             w:363,
-             h:115
-           }  
-           export const mur19={
-             x:1997,
-             y:-1453,
-             w:363,
-             h:115
-           }      
-           export const mur20={
-             x:1674,
-             y:-1453,
-             w:363,
-             h:115
-           }  
-           export const mur21={
-             x:1351,
-             y:-1453,
-             w:363,
-             h:115
-           }                // 5. Rochers5
-           export const mur22={
-             x:1029,
-             y:-1453,
-             w:363,
-             h:115
-           }     
+  export const mur6={
+  x:765,
+  y:-834,
+  w:111,
+  h:112
+  }  
+  export const mur7={
+  x:765,
+  y:-823,
+  w:111,
+  h:112
+  }
+  export const mur8={
+  x:765,
+  y:-712,
+  w:111,
+  h:112
+  }  
+  export const mur9={
+  x:765,
+  y:-601,
+  w:111,
+  h:112
+  }
+  export const mur10={
+   x:765,
+   y:-490,
+   w:111,
+   h:112
+  }  
+  export const mur11={
+   x:765,
+   y:-379,
+   w:111,
+   h:112
+  }
+  export const mur12={
+   x:765,
+   y:-268,
+   w:111,
+   h:112
+  }  
+  export const mur13={
+   x:765,
+   y:-157,
+   w:111,
+   h:112
+  } 
+  export const mur14={
+  x:765,
+  y:-56,
+  w:111,
+  h:112
+   }  
+   export const mur15={
+  x:765,
+  y:20,
+  w:111,
+  h:112
+   }
+   export const mur16={
+  x:876,
+  y:20,
+  w:111,
+  h:112
+   }  
+   export const mur17={
+  x:987,
+  y:20,
+  w:111,
+  h:112
+   }  
+   export const mur18={
+  x:1098,
+  y:20,
+  w:111,
+  h:112
+  }  
+  export const mur19={
+  x:1209,
+  y:20,
+  w:111,
+  h:112
+  }
+  export const mur20={
+  x:1320,
+  y:20,
+  w:111,
+  h:112
+  }  
+  export const mur21={
+  x:1431,
+  y:20,
+  w:111,
+  h:112
+  }
+  export const mur22={
+  x:1542,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur23={
+  x:1653,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur24={
+  x:1680,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur25={
+  x:1912,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur26={
+  x:2023,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur27={
+  x:2134,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur28={
+  x:2245,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur29={
+  x:2356,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur30={
+  x:2467,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur31={
+  x:2578,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur32={
+  x:2689,
+  y:20,
+  w:111,
+  h:112
+  }     
+  export const mur33={
+  x:2755,
+  y:20,
+  w:111,
+  h:112
+  } 
+  export const mur34={
+  x:2755,
+  y:-91,
+  w:111,
+  h:112
+  } 
+  export const mur35={
+  x:2755,
+  y:-112,
+  w:111,
+  h:112
+  } 
+  export const mur36={
+  x:2755,
+  y:-223,
+  w:111,
+  h:112
+  } 
+  export const mur37={
+  x:2755,
+  y:-334,
+  w:111,
+  h:112
+  } 
+  export const mur38={
+  x:2755,
+  y:-445,
+  w:111,
+  h:112
+  } 
+  export const mur39={
+  x:2755,
+  y:-556,
+  w:111,
+  h:112
+  } 
+  export const mur40={
+  x:2755,
+  y:-667,
+  w:111,
+  h:112
+  } 
+  export const mur41={
+  x:2755,
+  y:-778,
+  w:111,
+  h:112
+  } 
+  export const mur42={
+  x:2755,
+  y:-889,
+  w:111,
+  h:112
+  } 
+  export const mur43={
+  x:2755,
+  y:-1000,
+  w:111,
+  h:112
+  } 
+  export const mur44={
+  x:2755,
+  y:-1111,
+  w:111,
+  h:112
+  } 
+  export const mur45={
+  x:2755,
+  y:-1222,
+  w:111,
+  h:112
+  } 
+  export const mur46={
+  x:2755,
+  y:-1333,
+  w:111,
+  h:112
+  } 
+  export const mur47={
+  x:2755,
+  y:-1444,
+  w:111,
+  h:112
+  } 
+  export const mur48={
+  x:2755,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur49={
+  x:2644,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur50={
+  x:2533,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur51={
+  x:2422,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur52={
+  x:2311,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur53={
+  x:2200,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur54={
+  x:2089,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur55={
+  x:1978,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur56={
+  x:1867,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur57={
+  x:1756,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur58={
+  x:1645,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur59={
+  x:1534,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur60={
+  x:1423,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur61={
+  x:1312,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur62={
+  x:1201,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur63={
+  x:1090,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur64={
+  x:979,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+  export const mur65={
+  x:868,
+  y:-1505,
+  w:111,
+  h:112
+  } 
+
+
+      
 // Centre de rotation global (maintenant 200px sous le centre du lac)
 // Centre de rotation global (Décalé de +100 en X et -100 en Y)
 // Centre de rotation global (Décalé de +300 en X et -300 en Y)
@@ -893,31 +1153,7 @@ export function drawPlant(ctx, x,y){
     }
 }
 
-export function drawMur(ctx, x, y, angleDeg=0) {
-    // FORMULE DE CONVERSION : Degrés -> Radians
-    const angleRad = angleDeg * (Math.PI / 180);
 
-    const drawRotatedImage = () => {
-        const image = murImg;
-        const width = image.width;
-        const height = image.height;
-
-        ctx.save();
-        ctx.translate(x, y);
-
-        // *** On utilise la variable convertie en radians ici ***
-        ctx.rotate(angleRad);
-
-        ctx.drawImage(image, -width / 2, -height / 2, width, height);
-        ctx.restore();
-    };
-
-    if (murImg.complete) {
-        drawRotatedImage();
-    } else {
-        murImg.onload = drawRotatedImage;
-    }
-}
 export function drawTree(ctx, x,y){
     if (treeImg.complete){
         ctx.drawImage(treeImg,x,y);
@@ -925,6 +1161,16 @@ export function drawTree(ctx, x,y){
     else{
         treeImg.onload=()=>{
             ctx.drawImage(treeImg,x,y)
+        }
+    }
+}
+export function drawMur(ctx, x,y){
+    if (murImg.complete){
+        ctx.drawImage(murImg,x,y);
+    }
+    else{
+        murImg.onload=()=>{
+            ctx.drawImage(murImg,x,y)
         }
     }
 }

@@ -1,13 +1,15 @@
 // import { ground } from './js/background.js';
 import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant, drawCurvedPath,drawSol, drawSolKokiri  } from './js/background.js';
 import { drawPerso, player, drawHearts,loadPlayerSprites, drawMoney, rubisImage,drawSalam , salam, drawTriforce, } from './js/perso.js';
-import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5,plant6,plant7,plant8,plant9,plant10, rock, isColliding, drawSword, sword } from './js/object.js';
+import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5,plant6,plant7,plant8,plant9,plant10, rock, isColliding, drawSword, sword} from './js/object.js';
 import { plant11,plant12,plant13,plant14,plant15,plant16,plant17,plant18,plant19} from './js/object.js'
 import{plant20,plant21,plant22,plant23,plant24,plant25,plant26,plant27,plant28, plant29 } from './js/object.js';
 import{plant30,plant31,plant32,plant33,plant34,plant35,plant36,plant37,plant38, plant39, house1, porte1 } from './js/object.js';
 import {tree, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree10,tree11, tree12,tree13, tree14,tree15,tree16,tree17, tree18, tree19,tree20,tree21,drawTree} from './js/object.js';
 import{herbe1,herbe2,herbe3,herbe4,herbe5, herbe6,herbe7,herbe8,herbe9,herbe10,herbe11,herbe12,herbe13,herbe14,herbe15,herbe16,herbe17,herbe18,drawMur}from './js/object.js'
-import{mur,mur1,mur2,mur3,mur4,mur5, mur6,mur7,mur8,mur9,mur10,mur11,mur12,mur13,mur14,mur15,mur16,mur17,mur18,mur19,mur20,mur21,mur22}from './js/object.js'
+import{mur,mur1,mur2,mur3,mur4,mur5, mur6,mur7,mur8,mur9,mur10,mur11,mur12,mur13,mur14,mur15,mur16,mur17,mur18,mur19,mur20,mur21,mur22,mur23,mur24,mur25}from './js/object.js'
+import{mur26,mur27,mur28,mur29,mur30,mur31, mur32,mur33,mur34,mur35,mur36,mur37,mur38,mur39,mur40,mur41,mur42,mur43,mur44,mur45,mur46,mur47,mur48}from './js/object.js'
+import{mur49,mur50,mur51,mur52,mur53,mur54,mur55,mur56,mur57,mur58,mur59,mur60,mur61,mur62,mur63,mur64,mur65}from './js/object.js'
 import{herbe19,herbe20,herbe21,herbe22,herbe23,herbe24,herbe25,herbe26,herbe27,herbe28,herbe29,herbe30}from './js/object.js'
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
 import {runRevolution,} from './js/object.js';
@@ -90,36 +92,75 @@ drawCurvedPath(ctx, 1853, 1450, "left", 165, 65, 90);//virage
   drawSolKokiri(ctx,1341,-1396);               // 5. Rochers5
   drawSolKokiri(ctx,869,-1396);  
          // 5. Rochers5
-  drawMur(ctx,mur.x,mur.y,0);             // 5. Rochers5
-  drawMur(ctx,mur1.x,mur1.y,90);               // 5. Rochers5
-  drawMur(ctx,mur2.x,mur2.y,90);               // 5. Rochers5
-  drawMur(ctx,mur3.x,mur3.y,90);               // 5. Rochers5
-  drawMur(ctx,mur4.x,mur4.y,90);               // 5. Rochers5
-  drawMur(ctx,mur5.x,mur5.y,90);
-                // 5. Rochers5
-  drawMur(ctx,mur6.x,mur6.y,0);               // 5. Rochers5
-  drawMur(ctx,mur7.x,mur7.y,0);               // 5. Rochers5
-  drawMur(ctx,mur8.x,mur8.y,0);               // 5. Rochers5
-  drawMur(ctx,mur9.x,mur9.y,0); 
+  drawMur(ctx,mur.x,mur.y);             // 5. Rochers5
+  drawMur(ctx,mur1.x,mur1.y);               // 5. Rochers5
+  drawMur(ctx,mur2.x,mur2.y);               // 5. Rochers5
+  drawMur(ctx,mur3.x,mur3.y);               // 5. Rochers5
+  drawMur(ctx,mur4.x,mur4.y);               // 5. Rochers5
+  drawMur(ctx,mur5.x,mur5.y);               // 5. Rochers5
+  drawMur(ctx,mur6.x,mur6.y);               // 5. Rochers5
+  drawMur(ctx,mur7.x,mur7.y);               // 5. Rochers5
+  drawMur(ctx,mur8.x,mur8.y);               // 5. Rochers5
+  drawMur(ctx,mur9.x,mur9.y);               // 5. Rochers5
+  drawMur(ctx,mur10.x,mur10.y);               // 5. Rochers5
+  drawMur(ctx,mur11.x,mur11.y);               // 5. Rochers5
+  drawMur(ctx,mur12.x,mur12.y);               // 5. Rochers5
+  drawMur(ctx,mur13.x,mur13.y);               // 5. Rochers5
+  drawMur(ctx,mur14.x,mur14.y);               // 5. Rochers5
+  drawMur(ctx,mur15.x,mur15.y);               // 5. Rochers5
+  drawMur(ctx,mur16.x,mur16.y);               // 5. Rochers5
+  drawMur(ctx,mur17.x,mur17.y);               // 5. Rochers5
+  drawMur(ctx,mur18.x,mur18.y);               // 5. Rochers5
+  drawMur(ctx,mur19.x,mur19.y);               // 5. Rochers5
+  drawMur(ctx,mur20.x,mur20.y);               // 5. Rochers5
+  drawMur(ctx,mur21.x,mur21.y);               // 5. Rochers5
+  drawMur(ctx,mur22.x,mur22.y);               // 5. Rochers5
+  drawMur(ctx,mur23.x,mur23.y);               // 5. Rochers5
+  drawMur(ctx,mur24.x,mur24.y);               // 5. Rochers5
+  drawMur(ctx,mur25.x,mur25.y);               // 5. Rochers5
+  drawMur(ctx,mur26.x,mur26.y);               // 5. Rochers5
+  drawMur(ctx,mur27.x,mur27.y);               // 5. Rochers5
+  drawMur(ctx,mur28.x,mur28.y);               // 5. Rochers5
+  drawMur(ctx,mur29.x,mur29.y);               // 5. Rochers5
+  drawMur(ctx,mur30.x,mur30.y);               // 5. Rochers5
+  drawMur(ctx,mur31.x,mur31.y);               // 5. Rochers5
+  drawMur(ctx,mur32.x,mur32.y);               // 5. Rochers5
+  drawMur(ctx,mur33.x,mur33.y);               // 5. Rochers5
+  drawMur(ctx,mur34.x,mur34.y);               // 5. Rochers5
+  drawMur(ctx,mur35.x,mur35.y);               // 5. Rochers5
+  drawMur(ctx,mur36.x,mur36.y);               // 5. Rochers5
+  drawMur(ctx,mur37.x,mur37.y);               // 5. Rochers5
+  drawMur(ctx,mur38.x,mur38.y);               // 5. Rochers5
+  drawMur(ctx,mur39.x,mur39.y);               // 5. Rochers5
+  drawMur(ctx,mur40.x,mur40.y);               // 5. Rochers5
+  drawMur(ctx,mur41.x,mur41.y);               // 5. Rochers5
+  drawMur(ctx,mur42.x,mur42.y);               // 5. Rochers5
+  drawMur(ctx,mur43.x,mur43.y);               // 5. Rochers5
+  drawMur(ctx,mur44.x,mur44.y);               // 5. Rochers5
+  drawMur(ctx,mur45.x,mur45.y);               // 5. Rochers5
+  drawMur(ctx,mur46.x,mur46.y);               // 5. Rochers5
+  drawMur(ctx,mur47.x,mur47.y);               // 5. Rochers5
+  drawMur(ctx,mur48.x,mur48.y);               // 5. Rochers5
+  drawMur(ctx,mur49.x,mur49.y);               // 5. Rochers5
+  drawMur(ctx,mur50.x,mur50.y);               // 5. Rochers5
+  drawMur(ctx,mur51.x,mur51.y);               // 5. Rochers5
+  drawMur(ctx,mur52.x,mur52.y);               // 5. Rochers5
+  drawMur(ctx,mur53.x,mur53.y);               // 5. Rochers5
+  drawMur(ctx,mur54.x,mur54.y);               // 5. Rochers5
+  drawMur(ctx,mur55.x,mur55.y);               // 5. Rochers5
+  drawMur(ctx,mur56.x,mur56.y);               // 5. Rochers5
+  drawMur(ctx,mur57.x,mur57.y);               // 5. Rochers5
+  drawMur(ctx,mur58.x,mur58.y);               // 5. Rochers5
+  drawMur(ctx,mur59.x,mur59.y);               // 5. Rochers5
+  drawMur(ctx,mur60.x,mur60.y);               // 5. Rochers5
+  drawMur(ctx,mur61.x,mur61.y);               // 5. Rochers5
+  drawMur(ctx,mur62.x,mur62.y);               // 5. Rochers5
+  drawMur(ctx,mur63.x,mur63.y);               // 5. Rochers5
+  drawMur(ctx,mur64.x,mur64.y);               // 5. Rochers5
+  drawMur(ctx,mur65.x,mur65.y);               // 5. Rochers5
 
-                // 5. Rochers5
-  drawMur(ctx,mur10.x,mur10.y,0);               // 5. Rochers5
-  drawMur(ctx,mur11.x,mur11.y,0);               // 5. Rochers5
-  drawMur(ctx,mur12.x,mur12.y,90);               // 5. Rochers5
-  drawMur(ctx,mur13.x,mur13.y,90); 
-               // 5. Rochers5
-  drawMur(ctx,mur14.x,mur14.y,90);               // 5. Rochers5
-  drawMur(ctx,mur15.x,mur15.y,90);               // 5. Rochers5
-  drawMur(ctx,mur16.x,mur16.y,90);               // 5. Rochers5
-  drawMur(ctx,mur17.x,mur17.y,0);
-                 // 5. Rochers5
-  drawMur(ctx,mur18.x,mur18.y,0);               // 5. Rochers5
-  drawMur(ctx,mur19.x,mur19.y,0);               // 5. Rochers5
-  drawMur(ctx,mur20.x,mur20.y,0);               // 5. Rochers5
-  drawMur(ctx,mur21.x,mur21.y,0);               // 5. Rochers5
-  drawMur(ctx,mur22.x,mur22.y,0); 
-                 // 5. Rochers5
-  // drawPortail(ctx,1513,0,"left");               // 5. Rochers2
+
+
   drawPlant(ctx,plant.x,plant.y);
   drawPlant(ctx,plant1.x,plant1.y);
   drawPlant(ctx,plant2.x,plant2.y);
@@ -362,6 +403,7 @@ const obstacles = [
   tree19, 
   tree20,
   tree21,
+  mur,
   mur1,
   mur2,
   mur3,
@@ -384,6 +426,59 @@ const obstacles = [
   mur20,
   mur21,
   mur22,
+  mur23,
+  mur24,
+  mur25,
+  mur26,
+  mur27,
+  mur28,
+  mur29,
+  mur30,
+  mur31,
+  mur32,
+  mur33,
+  mur34,
+  mur35,
+  mur36,
+  mur37,
+  mur38,
+  mur39,
+  mur40,
+  mur41,
+  mur42,
+  mur43,
+  mur44,
+  mur45,
+  mur46,
+  mur47,
+  mur48,
+  mur49,
+  mur40,
+  mur41,
+  mur42,
+  mur43,
+  mur44,
+  mur45,
+  mur46,
+  mur47,
+  mur48,
+  mur49,
+  mur50,
+  mur51,
+  mur52,
+  mur53,
+  mur54,
+  mur55,
+  mur56,
+  mur57,
+  mur58,
+  mur59,
+  mur60,
+  mur61,
+  mur62,
+  mur63,
+  mur64,
+
   fontaine,
   storm
   
