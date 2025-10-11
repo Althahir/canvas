@@ -32,6 +32,7 @@ export const player = {
   w :59,
   h:49,
   life:3,
+  max_life:3,
   eau:0,
   money:130,
   speed: 4,
@@ -196,15 +197,15 @@ export function drawSalam(ctx,salam){
     }
 }
 
-export function drawHearts(ctx, life) {
-  const total = 3; // nombre total de cœurs
+export function drawHearts(ctx, life, max) {
+//   const total = 3; // nombre total de cœurs
   const size = 55; // taille (pixels)
   const spacing = 10; // espacement entre cœurs
 
   const startX = 50;
   const startY = 50;
 
-  for (let i = 0; i < total; i++) {
+  for (let i = 0; i < max; i++) {
     const img = i < life ? heartFull : heartEmpty;
     ctx.drawImage(img, startX + i * (size + spacing), startY, size, size);
   }

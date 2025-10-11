@@ -15,7 +15,7 @@ import{caisse,drawCaisse,trou,drawTrou,pousserCaisse,obstaclesCaisse,stopCaisse}
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
 import {runRevolution,kokiriReussi,tropheeKokiri} from './js/object.js';
 import { input } from './js/input.js';
-import{drawTirerEpee} from './js/message.js'
+import{DrawMessage1, drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
 const canvas = document.getElementById("game");
 
@@ -23,12 +23,13 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 export let swordVisibility=false;
 export let isAttacking = false;
+export let messageDebut=true;
 
-function isCenteredOn(a, b, eps = 6) {
-  const ax = a.x + a.w / 2, ay = a.y + a.h / 2;
-  const bx = b.x + b.w / 2, by = b.y + b.h / 2;
-  return Math.abs(ax - bx) <= eps && Math.abs(ay - by) <= eps;
-}
+// function isCenteredOn(a, b, eps = 6) {
+//   const ax = a.x + a.w / 2, ay = a.y + a.h / 2;
+//   const bx = b.x + b.w / 2, by = b.y + b.h / 2;
+//   return Math.abs(ax - bx) <= eps && Math.abs(ay - by) <= eps;
+// }
 
 // ==============================
 // Fonction pour adapter la taille du canvas à la fenêtre
@@ -78,6 +79,8 @@ function render() {
   drawShapedPath(ctx, 433, 1280, "left", 65, 654, 165, 180); // 2. pate d'oie
 drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);//virage
 drawCurvedPath(ctx, 1853, 1450, "left", 165, 65, 90);//virage
+
+
 
 
 
@@ -325,6 +328,7 @@ loadPlayerSprites();
 let moving = false;
 const oldX = player.x;
 const oldY = player.y;
+
 if (input.keys.has("ArrowUp") || input.keys.has("z")) {
   player.y -= player.speed;
   player.direction = "up";
@@ -686,6 +690,10 @@ if ((swordVisibility)&&(player.epee==1)) {
       }
   })
 }
+if (player.bouclier==1){
+  player.max_life=6;
+  player.life=6;
+}
  if((player.kokiri==1)&&(player.goron==1)&&(player.zora==1))     {
   if ((player.x>=912)&&(player.x<=1030)&&(player.y>=512)&&(player.y<=630)){
     // console.log("hello")
@@ -759,8 +767,15 @@ let distanceYlac=lac.y-player.y
     player.eau=0
   }
   // console.log(distanceXlac, distanceYlac)
-drawHearts(ctx, player.life); // ❤️ affichage des vies
-
+drawHearts(ctx, player.life, player.max_life); // ❤️ affichage des vies
+  DrawMessage1(ctx,150,150,messageDebut);
+document.addEventListener("keydown", (e) => {
+    // La condition `if (messageDebut)` est importante ici.
+    // Elle garantit que l'appui sur "Enter" n'agit que lorsque le message est affiché.
+    if (e.code === "Enter" && messageDebut === true) {
+        messageDebut = false;
+    }
+});
 // Assurez-vous que 'rubisImage' est l'objet Image que vous avez pré-chargé
 drawMoney(ctx, rubisImage, player.money, 50, 130);// ctx.drawImage(rubis,50,150,size,size,x,y,size,size)
 
