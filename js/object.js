@@ -36,6 +36,12 @@ const trouImg = new Image();
 trouImg.src = './assets/trou.png'; 
 
 export let kokiriReussi=false
+export const tropheeKokiri={
+  x:1870,
+  y:-1220,
+  w:65,
+  h:65
+}
 export const sword={
     x:30,
     y:45,
@@ -1072,10 +1078,40 @@ export const mur={
 
 
 
-
+//mur enigme
 export const mur66 = {
   x: 1278,  // ✅ aligné avec la suite logique (mur61..mur65)
-  y: -1384, // même hauteur que les autres
+  y: -1134, // même hauteur que les autres
+  w: 111,
+  h: 112
+};
+export const mur67 = {
+  x: 1278,  // ✅ aligné avec la suite logique (mur61..mur65)
+  y: -884, // même hauteur que les autres
+  w: 111,
+  h: 112
+};
+export const mur68 = {
+  x: 1380,  // ✅ aligné avec la suite logique (mur61..mur65)
+  y: -584, // même hauteur que les autres
+  w: 111,
+  h: 112
+};
+export const mur69 = {
+  x: 2368,  // ✅ aligné avec la suite logique (mur61..mur65)
+  y: -305, // même hauteur que les autres
+  w: 111,
+  h: 112
+};
+export const mur70 = {
+  x: 2268,  // ✅ aligné avec la suite logique (mur61..mur65)
+  y: -1234, // même hauteur que les autres
+  w: 111,
+  h: 112
+};
+export const mur71 = {
+  x: 1930,  // ✅ aligné avec la suite logique (mur61..mur65)
+  y: -684, // même hauteur que les autres
   w: 111,
   h: 112
 };
@@ -1444,7 +1480,7 @@ export const obstaclesCaisse = [
   mur51, mur52,mur53, mur54, mur55,
   mur56, mur57, mur58, mur59,mur60,
   mur61, mur62,mur63, mur64, mur65,
-  mur66];
+  mur66,mur67,mur68,mur69, mur70, mur71];
 
 
 export function pousserCaisse(direction, caisse, obstacles, trou) {

@@ -9,11 +9,11 @@ import {tree, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree1
 import{herbe1,herbe2,herbe3,herbe4,herbe5, herbe6,herbe7,herbe8,herbe9,herbe10,herbe11,herbe12,herbe13,herbe14,herbe15,herbe16,herbe17,herbe18,drawMur}from './js/object.js'
 import{mur,mur1,mur2,mur3,mur4,mur5, mur6,mur7,mur8,mur9,mur10,mur11,mur12,mur13,mur14,mur15,mur16,mur17,mur18,mur19,mur20,mur21,mur22,mur23,mur24,mur25}from './js/object.js'
 import{mur26,mur27,mur28,mur29,mur30,mur31, mur32,mur33,mur34,mur35,mur36,mur37,mur38,mur39,mur40,mur41,mur42,mur43,mur44,mur45,mur46,mur47,mur48}from './js/object.js'
-import{mur49,mur50,mur51,mur52,mur53,mur54,mur55,mur56,mur57,mur58,mur59,mur60,mur61,mur62,mur63,mur64,mur65,mur66}from './js/object.js'
+import{mur49,mur50,mur51,mur52,mur53,mur54,mur55,mur56,mur57,mur58,mur59,mur60,mur61,mur62,mur63,mur64,mur65,mur66,mur67,mur68,mur69, mur70,mur71}from './js/object.js'
 import{herbe19,herbe20,herbe21,herbe22,herbe23,herbe24,herbe25,herbe26,herbe27,herbe28,herbe29,herbe30}from './js/object.js'
 import{caisse,drawCaisse,trou,drawTrou,pousserCaisse,obstaclesCaisse,stopCaisse}from './js/object.js'
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
-import {runRevolution,kokiriReussi} from './js/object.js';
+import {runRevolution,kokiriReussi,tropheeKokiri} from './js/object.js';
 import { input } from './js/input.js';
 import{drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
@@ -164,7 +164,14 @@ drawCurvedPath(ctx, 1853, 1450, "left", 165, 65, 90);//virage
   drawMur(ctx,mur63.x,mur63.y);               // 5. Rochers5
   drawMur(ctx,mur64.x,mur64.y);               // 5. Rochers5
   drawMur(ctx,mur65.x,mur65.y);               // 5. Rochers5
+
+  //mur enigme
   drawMur(ctx,mur66.x,mur66.y);               // 5. Rochers5
+  drawMur(ctx,mur67.x,mur67.y);               // 5. Rochers5
+  drawMur(ctx,mur68.x,mur68.y);               // 5. Rochers5
+  drawMur(ctx,mur69.x,mur69.y);               // 5. Rochers5
+  drawMur(ctx,mur70.x,mur70.y);               // 5. Rochers5
+  drawMur(ctx,mur71.x,mur71.y);               // 5. Rochers5
   drawCaisse(ctx,caisse.x,caisse.y);               // 5. Rochers5
   drawTrou(ctx,trou.x,trou.y);               // 5. Rochers5
 
@@ -300,7 +307,9 @@ if (player.triforce==1){
   drawTriforce(ctx)
 }
 if (kokiriReussi==true){
-  drawKokiri(ctx,1820,-1370)
+  drawKokiri(ctx,tropheeKokiri.x,tropheeKokiri.y);
+  caisse.w=0;
+  caisse.h=0;
 }
 
 // ===================================                
@@ -350,8 +359,8 @@ if (moving) {
 }
 
 const obstacles = [
-  // house,
-  // house1,
+  house,
+  house1,
 
   plant,
   plant1,
@@ -415,82 +424,88 @@ const obstacles = [
   tree19, 
   tree20,
   tree21,
-  // mur,
-  // mur1,
-  // mur2,
-  // mur3,
-  // mur4,
-  // mur5,
-  // mur6,
-  // mur7,
-  // mur8,
-  // mur9,
-  // mur10,
-  // mur11,
-  // mur12,
-  // mur13,
-  // mur14,
-  // mur15,
-  // mur16,
-  // mur17,
-  // mur18,
-  // mur19,
-  // mur20,
-  // mur21,
-  // mur22,
-  // mur23,
-  // mur24,
-  // mur25,
-  // mur26,
-  // mur27,
-  // mur28,
-  // mur29,
-  // mur30,
-  // mur31,
-  // mur32,
-  // mur33,
-  // mur34,
-  // mur35,
-  // mur36,
-  // mur37,
-  // mur38,
-  // mur39,
-  // mur40,
-  // mur41,
-  // mur42,
-  // mur43,
-  // mur44,
-  // mur45,
-  // mur46,
-  // mur47,
-  // mur48,
-  // mur49,
-  // mur40,
-  // mur41,
-  // mur42,
-  // mur43,
-  // mur44,
-  // mur45,
-  // mur46,
-  // mur47,
-  // mur48,
-  // mur49,
-  // mur50,
-  // mur51,
-  // mur52,
-  // mur53,
-  // mur54,
-  // mur55,
-  // mur56,
-  // mur57,
-  // mur58,
-  // mur59,
-  // mur60,
-  // mur61,
-  // mur62,
-  // mur63,
-  // mur64,
-
+  mur,
+  mur1,
+  mur2,
+  mur3,
+  mur4,
+  mur5,
+  mur6,
+  mur7,
+  mur8,
+  mur9,
+  mur10,
+  mur11,
+  mur12,
+  mur13,
+  mur14,
+  mur15,
+  mur16,
+  mur17,
+  mur18,
+  mur19,
+  mur20,
+  mur21,
+  mur22,
+  mur23,
+  mur24,
+  mur25,
+  mur26,
+  mur27,
+  mur28,
+  mur29,
+  mur30,
+  mur31,
+  mur32,
+  mur33,
+  mur34,
+  mur35,
+  mur36,
+  mur37,
+  mur38,
+  mur39,
+  mur40,
+  mur41,
+  mur42,
+  mur43,
+  mur44,
+  mur45,
+  mur46,
+  mur47,
+  mur48,
+  mur49,
+  mur40,
+  mur41,
+  mur42,
+  mur43,
+  mur44,
+  mur45,
+  mur46,
+  mur47,
+  mur48,
+  mur49,
+  mur50,
+  mur51,
+  mur52,
+  mur53,
+  mur54,
+  mur55,
+  mur56,
+  mur57,
+  mur58,
+  mur59,
+  mur60,
+  mur61,
+  mur62,
+  mur63,
+  mur64,
+  mur65,
+  mur66,
+  mur67,
+  mur68,
+  mur69,
+  mur70,
+  mur71,
   fontaine,
   storm
   
@@ -696,6 +711,14 @@ if (isColliding(player, caisse)) {
   if (!caisse.isMoving) {
     pousserCaisse(player.direction, caisse, obstaclesCaisse, trou);
   }
+}
+if (isColliding(player,tropheeKokiri)){
+  tropheeKokiri.x=-10000;
+  tropheeKokiri.y=-10000;
+  player.kokiri=1
+  player.x=400;
+  player.y=480;
+
 }
 
 
