@@ -20,8 +20,8 @@ solKokiriImg.src = './assets/sol1.png'; // à adapter si elle est dans un sous-d
 export const swordplant = {
 x:pied.x+3,
 y:pied.y-62,
-w:62,
-h:54
+w:54,
+h:62
 }
 export function drawRock(ctx, x, y, size = 80) {
     // Couleurs pour un rocher plus "terreux" ou "sombre"

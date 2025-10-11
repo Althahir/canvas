@@ -25,6 +25,8 @@ export const lefteauImg = new Image();
 lefteauImg.src = './assets/left_eau.png';
 export const righteauImg = new Image();
 righteauImg.src = './assets/right_eau.png';
+export const personnageImg = new Image();
+personnageImg.src = './assets/personnage.png';
 
 export const player = {
   x: 400,
@@ -53,6 +55,12 @@ export const player = {
     right: [new Image(), new Image(), new Image()],
   }
 };
+export const personnage={
+    x:480,
+    y:480,
+    w:59,
+    h:49
+}
 
 export const salam={
 x:920,
@@ -195,6 +203,17 @@ export function drawSalam(ctx,salam){
     else{
          ctx.drawImage(salamFontImg,salam.x,salam.y);
     }
+}
+export function drawPersonnage(ctx,x,y){
+    if(personnageImg.complete){
+        ctx.drawImage(personnageImg,x,y);
+    }
+    else{
+        personnageImg.onload=()=>{
+            ctx.drawImage(personnageImg,x,y);
+        }
+    }
+    
 }
 
 export function drawHearts(ctx, life, max) {

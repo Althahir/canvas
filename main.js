@@ -1,6 +1,6 @@
 // import { ground } from './js/background.js';
 import { drawRock, drawPath, drawShapedPath, drawSwordplant, swordplant, drawCurvedPath,drawSol, drawSolKokiri  } from './js/background.js';
-import { drawPerso, player, drawHearts,loadPlayerSprites, drawMoney, rubisImage,drawSalam , salam, drawTriforce, } from './js/perso.js';
+import { drawPerso, player, drawHearts,loadPlayerSprites, drawMoney, rubisImage,drawSalam , salam, drawTriforce,personnage,drawPersonnage } from './js/perso.js';
 import { drawHouse,drawPorte, house,porte, drawPlant, plant, plant1, plant2, plant3, plant4, plant5,plant6,plant7,plant8,plant9,plant10, rock, isColliding, drawSword, sword} from './js/object.js';
 import { plant11,plant12,plant13,plant14,plant15,plant16,plant17,plant18,plant19} from './js/object.js'
 import{plant20,plant21,plant22,plant23,plant24,plant25,plant26,plant27,plant28, plant29 } from './js/object.js';
@@ -15,7 +15,7 @@ import{caisse,drawCaisse,trou,drawTrou,pousserCaisse,obstaclesCaisse,stopCaisse}
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
 import {runRevolution,kokiriReussi,tropheeKokiri} from './js/object.js';
 import { input } from './js/input.js';
-import{DrawMessage1, drawTirerEpee} from './js/message.js'
+import{DrawMessage1, DrawMessage2, drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
 const canvas = document.getElementById("game");
 
@@ -365,7 +365,7 @@ if (moving) {
 const obstacles = [
   house,
   house1,
-
+  personnage,
   plant,
   plant1,
   plant2,
@@ -511,7 +511,8 @@ const obstacles = [
   mur70,
   mur71,
   fontaine,
-  storm
+  storm,
+  // swordplant
   
 ];
 const coupable = [
@@ -648,7 +649,7 @@ document.addEventListener("keyup",(e)=>{
 //   swordVisibility=false;
 // }
 
-
+drawPersonnage(ctx,1480,650);
 
 if ((swordVisibility)&&(player.epee==1)) {
   if ((player.direction === "up")||(player.direction==="left")) {
@@ -779,8 +780,9 @@ document.addEventListener("keydown", (e) => {
 // Assurez-vous que 'rubisImage' est l'objet Image que vous avez pré-chargé
 drawMoney(ctx, rubisImage, player.money, 50, 130);// ctx.drawImage(rubis,50,150,size,size,x,y,size,size)
 
-
-  if (isColliding(player, swordplant)&&player.triforce==1) {
+// console.log("swordplant:",swordplant.x,swordplant.y,"|hero:",player.x,player.y)
+  if (isColliding(player, swordplant)){
+    if(player.triforce==1) {
     drawTirerEpee(ctx);
     document.addEventListener("keydown",(e)=>{
       if (e.code=="KeyN"){
@@ -791,8 +793,11 @@ drawMoney(ctx, rubisImage, player.money, 50, 130);// ctx.drawImage(rubis,50,150,
       }
     })
   }
+  else{
+    DrawMessage2(ctx,150,150);
+  }
 
-
+  }
 // console.log("Coordonnées Porte :", player.x, player.y);
 // console.log("Coordonnées Storm :", storm.x, storm.y, storm.w, storm.h);
   requestAnimationFrame(render); // 🔁 boucle infinie
