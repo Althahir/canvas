@@ -30,7 +30,12 @@ const zoraImg = new Image();
 zoraImg.src = './assets/bijouZora1.png'; 
 const murImg = new Image();
 murImg.src = './assets/mur1.png'; 
+const caisseImg = new Image();
+caisseImg.src = './assets/caisse.png'; 
+const trouImg = new Image();
+trouImg.src = './assets/trou.png'; 
 
+export let kokiriReussi=false
 export const sword={
     x:30,
     y:45,
@@ -1066,6 +1071,33 @@ export const mur={
   } 
 
 
+
+
+export const mur66 = {
+  x: 1278,  // ✅ aligné avec la suite logique (mur61..mur65)
+  y: -1384, // même hauteur que les autres
+  w: 111,
+  h: 112
+};
+
+
+
+
+
+
+export const caisse={
+  x:1268,
+  y:-305,
+  w:111,
+  h:112
+  } 
+export const trou={
+  x:1820,
+  y:-1270,
+  w:111,
+  h:112
+  } 
+
       
 // Centre de rotation global (maintenant 200px sous le centre du lac)
 // Centre de rotation global (Décalé de +100 en X et -100 en Y)
@@ -1119,6 +1151,7 @@ export function isColliding(a, b) {
   );
 }
 
+
 // Fonction d'affichage
 export function drawHouse(ctx, x=house.x, y=house.y) {
   // Si les 2 images sont chargées, on les dessine
@@ -1139,6 +1172,26 @@ export function drawPorte(ctx,x=house.x,y=house.y){
     // Attendre que les images soient prêtes avant de dessiner
     porteImg.onload = () => {
       ctx.drawImage(porteImg, x, y);
+    };
+  }
+}
+export function drawCaisse(ctx,x=caisse.x,y=caisse.y){
+    if(caisseImg.complete){
+      ctx.drawImage(caisseImg, x, y);
+    }else {
+    // Attendre que les images soient prêtes avant de dessiner
+    caisseImg.onload = () => {
+      ctx.drawImage(caisseImg, x, y);
+    };
+  }
+}
+export function drawTrou(ctx,x=trou.x,y=trou.y){
+    if(trouImg.complete){
+      ctx.drawImage(trouImg, x, y);
+    }else {
+    // Attendre que les images soient prêtes avant de dessiner
+    trouImg.onload = () => {
+      ctx.drawImage(trouImg, x, y);
     };
   }
 }
@@ -1377,3 +1430,70 @@ export function runRevolution() {
     updateRevolution(zora);
     updateRevolution(kokiri);
 }
+export const obstaclesCaisse = [
+  mur, mur1, mur2, mur3, mur4, mur5,
+  mur6, mur7, mur8, mur9, mur10,
+  mur11, mur12, mur13, mur14, mur15,
+  mur16, mur17, mur18, mur19, mur20,
+  mur21, mur22,mur23, mur24, mur25,
+  mur26, mur27, mur28, mur29,mur30,
+  mur31, mur32,mur33, mur34, mur35,
+  mur36, mur37, mur38, mur39,mur40,
+  mur41, mur42,mur43, mur44, mur45,
+  mur46, mur47, mur48, mur49,mur50,
+  mur51, mur52,mur53, mur54, mur55,
+  mur56, mur57, mur58, mur59,mur60,
+  mur61, mur62,mur63, mur64, mur65,
+  mur66];
+
+
+export function pousserCaisse(direction, caisse, obstacles, trou) {
+  const speed = 4;
+  if (caisse.isMoving) return;
+
+  caisse.isMoving = true;
+  if (caisse._timer) clearInterval(caisse._timer); // par sécurité
+
+  const step = () => {
+    const oldX = caisse.x, oldY = caisse.y;
+
+    if (direction === "left")  caisse.x -= speed;
+    if (direction === "right") caisse.x += speed;
+    if (direction === "up")    caisse.y -= speed;
+    if (direction === "down")  caisse.y += speed;
+
+    // butées
+    for (const o of obstacles) {
+      if (isColliding(caisse, o)) {
+        caisse.x = oldX; caisse.y = oldY;
+        stopCaisse(caisse);
+        return;
+      }
+    }
+
+    // trou (au choix: AABB OU centrage)
+    if (isColliding(caisse, trou) || isCenteredOn(caisse, trou, 6)) {
+      // on “bouche” le trou et on cale la caisse pile dessus
+      caisse.x = trou.x; 
+      caisse.y = trou.y;
+      trou.isBouche = true;
+      stopCaisse(caisse,trou);
+      return;
+    }
+  };
+
+  caisse._timer = setInterval(step, 16); // ~60 fps
+}
+
+
+export function stopCaisse(caisse,trou) {
+  if (caisse._timer) clearInterval(caisse._timer);
+  caisse._timer = null;
+  caisse.isMoving = false;
+  caisse.x=trou.x;
+  caisse.y=trou.y;
+  trou.x=-10000;
+  trou.y=-10000;
+  kokiriReussi=true;
+}
+

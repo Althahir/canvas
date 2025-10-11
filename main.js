@@ -9,10 +9,11 @@ import {tree, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8,tree9,tree1
 import{herbe1,herbe2,herbe3,herbe4,herbe5, herbe6,herbe7,herbe8,herbe9,herbe10,herbe11,herbe12,herbe13,herbe14,herbe15,herbe16,herbe17,herbe18,drawMur}from './js/object.js'
 import{mur,mur1,mur2,mur3,mur4,mur5, mur6,mur7,mur8,mur9,mur10,mur11,mur12,mur13,mur14,mur15,mur16,mur17,mur18,mur19,mur20,mur21,mur22,mur23,mur24,mur25}from './js/object.js'
 import{mur26,mur27,mur28,mur29,mur30,mur31, mur32,mur33,mur34,mur35,mur36,mur37,mur38,mur39,mur40,mur41,mur42,mur43,mur44,mur45,mur46,mur47,mur48}from './js/object.js'
-import{mur49,mur50,mur51,mur52,mur53,mur54,mur55,mur56,mur57,mur58,mur59,mur60,mur61,mur62,mur63,mur64,mur65}from './js/object.js'
+import{mur49,mur50,mur51,mur52,mur53,mur54,mur55,mur56,mur57,mur58,mur59,mur60,mur61,mur62,mur63,mur64,mur65,mur66}from './js/object.js'
 import{herbe19,herbe20,herbe21,herbe22,herbe23,herbe24,herbe25,herbe26,herbe27,herbe28,herbe29,herbe30}from './js/object.js'
+import{caisse,drawCaisse,trou,drawTrou,pousserCaisse,obstaclesCaisse,stopCaisse}from './js/object.js'
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
-import {runRevolution,} from './js/object.js';
+import {runRevolution,kokiriReussi} from './js/object.js';
 import { input } from './js/input.js';
 import{drawTirerEpee} from './js/message.js'
 // recuperation des infos du html
@@ -23,6 +24,11 @@ const ctx = canvas.getContext("2d");
 export let swordVisibility=false;
 export let isAttacking = false;
 
+function isCenteredOn(a, b, eps = 6) {
+  const ax = a.x + a.w / 2, ay = a.y + a.h / 2;
+  const bx = b.x + b.w / 2, by = b.y + b.h / 2;
+  return Math.abs(ax - bx) <= eps && Math.abs(ay - by) <= eps;
+}
 
 // ==============================
 // Fonction pour adapter la taille du canvas à la fenêtre
@@ -91,7 +97,7 @@ drawCurvedPath(ctx, 1853, 1450, "left", 165, 65, 90);//virage
   drawSolKokiri(ctx,1813,-1396);               // 5. Rochers5
   drawSolKokiri(ctx,1341,-1396);               // 5. Rochers5
   drawSolKokiri(ctx,869,-1396);  
-         // 5. Rochers5
+    // 5. Rochers5
   drawMur(ctx,mur.x,mur.y);             // 5. Rochers5
   drawMur(ctx,mur1.x,mur1.y);               // 5. Rochers5
   drawMur(ctx,mur2.x,mur2.y);               // 5. Rochers5
@@ -158,6 +164,9 @@ drawCurvedPath(ctx, 1853, 1450, "left", 165, 65, 90);//virage
   drawMur(ctx,mur63.x,mur63.y);               // 5. Rochers5
   drawMur(ctx,mur64.x,mur64.y);               // 5. Rochers5
   drawMur(ctx,mur65.x,mur65.y);               // 5. Rochers5
+  drawMur(ctx,mur66.x,mur66.y);               // 5. Rochers5
+  drawCaisse(ctx,caisse.x,caisse.y);               // 5. Rochers5
+  drawTrou(ctx,trou.x,trou.y);               // 5. Rochers5
 
 
 
@@ -290,6 +299,9 @@ drawZora(ctx, zora.x, zora.y);
 if (player.triforce==1){
   drawTriforce(ctx)
 }
+if (kokiriReussi==true){
+  drawKokiri(ctx,1820,-1370)
+}
 
 // ===================================                
   drawFontaine(ctx, fontaine.x, fontaine.y);                     // 6. Maison
@@ -403,81 +415,81 @@ const obstacles = [
   tree19, 
   tree20,
   tree21,
-  mur,
-  mur1,
-  mur2,
-  mur3,
-  mur4,
-  mur5,
-  mur6,
-  mur7,
-  mur8,
-  mur9,
-  mur10,
-  mur11,
-  mur12,
-  mur13,
-  mur14,
-  mur15,
-  mur16,
-  mur17,
-  mur18,
-  mur19,
-  mur20,
-  mur21,
-  mur22,
-  mur23,
-  mur24,
-  mur25,
-  mur26,
-  mur27,
-  mur28,
-  mur29,
-  mur30,
-  mur31,
-  mur32,
-  mur33,
-  mur34,
-  mur35,
-  mur36,
-  mur37,
-  mur38,
-  mur39,
-  mur40,
-  mur41,
-  mur42,
-  mur43,
-  mur44,
-  mur45,
-  mur46,
-  mur47,
-  mur48,
-  mur49,
-  mur40,
-  mur41,
-  mur42,
-  mur43,
-  mur44,
-  mur45,
-  mur46,
-  mur47,
-  mur48,
-  mur49,
-  mur50,
-  mur51,
-  mur52,
-  mur53,
-  mur54,
-  mur55,
-  mur56,
-  mur57,
-  mur58,
-  mur59,
-  mur60,
-  mur61,
-  mur62,
-  mur63,
-  mur64,
+  // mur,
+  // mur1,
+  // mur2,
+  // mur3,
+  // mur4,
+  // mur5,
+  // mur6,
+  // mur7,
+  // mur8,
+  // mur9,
+  // mur10,
+  // mur11,
+  // mur12,
+  // mur13,
+  // mur14,
+  // mur15,
+  // mur16,
+  // mur17,
+  // mur18,
+  // mur19,
+  // mur20,
+  // mur21,
+  // mur22,
+  // mur23,
+  // mur24,
+  // mur25,
+  // mur26,
+  // mur27,
+  // mur28,
+  // mur29,
+  // mur30,
+  // mur31,
+  // mur32,
+  // mur33,
+  // mur34,
+  // mur35,
+  // mur36,
+  // mur37,
+  // mur38,
+  // mur39,
+  // mur40,
+  // mur41,
+  // mur42,
+  // mur43,
+  // mur44,
+  // mur45,
+  // mur46,
+  // mur47,
+  // mur48,
+  // mur49,
+  // mur40,
+  // mur41,
+  // mur42,
+  // mur43,
+  // mur44,
+  // mur45,
+  // mur46,
+  // mur47,
+  // mur48,
+  // mur49,
+  // mur50,
+  // mur51,
+  // mur52,
+  // mur53,
+  // mur54,
+  // mur55,
+  // mur56,
+  // mur57,
+  // mur58,
+  // mur59,
+  // mur60,
+  // mur61,
+  // mur62,
+  // mur63,
+  // mur64,
 
   fontaine,
   storm
@@ -635,8 +647,8 @@ if ((swordVisibility)&&(player.epee==1)) {
   ctx.restore(); 
   let distancePorte = player.y-house.y
  if (isColliding(player, porte)) {
-    porte.x=-1000,
-    porte.y=-1000 // DOIT MAINTENANT S'AFFICHER
+    porte.x=-10000,
+    porte.y=-10000 // DOIT MAINTENANT S'AFFICHER
   }
   else if(distancePorte>=200){
     porte.x=320,
@@ -652,8 +664,8 @@ if ((swordVisibility)&&(player.epee==1)) {
         drawTirerEpee(ctx);
     document.addEventListener("keydown",(e)=>{
       if (e.code=="KeyN"){
-        storm.x=-1000;
-        storm.y=-1000;
+        storm.x=-10000;
+        storm.y=-10000;
         player.bouclier=1
 
       }
@@ -674,6 +686,17 @@ if ((swordVisibility)&&(player.epee==1)) {
     })
   }
  }
+if (isColliding(player, caisse)) {
+  // recule le joueur (ou remets oldX/oldY)
+  if (player.direction === "left")  player.x += player.speed;
+  if (player.direction === "right") player.x -= player.speed;
+  if (player.direction === "up")    player.y += player.speed;
+  if (player.direction === "down")  player.y -= player.speed;
+
+  if (!caisse.isMoving) {
+    pousserCaisse(player.direction, caisse, obstaclesCaisse, trou);
+  }
+}
 
 
 // Si collision avec les obstacles → retour à l’ancienne position
@@ -687,8 +710,8 @@ for (const obj of obstacles) {
 }
 for (const obj of bijou) {
   if (isColliding(player, obj)) {
-    obj.x = -1000;
-    obj.y = -1000;
+    obj.x = -10000;
+    obj.y = -10000;
     // console.log("collision avec l'objet situé :", obj)
     break;
   }
@@ -697,8 +720,8 @@ for (const obj of bijou) {
 // Si collision de l'epee avec objet decoupable disparition de l'objet
 for (const coupe of coupable) {
   if (isColliding(sword, coupe)) {
-    coupe.x = -1000;
-    coupe.y = -1000;
+    coupe.x = -10000;
+    coupe.y = -10000;
     // console.log("coupe")
     break;
   }
@@ -723,8 +746,8 @@ drawMoney(ctx, rubisImage, player.money, 50, 130);// ctx.drawImage(rubis,50,150,
     drawTirerEpee(ctx);
     document.addEventListener("keydown",(e)=>{
       if (e.code=="KeyN"){
-        swordplant.x=-1000;
-        swordplant.y=-1000;
+        swordplant.x=-10000;
+        swordplant.y=-10000;
         player.epee=1
 
       }
