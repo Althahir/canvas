@@ -36,7 +36,7 @@ export const player = {
   life:3,
   max_life:3,
   eau:0,
-  money:130,
+  money:0,
   speed: 4,
   direction: "down",    // "up", "down", "left", "right"
   frame: 0,             // numéro de l’image dans l’animation
@@ -44,9 +44,9 @@ export const player = {
   frameCount: 0, 
   epee:0, 
   bouclier:0, 
-  kokiri:0,
-  goron:0,
-  zora:0,
+  kokiri:1,
+  goron:1,
+  zora:1,
   triforce:0,    // compteur interne
   sprites: {
     up: [new Image(), new Image(), new Image()],
@@ -245,6 +245,6 @@ export function drawMoney(ctx, rubisImage, money, x, y) {
   
   ctx.fillText(money, textX, textY);
 }
-export function drawTriforce(ctx,triforce){
+export function drawTriforce(ctx){
         ctx.drawImage(triforceImg,965,580);
 }

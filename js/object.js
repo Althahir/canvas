@@ -34,6 +34,10 @@ const caisseImg = new Image();
 caisseImg.src = './assets/caisse.png'; 
 const trouImg = new Image();
 trouImg.src = './assets/trou.png'; 
+const coffreCloseImg = new Image();
+coffreCloseImg.src = './assets/coffre_close.png'; 
+const coffreOpenImg = new Image();
+coffreOpenImg.src = './assets/coffre_open.png'; 
 
 export let kokiriReussi=false
 export const tropheeKokiri={
@@ -42,6 +46,7 @@ export const tropheeKokiri={
   w:65,
   h:65
 }
+
 export const sword={
     x:30,
     y:45,
@@ -485,7 +490,13 @@ export const storm={
     w:58,
     h:74,
 }
-
+export const coffre={
+  state:"close",
+  x:750,
+  y:480,
+  w:123,
+  h:93
+}
 
 
 
@@ -1130,8 +1141,8 @@ export const caisse={
 export const trou={
   x:1820,
   y:-1270,
-  w:111,
-  h:112
+  w:141,
+  h:142
   } 
 
       
@@ -1151,8 +1162,8 @@ const CENTER_Y = 617.5; // 997.5 - 380
 export const goron = {
     x: 992.5,     // 692.5 + 300
     y: 564.17,    // 944.17 - 380
-    w: 40,
-    h: 40,
+    w: 65,
+    h: 65,
     angle: Math.atan2(564.17 - CENTER_Y, 992.5 - CENTER_X), 
     radius: Math.hypot(992.5 - CENTER_X, 564.17 - CENTER_Y), 
 }
@@ -1161,8 +1172,8 @@ export const goron = {
 export const zora = {
     x: 1052.5,    // 752.5 + 300
     y: 644.17,    // 1024.17 - 380
-    w: 40,
-    h: 40,
+    w: 65,
+    h: 65,
     angle: Math.atan2(644.17 - CENTER_Y, 1052.5 - CENTER_X),
     radius: Math.hypot(1052.5 - CENTER_X, 644.17 - CENTER_Y),
 }
@@ -1171,8 +1182,8 @@ export const zora = {
 export const kokiri = {
     x: 932.5,     // 632.5 + 300
     y: 644.17,    // 1024.17 - 380
-    w: 40,
-    h: 40,
+    w: 65,
+    h: 65,
     angle: Math.atan2(644.17 - CENTER_Y, 932.5 - CENTER_X),
     radius: Math.hypot(932.5 - CENTER_X, 644.17 - CENTER_Y),
 }
@@ -1197,6 +1208,51 @@ export function drawHouse(ctx, x=house.x, y=house.y) {
     // Attendre que les images soient prêtes avant de dessiner
     maisonImg.onload = () => {
       ctx.drawImage(maisonImg, x, y);
+    };
+
+    };
+}
+export function drawCoffre(ctx, x=coffre.x, y=coffre.y,state=coffre.state) {
+  if(state=="open"){
+    if (coffreOpenImg.complete) {
+    ctx.drawImage(coffreOpenImg, x, y); // ajuster les coords selon ta porte
+  } else {
+    // Attendre que les images soient prêtes avant de dessiner
+    coffreOpenImg.onload = () => {
+      ctx.drawImage(coffreOpenImg, x, y);
+    };
+  }
+  }
+  else if(state=="close"){
+    if (coffreCloseImg.complete) {
+    ctx.drawImage(coffreCloseImg, x, y); // ajuster les coords selon ta porte
+  } else {
+    // Attendre que les images soient prêtes avant de dessiner
+    coffreCloseImg.onload = () => {
+      ctx.drawImage(coffreCloseImg, x, y);
+    };
+  }
+  }
+
+  // Si les 2 images sont chargées, on les dessine
+  // if (coffreCloseImg.complete) {
+  //   ctx.drawImage(coffreCloseImg, x, y); // ajuster les coords selon ta porte
+  // } else {
+  //   // Attendre que les images soient prêtes avant de dessiner
+  //   coffreCloseImg.onload = () => {
+  //     ctx.drawImage(coffreCloseImg, x, y);
+  //   };
+
+  //   };
+}
+export function drawCoffreOpen(ctx, x=coffre.x, y=coffre.y) {
+  // Si les 2 images sont chargées, on les dessine
+  if (coffreOpenImg.complete) {
+    ctx.drawImage(coffreOpenImg, x, y); // ajuster les coords selon ta porte
+  } else {
+    // Attendre que les images soient prêtes avant de dessiner
+    coffreOpenImg.onload = () => {
+      ctx.drawImage(coffreOpenImg, x, y);
     };
 
     };

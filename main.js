@@ -11,7 +11,7 @@ import{mur,mur1,mur2,mur3,mur4,mur5, mur6,mur7,mur8,mur9,mur10,mur11,mur12,mur13
 import{mur26,mur27,mur28,mur29,mur30,mur31, mur32,mur33,mur34,mur35,mur36,mur37,mur38,mur39,mur40,mur41,mur42,mur43,mur44,mur45,mur46,mur47,mur48}from './js/object.js'
 import{mur49,mur50,mur51,mur52,mur53,mur54,mur55,mur56,mur57,mur58,mur59,mur60,mur61,mur62,mur63,mur64,mur65,mur66,mur67,mur68,mur69, mur70,mur71}from './js/object.js'
 import{herbe19,herbe20,herbe21,herbe22,herbe23,herbe24,herbe25,herbe26,herbe27,herbe28,herbe29,herbe30}from './js/object.js'
-import{caisse,drawCaisse,trou,drawTrou,pousserCaisse,obstaclesCaisse,stopCaisse}from './js/object.js'
+import{caisse,drawCaisse,trou,drawTrou,pousserCaisse,obstaclesCaisse,stopCaisse, coffre, drawCoffre}from './js/object.js'
 import {storm, drawStorm, herbe, drawHerbe, fontaine, drawFontaine, drawLac, lac, pied, drawPied, goron, drawGoron, zora, drawZora,kokiri, drawKokiri} from './js/object.js';
 import {runRevolution,kokiriReussi,tropheeKokiri} from './js/object.js';
 import { input } from './js/input.js';
@@ -321,7 +321,7 @@ if (kokiriReussi==true){
 // ===================================                
   drawFontaine(ctx, fontaine.x, fontaine.y);                     // 6. Maison
   drawStorm(ctx, storm.x, storm.y);                     // 6. Maison
-
+  drawCoffre(ctx,coffre.x,coffre.y,coffre.state);
 
 
   // ⚠️ N'oubliez pas d'appeler cette fonction une fois au début
@@ -515,6 +515,8 @@ const obstacles = [
   mur71,
   fontaine,
   storm,
+  coffre,
+  trou,
   // swordplant
   
 ];
@@ -735,7 +737,20 @@ if (isColliding(player,tropheeKokiri)){
   player.y=480;
 
 }
+  if (isColliding(player, coffre)){
+    console.log("hello")
+    drawTirerEpee(ctx);
+    document.addEventListener("keydown",(e)=>{
+      if (e.code=="KeyN"){
+        coffre.state="open"
+        drawCoffre(ctx,coffre.x,coffre.y,coffre.state);
+        player.money=100;
+        console.log(player.money)
+      }
+    })
 
+
+  }
 
 // Si collision avec les obstacles → retour à l’ancienne position
 for (const obj of obstacles) {
@@ -776,6 +791,15 @@ let distanceYlac=lac.y-player.y
   // console.log(distanceXlac, distanceYlac)
 drawHearts(ctx, player.life, player.max_life); // ❤️ affichage des vies
   DrawMessage1(ctx,150,150,messageDebut);
+  if(player.kokiri==1){
+    drawKokiri(ctx,60,250)
+  }
+  if(player.goron==1){
+    drawGoron(ctx,125,250)
+  }
+  if(player.zora==1){
+    drawZora(ctx,190,250)
+  }
 document.addEventListener("keydown", (e) => {
     // La condition `if (messageDebut)` est importante ici.
     // Elle garantit que l'appui sur "Enter" n'agit que lorsque le message est affiché.
@@ -804,6 +828,8 @@ drawMoney(ctx, rubisImage, player.money, 50, 130);// ctx.drawImage(rubis,50,150,
   }
 
   }
+
+  
 // console.log("Coordonnées Porte :", player.x, player.y);
 // console.log("Coordonnées Storm :", storm.x, storm.y, storm.w, storm.h);
   requestAnimationFrame(render); // 🔁 boucle infinie
