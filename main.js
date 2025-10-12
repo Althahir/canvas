@@ -72,12 +72,15 @@ function render() {
   ctx.translate(camX, camY);
   drawPath(ctx, 823, 1150, 80, 600,90)
   drawPath(ctx, 1383, 1175, 80, 550,90)
-  drawPath(ctx, 1813, 738, 80, 550,0)
-  // drawPath(ctx, x, y, width, height, angle = 0)
+    drawPath(ctx, 1813, 738, 80, 550,0)
     drawShapedPath(ctx, 1853, 8, "left", 65, 654, 165, 0); // 2. pate d'oie
- //drawShapedPath(ctx, x, y, direction = "right", width = 80, length = 80, radius = 40, angle = 0)
-  drawShapedPath(ctx, 433, 1280, "left", 65, 654, 165, 180); // 2. pate d'oie
-drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);//virage
+    drawShapedPath(ctx, -373, 1450, "right", 65, 804, 485, 270); // 2. pate d'oie
+    // drawShapedPath(ctx, 433, 1280, "left", 65, 654, 165, 180); // 2. pate d'oie
+    drawShapedPath(ctx, -973, 1450, "left", 65, 804, 205, 270); // 2. pate d'oie
+        drawShapedPath(ctx, -170, 3150, "right", 65, 804, 485, 180); // 2. pate d'oie
+
+
+// drawCurvedPath(ctx, 433, 1450, "left", 165, 65, 180);//virage
 drawCurvedPath(ctx, 1853, 1450, "left", 165, 65, 90);//virage
 
 
@@ -178,18 +181,18 @@ drawCurvedPath(ctx, 1853, 1450, "left", 165, 65, 90);//virage
   drawCaisse(ctx,caisse.x,caisse.y);               // 5. Rochers5
   drawTrou(ctx,trou.x,trou.y);               // 5. Rochers5
 
+drawPersonnage(ctx,personnage.x,personnage.y);
 
-
-  drawPlant(ctx,plant.x,plant.y);
-  drawPlant(ctx,plant1.x,plant1.y);
-  drawPlant(ctx,plant2.x,plant2.y);
-  drawPlant(ctx,plant3.x,plant3.y);
-  drawPlant(ctx,plant4.x,plant4.y);
-  drawPlant(ctx,plant5.x,plant5.y);
-  drawPlant(ctx,plant6.x,plant6.y);
-  drawPlant(ctx,plant7.x,plant7.y);
-  drawPlant(ctx,plant8.x,plant8.y);
-  drawPlant(ctx,plant9.x,plant9.y);
+  // drawPlant(ctx,plant.x,plant.y);
+  // drawPlant(ctx,plant1.x,plant1.y);
+  // drawPlant(ctx,plant2.x,plant2.y);
+  // drawPlant(ctx,plant3.x,plant3.y);
+  // drawPlant(ctx,plant4.x,plant4.y);
+  // drawPlant(ctx,plant5.x,plant5.y);
+  // drawPlant(ctx,plant6.x,plant6.y);
+  // drawPlant(ctx,plant7.x,plant7.y);
+  // drawPlant(ctx,plant8.x,plant8.y);
+  // drawPlant(ctx,plant9.x,plant9.y);
   drawPlant(ctx,plant10.x,plant10.y);
   drawPlant(ctx,plant11.x,plant11.y);
   drawPlant(ctx,plant12.x,plant12.y);
@@ -241,7 +244,7 @@ drawCurvedPath(ctx, 1853, 1450, "left", 165, 65, 90);//virage
   drawTree(ctx, tree12.x, tree12.y);                     // 6. Maison
   drawTree(ctx, tree13.x, tree13.y);  
   drawTree(ctx, tree14.x, tree14.y);                   // 6. Maison
-  drawTree(ctx, tree15.x, tree15.y);                     // 6. Maison
+  // drawTree(ctx, tree15.x, tree15.y);                     // 6. Maison
   drawTree(ctx, tree16.x, tree16.y);                     // 6. Maison
   drawTree(ctx, tree17.x, tree17.y);                     // 6. Maison
   drawTree(ctx, tree18.x, tree18.y);                     // 6. Maison
@@ -366,16 +369,16 @@ const obstacles = [
   house,
   house1,
   personnage,
-  plant,
-  plant1,
-  plant2,
-  plant3, 
-  plant4, 
-  plant5, 
-  plant6, 
-  plant7, 
-  plant8, 
-  plant9, 
+  // plant,
+  // plant1,
+  // plant2,
+  // plant3, 
+  // plant4, 
+  // plant5, 
+  // plant6, 
+  // plant7, 
+  // plant8, 
+  // plant9, 
   plant10, 
   plant11, 
   plant12, 
@@ -421,7 +424,7 @@ const obstacles = [
   tree12,
   tree13, 
   tree14, 
-  tree15, 
+  // tree15, 
   tree16, 
   tree17, 
   tree18, 
@@ -649,7 +652,7 @@ document.addEventListener("keyup",(e)=>{
 //   swordVisibility=false;
 // }
 
-drawPersonnage(ctx,1480,650);
+
 
 if ((swordVisibility)&&(player.epee==1)) {
   if ((player.direction === "up")||(player.direction==="left")) {
@@ -690,6 +693,9 @@ if ((swordVisibility)&&(player.epee==1)) {
 
       }
   })
+}
+  if (isColliding(player, personnage)) {
+   DrawMessage2(ctx,150,150)
 }
 if (player.bouclier==1){
   player.max_life=6;

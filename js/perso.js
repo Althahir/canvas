@@ -56,8 +56,8 @@ export const player = {
   }
 };
 export const personnage={
-    x:480,
-    y:480,
+    x:1480,
+    y:680,
     w:59,
     h:49
 }

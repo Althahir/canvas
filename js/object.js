@@ -1087,7 +1087,7 @@ export const mur66 = {
 };
 export const mur67 = {
   x: 1278,  // ✅ aligné avec la suite logique (mur61..mur65)
-  y: -884, // même hauteur que les autres
+  y: -911, // même hauteur que les autres
   w: 111,
   h: 112
 };
